@@ -141,10 +141,10 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	G4VPhysicalVolume* physVol = touchable->GetVolume(); //depth =0 par d�faut. 1 devrait donner celui juste au-dessus->faux
 	G4String volName = physVol->GetName();
 	G4int layerID = touchable->GetReplicaNumber(0);
-	G4int crystalID = touchable->GetReplicaNumber(0);
-	G4int submoduleID = touchable->GetReplicaNumber(0);
-	G4int moduleID = touchable->GetReplicaNumber(0);
-	G4int rsectorID = touchable->GetReplicaNumber(0);
+	G4int crystalID = touchable->GetReplicaNumber(1);
+	G4int submoduleID = touchable->GetReplicaNumber(2);
+	G4int moduleID = touchable->GetReplicaNumber(3);
+	G4int rsectorID = touchable->GetReplicaNumber(4);
 
 //G4cout<< "MySensitiveDetector::test" << G4endl;
 	/*

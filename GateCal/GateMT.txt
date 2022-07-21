@@ -1,0 +1,15 @@
+commencer par créer un répertoire split qui contient un .Gate
+
+export GC_DOT_GATE_DIR=./split/
+
+gjs -n 16 -cs condor.script  -c condor main.mac
+condor_submit main.submit
+condor_status
+
+
+
+
+
+
+
+

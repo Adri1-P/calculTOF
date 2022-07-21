@@ -1,3 +1,16 @@
+castor-GATEMacToGeom -m ../GE_geometry_layer.mac -o GE_geometry_layer
+castor-GATERootToCastor -i output_25.root -s GE_geometry_layer -m ../GE_geometry_layer.mac -o MonOutputGate_Histo -oh -t
+castor-recon -df MonOutputGate_Histo_df.Cdh -fout MonOutputGate_Histo_Osem -it 4:28 -dim 256,256,89 -fov 300,300,247.42 -opti MLEM
+
+en list-mode (LM) : 
+castor-GATERootToCastor -i output_25.root -s GE_geometry_layer -m ../GE_geometry_layer.mac -o MonOutputGate_LM -t -TOF_reso 250
+
+castor-recon -df MonOutputGate_LM_df.Cdh -fout MonOutputGate_LM_Osem -it 4:28 -dim 256,256,89 -fov 300,300,247.42 -opti MLEM
+
+ajouter -sens pour enlever la génération de l'image de sensibilité :
+
+castor-recon -df MonOutputGate_LM_df.Cdh -fout MonOutputGate_LM_Osem -it 4:28 -dim 256,256,89 -fov 300,300,247.42 -opti MLEM -sens maMap.hdr
+
 
 A ajouter dans le code de G4 :
 1) nouvelle méthode dans "construction":
