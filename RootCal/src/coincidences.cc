@@ -4,6 +4,9 @@
 #include <math.h> //pow,acos,sqrt
 #include <stdlib.h> //abs
 
+#include "structures.hh"
+
+
 coincidences::coincidences() {};
 coincidences::~coincidences() {delete Coincidences;};
 

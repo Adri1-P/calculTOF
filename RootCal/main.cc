@@ -43,41 +43,45 @@ TString filenameSingle_c = "../../../calculTOF_outputs/RootOutputs/G4SingleTest_
 TString filenameCoincidences_c = "../../../calculTOF_outputs/RootOutputs/G4CoincidencesTest_c.root";
 TString filenameSingle_Twta = "../../../calculTOF_outputs/RootOutputs/G4SingleTest_Twta.root";
 TString filenameCoincidences_Twta = "../../../calculTOF_outputs/RootOutputs/G4CoincidencesTest_Twta.root";
+TString filenameSingle_Debug = "../../../calculTOF_outputs/RootOutputs/SingleDebug.root";
+TString filenameCoincidences_Debug = "../../../calculTOF_outputs/RootOutputs/CoincidencesDebug.root";
 
-TString currentG4File = fileG4_c;
+
+
+TString currentG4File = fileG4_ibd50Twta;
 TString currentGateFile = fileGate_c;
-TString currentRootFile = filenameSingle_c;
+TString currentRootFile = filenameSingle_Debug;
 
 //display
-/*
+
 TFile* f = TFile::Open(currentG4File);
 TTree* Hits;
 f->GetObject("Hits", Hits); //nom du NTuple, nom de l'arbre
 
-TFile* outputFileS= new TFile(filenameSingle_c,"recreate");
+TFile* outputFileS= new TFile(filenameSingle_Debug,"recreate");
 single* monSingle = new single(Hits);
 monSingle->setPolicyToWinnerTakeAll();
 monSingle->createTreeSingle(Hits,outputFileS);
 outputFileS->Close();
 
-TFile * fSG4 = TFile::Open(filenameSingle_c);
+TFile * fSG4 = TFile::Open(filenameSingle_Debug);
 TTree* Singles;
 fSG4->GetObject("Singles", Singles);
 
-TFile* outputFileC= new TFile(filenameCoincidences_c,"recreate");
+TFile* outputFileC= new TFile(filenameCoincidences_Debug,"recreate");
 coincidences * mesCoincidences = new coincidences();
 mesCoincidences->fillTreeCoincidences(Singles,outputFileC);
 outputFileC->Close();
-*/
+
 TApplication app("app", &argc, argv);
 
 TString champ1 = "globalPosX";
 TString champ2 = "globalPosX";
-TString file1 = currentG4File ;
-TString file2 = currentGateFile;
+TString file1 = filenameSingle_Twta ;
+TString file2 = currentRootFile;
 TString datatype ="Singles";
-Double_t xmin = -200;
-Double_t xmax = 200;
+Double_t xmin = -400;
+Double_t xmax = 400;
 Int_t nBins = 100;
 
 TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );

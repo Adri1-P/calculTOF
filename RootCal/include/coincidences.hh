@@ -5,6 +5,9 @@
 #include "TString.h"
 #include "TFile.h"
 
+#include "structures.hh"
+
+
 class coincidences{
 private:
 TTree * Coincidences = new TTree("coincidences","coincidences");

@@ -5,6 +5,7 @@ CMakeFiles/analyse.dir/main.cc.o: ../include/coincidences.hh
 CMakeFiles/analyse.dir/main.cc.o: ../include/compareFunction.hh
 CMakeFiles/analyse.dir/main.cc.o: ../include/drawFunction.hh
 CMakeFiles/analyse.dir/main.cc.o: ../include/single.hh
+CMakeFiles/analyse.dir/main.cc.o: ../include/structures.hh
 CMakeFiles/analyse.dir/main.cc.o: ../main.cc
 CMakeFiles/analyse.dir/main.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Buttons.h
 CMakeFiles/analyse.dir/main.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Bytes.h
@@ -105,6 +106,7 @@ CMakeFiles/analyse.dir/main.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x
 CMakeFiles/analyse.dir/main.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/strtok.h
 
 CMakeFiles/analyse.dir/src/coincidences.cc.o: ../include/coincidences.hh
+CMakeFiles/analyse.dir/src/coincidences.cc.o: ../include/structures.hh
 CMakeFiles/analyse.dir/src/coincidences.cc.o: ../src/coincidences.cc
 CMakeFiles/analyse.dir/src/coincidences.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Bytes.h
 CMakeFiles/analyse.dir/src/coincidences.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Byteswap.h
@@ -706,6 +708,7 @@ CMakeFiles/analyse.dir/src/drawFunction.cc.o: /volatile3/root/root_v6.24.00.Linu
 CMakeFiles/analyse.dir/src/drawFunction.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/strtok.h
 
 CMakeFiles/analyse.dir/src/single.cc.o: ../include/single.hh
+CMakeFiles/analyse.dir/src/single.cc.o: ../include/structures.hh
 CMakeFiles/analyse.dir/src/single.cc.o: ../src/single.cc
 CMakeFiles/analyse.dir/src/single.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Bytes.h
 CMakeFiles/analyse.dir/src/single.cc.o: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Byteswap.h

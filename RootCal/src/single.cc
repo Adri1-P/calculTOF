@@ -4,7 +4,7 @@
 #include <TMath.h>
 #include <iostream>
 #include <math.h>
-
+#include "structures.hh"
 
 single::single(TTree* Hits)
 {
@@ -121,14 +121,14 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 	{
 		energie1 = 0;
 		energie2 = 0;
-		energieTot1 = 0;
-    energieTot2 = 0;
-    x1 = 0;
-		y1 = 0;
-		z1 = 0;
-		x2 = 0;
-		y2 = 0;
-		z2 = 0;
+		//energieTot1 = 0;
+    //energieTot2 = 0;
+    // x1 = 0;
+		// y1 = 0;
+		// z1 = 0;
+		// x2 = 0;
+		// y2 = 0;
+		// z2 = 0;
 		//std ::cout <<"debutEvent  " << "eventID : " <<  eventID << "currentEvent : " << currentEvent << std :: endl;
 
     btrackID->GetEntry(i);
@@ -146,11 +146,44 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
     bparticleName->GetEntry(i);
 
     currentEvent = eventID;
-    temps1 = time ; //on ne peut pas initialiser à 0, il n'y a pas de "temps max"
-		temps2 = time ;
+    //temps1 = time ; //on ne peut pas initialiser à 0, il n'y a pas de "temps max"
+		//temps2 = time ;
     nbrEvent++;
+
+    s_Single Single1,Single2;
+    Single1.edep = 0;
+    Single1.time = time;
+    Single1.X = 0;
+    Single1.Y = 0;
+    Single1.Z = 0;
+    Single2.edep = 0;
+    Single2.X = 0;
+    Single2.Y = 0;
+    Single2.Z = 0;
+    Single2.time = time;
+
+
 		while ((i < nH) && (eventID == currentEvent))
 		{
+      s_Hit aHit;
+      aHit.X = X;
+      aHit.Y = Y;
+      aHit.Z = Z;
+      aHit.edep = edep;
+      aHit.time = time;
+      aHit.eventID = eventID;
+      aHit.trackID = trackID;
+      aHit.rsectorID = rsectorID;
+      aHit.moduleID = moduleID;
+      aHit.submoduleID = submoduleID;
+      aHit.crystalID = crystalID;
+      aHit.layerID = layerID;
+      aHit.particleName = particleName;
+      //std::cout <<"gamma1 avant" << gamma1 << std::endl;
+      processOneHit_WTA(aHit,Single1,Single2,energie1,energie2,gamma1,gamma2);
+      //std::cout <<"gamma1 après" << gamma1 << std::endl;
+
+      /*
       if (particleName == 'g')
       {
 				if (trackID == 1)
@@ -199,6 +232,7 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
   					gamma2 = true;
   				}
         }
+        */
 				i++;
         btrackID->GetEntry(i);
 				beventID->GetEntry(i);
@@ -217,46 +251,75 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 
 			//std ::cout << i << std :: endl;
 		//std ::cout <<"finEvent  " << "eventID : " <<  eventID << "currentEvent : " << currentEvent << std :: endl;
-      if (gamma1 && energieTot1>0)
+
+
+      if (gamma1 && Single1.edep>0)
       {
-				globalPosX = x1;
-				globalPosY = y1;
-				globalPosZ = z1;
-				temps = temps1 * 1000; //G4 est en ns par défaut, ici on passe en ps
-				energie = energieTot1;
+				// globalPosX = x1;
+				// globalPosY = y1;
+				// globalPosZ = z1;
+				// temps = temps1 * 1000; //G4 est en ns par défaut, ici on passe en ps
+				// energie = energieTot1;
+				// STrackID = 1;
+				// SeventID = eventID;
+				// SrsectorID = SrsectorID1; //faux pour le moment
+				// SmoduleID = SmoduleID1;
+				// SsubmoduleID = SsubmoduleID1;
+				// ScrystalID = ScrystalID1;
+				// SlayerID = SlayerID1; //jusqu'ici
+        // if (gamma1 && gamma2) {Scoincidence = 1;} else {Scoincidence = 0;}
+        globalPosX = Single1.X;
+				globalPosY = Single1.Y;
+				globalPosZ = Single1.Z;
+				temps = Single1.time * 1000; //G4 est en ns par défaut, ici on passe en ps
+				energie = Single1.edep;
 				STrackID = 1;
 				SeventID = eventID;
-				SrsectorID = SrsectorID1; //faux pour le moment
-				SmoduleID = SmoduleID1;
-				SsubmoduleID = SsubmoduleID1;
-				ScrystalID = ScrystalID1;
-				SlayerID = SlayerID1; //jusqu'ici
-        if (gamma1 && gamma2) {Scoincidence = 1;} else {Scoincidence = 0;}
+				SrsectorID = Single1.rsectorID;
+				SmoduleID = Single1.moduleID;
+				SsubmoduleID = Single1.submoduleID;
+				ScrystalID = Single1.crystalID;
+				SlayerID = Single1.layerID;
+        //if (gamma1 && gamma2) {Scoincidence = 1;} else {Scoincidence = 0;}
 				this->Single->Fill();
       }
 
-      if (gamma2 && energieTot2>0)
+      if (gamma2 && Single2.edep>0)
       {
-				globalPosX = x2;
-				globalPosY = y2;
-				globalPosZ = z2;
-				temps = temps2 * 1000; //G4 est en ns par défaut, ici on passe en ps
-				energie = energieTot2;
+				// globalPosX = x2;
+				// globalPosY = y2;
+				// globalPosZ = z2;
+				// temps = temps2 * 1000; //G4 est en ns par défaut, ici on passe en ps
+				// energie = energieTot2;
+				// STrackID = 2;
+				// SeventID = eventID;
+				// SrsectorID = SrsectorID2;
+				// SmoduleID = SmoduleID2;
+				// SsubmoduleID = SsubmoduleID2;
+				// ScrystalID = ScrystalID2;
+				// SlayerID = SlayerID2;
+        // if (gamma1 && gamma2) {Scoincidence = 1;} else {Scoincidence = 0;}
+
+        globalPosX = Single2.X;
+				globalPosY = Single2.Y;
+				globalPosZ = Single2.Z;
+				temps = Single2.time * 1000; //G4 est en ns par défaut, ici on passe en ps
+				energie = Single2.edep;
 				STrackID = 2;
 				SeventID = eventID;
-				SrsectorID = SrsectorID2;
-				SmoduleID = SmoduleID2;
-				SsubmoduleID = SsubmoduleID2;
-				ScrystalID = ScrystalID2;
-				SlayerID = SlayerID2;
-        if (gamma1 && gamma2) {Scoincidence = 1;} else {Scoincidence = 0;}
+				SrsectorID = Single2.rsectorID;
+				SmoduleID = Single2.moduleID;
+				SsubmoduleID = Single2.submoduleID;
+				ScrystalID = Single2.crystalID;
+				SlayerID = Single2.layerID;
+        //if (gamma1 && gamma2) {Scoincidence = 1;} else {Scoincidence = 0;}
 				this->Single->Fill();
       }
       gamma1 = false;
       gamma2 = false;
 	}
-  std ::cout <<nbrEvent << std :: endl;
-  std ::cout << this->Single->GetMaximum("eventID") << std :: endl;
+  //std ::cout <<nbrEvent << std :: endl;
+  //std ::cout << this->Single->GetMaximum("eventID") << std :: endl;
 
 
   outputFile->WriteObject(this->Single, "Singles");
@@ -281,6 +344,58 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 	std::cout << "single::fillTreeSingle_b2b" << std:: endl;
   */
 }
+
+
+void single::processOneHit_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2, Double_t &energieMax1, Double_t &energieMax2, bool &gamma1, bool &gamma2)
+{
+  if (aHit.particleName == 'g')
+  {
+    if (aHit.trackID == 1)
+    {
+      Single1.edep = Single1.edep + aHit.edep;
+      if (energieMax1 < aHit.edep)
+      {
+        Single1.X = aHit.X;
+        Single1.Y = aHit.Y;
+        Single1.Z = aHit.Z;
+
+        Single1.rsectorID = aHit.rsectorID;
+        Single1.moduleID = aHit.moduleID;
+        Single1.submoduleID = aHit.submoduleID;
+        Single1.crystalID = aHit.crystalID;
+        Single1.layerID = aHit.layerID;
+
+        energieMax1 = aHit.edep;
+
+        Single1.time = aHit.time; //comme dans Gate
+      }
+      gamma1 = true;
+    }
+
+      else if (aHit.trackID == 2)
+      {
+          Single2.edep = Single2.edep + aHit.edep;
+          if (energieMax2 < aHit.edep)
+          {
+            Single2.X = aHit.X;
+            Single2.Y = aHit.Y;
+            Single2.Z = aHit.Z;
+
+            Single2.rsectorID = aHit.rsectorID;
+            Single2.moduleID = aHit.moduleID;
+            Single2.submoduleID = aHit.submoduleID;
+            Single2.crystalID = aHit.crystalID;
+            Single2.layerID = aHit.layerID;
+
+            energieMax2 = aHit.edep;
+
+            Single2.time = aHit.time; //comme dans Gate
+          }
+          gamma2 = true;
+        }
+    }
+}
+
 
 void single::fillTreeSingle_b2b_v2(TTree* Hits, TString filename)
 {

@@ -6,6 +6,7 @@ CMakeFiles/analyse.dir/main.cc.o
  ../include/compareFunction.hh
  ../include/drawFunction.hh
  ../include/single.hh
+ ../include/structures.hh
  /biomaps/physique/apaillet/calculTOF/RootCal/main.cc
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Buttons.h
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Bytes.h
@@ -106,6 +107,7 @@ CMakeFiles/analyse.dir/main.cc.o
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/strtok.h
 CMakeFiles/analyse.dir/src/coincidences.cc.o
  ../include/coincidences.hh
+ ../include/structures.hh
  /biomaps/physique/apaillet/calculTOF/RootCal/src/coincidences.cc
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Bytes.h
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Byteswap.h
@@ -707,6 +709,7 @@ CMakeFiles/analyse.dir/src/drawFunction.cc.o
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/strtok.h
 CMakeFiles/analyse.dir/src/single.cc.o
  ../include/single.hh
+ ../include/structures.hh
  /biomaps/physique/apaillet/calculTOF/RootCal/src/single.cc
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Bytes.h
  /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include/Byteswap.h
