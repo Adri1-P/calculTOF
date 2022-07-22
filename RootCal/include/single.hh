@@ -38,7 +38,7 @@ private:
 void fillTreeSingle(TTree* Hits);
 void fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile);
 void processOneHit_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2, Double_t &energieMax1, Double_t &energieMax2, bool &gamma1, bool &gamma2);
-
+void processOneHit_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2);
 
 
 void fillTreeSingle_b2b_v2(TTree* Hits, TString filename);

@@ -14,7 +14,7 @@ coincidences::~coincidences() {delete Coincidences;};
 void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 {
 	//variables pour les coincidences
-	Double_t energie, energie1, energie2, globalPosX1,globalPosX2, temps1,temps2, globalPosY1,globalPosY2, globalPosZ1, globalPosZ2, dt;
+	Double_t energy, energy1, energy2, globalPosX1,globalPosX2, time1,time2, globalPosY1,globalPosY2, globalPosZ1, globalPosZ2, dt;
 	Double_t x1, y1, z1, x2, y2, z2;
 
 	// variables pour les singles
@@ -42,163 +42,135 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	Singles->SetBranchAddress("time", &time, &btime);  //secondes
 	Singles->SetBranchAddress("energy", &edep, &bedep); //MeV
 	Singles->SetBranchAddress("coincidence", &coincidence, &bcoincidence);
-
-	// Get number of hits in the TTree
-	int nS = (int)Singles->GetEntries();
-
 	//initialisation
 
-	 this->Coincidences->Branch("globalPosX1",&globalPosX1,"globalPosX/D");
-	 this->Coincidences->Branch("globalPosY1",&globalPosY1,"globalPosY/D");
-	 this->Coincidences->Branch("globalPosZ1",&globalPosZ1,"globalPosZ/D");
-	 this->Coincidences->Branch("time1",&temps1,"time/D");
-	 this->Coincidences->Branch("energy1",&energie1,"energy/D");
-	 this->Coincidences->Branch("globalPosX2",&globalPosX2,"globalPosX/D");
-	 this->Coincidences->Branch("globalPosY2",&globalPosY2,"globalPosY/D");
-	 this->Coincidences->Branch("globalPosZ2",&globalPosZ2,"globalPosZ/D");
-	 this->Coincidences->Branch("time2",&temps2,"time/D");
-	 this->Coincidences->Branch("energy2",&energie2,"energy/D");
-
-	 this->Coincidences->Branch("dt",&dt,"dt/D");
-
-	int ps = 0; //particules secondaires
-	int eventCourant;
+	this->Coincidences->Branch("globalPosX1",&globalPosX1,"globalPosX/D");
+	this->Coincidences->Branch("globalPosY1",&globalPosY1,"globalPosY/D");
+	this->Coincidences->Branch("globalPosZ1",&globalPosZ1,"globalPosZ/D");
+	this->Coincidences->Branch("time1",&time1,"time/D");
+	this->Coincidences->Branch("energy1",&energy1,"energy/D");
+	this->Coincidences->Branch("globalPosX2",&globalPosX2,"globalPosX/D");
+	this->Coincidences->Branch("globalPosY2",&globalPosY2,"globalPosY/D");
+	this->Coincidences->Branch("globalPosZ2",&globalPosZ2,"globalPosZ/D");
+	this->Coincidences->Branch("time2",&time2,"time/D");
+	this->Coincidences->Branch("energy2",&energy2,"energy/D");
+	this->Coincidences->Branch("dt",&dt,"dt/D");
+  // Get number of hits in the TTree
+  int nS = (int)Singles->GetEntries();
 	int i = 0;
 	int j = 0;
-	int c1 = 0;
-	int c2 = 0;
-	int t1, t2;
-	int hf = 0;
-	int nB2B = 0;
-	int nc = 0;
-	int nbc = 0;
-	int nse = 0;
-	int e1,e2;
-	Double_t fenetre = 10000000; //10000 ns
-	Double_t energieTot1;
-	Double_t energieTot2;
 
 	// Loop over singles
 	while ( i < nS-1 )
 	{
+
+		s_Single Single1,Single2;
+		s_Coincidence c;
 		j = i+1;
 		btrackID->GetEntry(i);
-		t1 = trackID;
+		Single1.trackID = trackID; //Single1 n'est pas forcément du track1
 		btrackID->GetEntry(j);
-		t2 = trackID;
-
-
+		Single2.trackID = trackID;
 		beventID->GetEntry(i);
-		e1 = eventID;
+		Single1.eventID = eventID;
 		beventID->GetEntry(j);
-		e2 = eventID;
+		Single2.eventID = eventID;
+		btime->GetEntry(i);
+		Single1.time = time;
+		btime->GetEntry(j);
+		Single2.time = time;
+		bglobalPosY->GetEntry(i);
+		Single1.Y = globalPosY;
+		bglobalPosY->GetEntry(j);
+		Single2.Y = globalPosY;
+		bglobalPosX->GetEntry(i);
+		Single1.X = globalPosX;
+		bglobalPosX->GetEntry(j);
+		Single2.X = globalPosX;
+		bglobalPosZ->GetEntry(i);
+		Single1.Z = globalPosZ;
+		bglobalPosZ->GetEntry(j);
+		Single2.Z = globalPosZ;
+		bedep->GetEntry(i);
+		Single1.edep = edep;
+		bedep->GetEntry(j);
+		Single2.edep = edep;
 
-		if (e1 == e2)//les deux singles doivent être du même event
+
+		processTwoSingles(Single1,Single2,c);
+
+
+		globalPosX1 = c.X1;
+		globalPosY1 = c.Y1;
+		globalPosZ1 = c.Z1;
+		globalPosX2 = c.X2;
+		globalPosY2 = c.Y2;
+		globalPosZ2 = c.Z2;
+		energy1 = c.edep1;
+		energy2 = c.edep2;
+		time1 = c.time1;
+		time2 = c.time2;
+		dt = c.dt;
+
+		if (Single1.isInCoincidence && Single2.isInCoincidence)
 		{
-			if ((t1 == 1 && t2 ==2) ) //deux singles qui se suivent = coincidence
-			{
-				//std::cout << "t1  & t2" << std::endl;
-
-				btime->GetEntry(i);
-				temps1 = time;
-				btime->GetEntry(j);
-				temps2 = time;
-
-				dt = temps1 - temps2;
-				//if (dt < fenetre)
-				//{
-					bglobalPosY->GetEntry(i);
-					globalPosY1 = globalPosY;
-					bglobalPosY->GetEntry(j);
-					globalPosY2 = globalPosY;
-
-					bglobalPosX->GetEntry(i);
-					globalPosX1 = globalPosX;
-					bglobalPosX->GetEntry(j);
-					globalPosX2 = globalPosX;
-
-					bglobalPosZ->GetEntry(i);
-					globalPosZ1 = globalPosZ;
-					bglobalPosZ->GetEntry(j);
-					globalPosZ2 = globalPosZ;
-
-					//std::cout << "distance entre les singles : " << distance(globalPosY2,globalPosY1,globalPosX2,globalPosX1,globalPosZ2,globalPosZ1)  << std::endl;
-
-					bedep->GetEntry(i);
-					energie1 = edep;
-					bedep->GetEntry(j);
-					energie2 = edep;
-
-					this->Coincidences->Fill();
-					nbc++;
-				//}
-				//else {hf++;}
-
-			}
-			else if (t1 == 2 && t2 == 1) //pareil mais dans l'autre sens. Utile?
-			{
-
-				//std::cout << "t2  & t1" << std::endl;
-
-				btime->GetEntry(i);
-				temps1 = time;
-				btime->GetEntry(j);
-				temps2 = time;
-
-				dt = temps2 - temps1; //inverser ?
-
-				//if (dt < fenetre)
-				//{
-					bglobalPosY->GetEntry(i);
-					globalPosY2 = globalPosY;
-					bglobalPosY->GetEntry(j);
-					globalPosY1 = globalPosY;
-
-					bglobalPosX->GetEntry(i);
-					globalPosX2 = globalPosX;
-					bglobalPosX->GetEntry(j);
-					globalPosX1 = globalPosX;
-
-					bglobalPosZ->GetEntry(i);
-					globalPosZ2 = globalPosZ;
-					bglobalPosZ->GetEntry(j);
-					globalPosZ1 = globalPosZ;
-
-					//std::cout << "distance entre les singles : " << distance(globalPosY2,globalPosY1,globalPosX2,globalPosX1,globalPosZ2,globalPosZ1)  << std::endl;
-
-					bedep->GetEntry(i);
-					energie2 = edep;
-					bedep->GetEntry(j);
-					energie1 = edep;
-
-					this->Coincidences->Fill();
-					nbc++;
-				//}
-				//else {hf++;}
-
-			}
-			else{nc++;//std :: cout << "t1 : " << t1 <<"t2" << t2 << std::endl;
-		//std :: cout << "i : " << i <<"j" << j << std::endl;
-	}
+			this->Coincidences->Fill();
 			i = i + 2;
 		}
-		else{ /*std :: cout << "Singles pas du même event" << std::endl;*/ nse++;i++;}
+		else {i++;}
+
 
 	}
-
 
 	outputFile->WriteObject(this->Coincidences, "Coincidences");
 	Singles->ResetBranchAddresses();
 	this->Coincidences->ResetBranchAddresses();
-/*
-	std::cout  << "hors fenêtre : " <<hf << std::endl;
-	std::cout  << "pas backToBack : " << nB2B <<  std::endl;
-	std::cout  << "scatter ou random : " << nc <<   std::endl;
-	std::cout  << "nS : " << nS <<  std::endl;
-	std::cout  << "nombre de deux singles pas du même event : " << nse <<  std::endl;
-	std::cout  << "nombre de coincidences : " << nbc <<  std::endl;
-	std::cout  << "single::fillTreeCoincidences" << std:: endl;
-	*/
+}
+
+
+void coincidences::processTwoSingles(s_Single &Single1,s_Single &Single2,s_Coincidence &c)
+{
+	Single1.isInCoincidence = false; //présomption de non-coincidence
+	Single2.isInCoincidence = false;
+
+	if (Single1.eventID == Single2.eventID)//les deux singles doivent être du même event
+	{
+		if ((Single1.trackID == 1 && Single2.trackID ==2) ) //deux singles qui se suivent = coincidence
+		{
+			Single1.isInCoincidence = true;
+			Single2.isInCoincidence = true;
+
+			c.time1 = Single1.time;
+			c.time2 = Single2.time;
+			c.dt = c.time1 - c.time2;
+			c.Y1 = Single1.Y;
+			c.Y2 = Single2.Y;
+			c.X1 = Single1.X;
+			c.X2 = Single2.X;
+			c.Z1 = Single1.Z;
+			c.Z2 = Single2.Z;
+			c.edep1 = Single1.edep;
+			c.edep2 = Single2.edep;
+		}
+		else if (Single1.trackID == 2 && Single2.trackID == 1) //pareil mais dans l'autre sens. Utile?
+		{
+			Single1.isInCoincidence = true;
+			Single2.isInCoincidence = true;
+
+			c.time1 = Single2.time;
+			c.time2 = Single1.time;
+			c.dt = c.time1 - c.time2;
+			c.Y1 = Single2.Y;
+			c.Y2 = Single1.Y;
+			c.X1 = Single2.X;
+			c.X2 = Single1.X;
+			c.Z1 = Single2.Z;
+			c.Z2 = Single1.Z;
+			c.edep1 = Single2.edep;
+			c.edep2 = Single1.edep;
+		}
+	}
+
 }
 
 void coincidences::writeTree(TTree* treeToWrite,TString filename)

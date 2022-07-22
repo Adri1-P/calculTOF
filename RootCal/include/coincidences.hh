@@ -12,6 +12,8 @@ class coincidences{
 private:
 TTree * Coincidences = new TTree("coincidences","coincidences");
 
+void processTwoSingles(s_Single &Single1,s_Single &Single2,s_Coincidence &c);
+
 
 
 

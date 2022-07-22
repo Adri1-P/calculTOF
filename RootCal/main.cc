@@ -50,7 +50,7 @@ TString filenameCoincidences_Debug = "../../../calculTOF_outputs/RootOutputs/Coi
 
 TString currentG4File = fileG4_ibd50Twta;
 TString currentGateFile = fileGate_c;
-TString currentRootFile = filenameSingle_Debug;
+TString currentRootFile = filenameCoincidences_Debug;
 
 //display
 
@@ -75,11 +75,11 @@ outputFileC->Close();
 
 TApplication app("app", &argc, argv);
 
-TString champ1 = "globalPosX";
-TString champ2 = "globalPosX";
-TString file1 = filenameSingle_Twta ;
+TString champ1 = "globalPosX1";
+TString champ2 = "globalPosX1";
+TString file1 = filenameCoincidences_Twta ;
 TString file2 = currentRootFile;
-TString datatype ="Singles";
+TString datatype ="Coincidences";
 Double_t xmin = -400;
 Double_t xmax = 400;
 Int_t nBins = 100;
