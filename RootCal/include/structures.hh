@@ -7,6 +7,7 @@ typedef struct s_Hit  {
 	Int_t eventID;
 	Int_t trackID;
   Int_t rsectorID,moduleID,submoduleID,crystalID,layerID;
+  Int_t hitNumberTrack1, hitNumberTrack2;
   Char_t particleName;
 }s_Hit;
 typedef struct s_Single {

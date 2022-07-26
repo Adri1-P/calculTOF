@@ -43,9 +43,13 @@
 
 #include <iostream>
 
-
+//********************************************************************************
+//********************************************************************************
 
 void drawgraphs() {
+
+//fonction de base pour faire un plot. à améliorer. Ne donne pas toujours le même résultat que la fonction draw.
+
 	std::cout << "drawgraphs" << std::endl;
 	TFile* f = TFile::Open("outputs/Geant4_cut1mm.root");
 
@@ -244,7 +248,11 @@ void drawgraphs() {
 
 }
 
+//********************************************************************************
+
 void DrawDirectory() {
+
+// intéressant si on veut utiliser tous les fichiers roots d'un répertoire
 
 	Int_t i = 0;
 	TString ext = ".root";
@@ -471,150 +479,11 @@ void DrawDirectory() {
 	}
 }
 
-
-TCanvas * drawCoincidences(TString filename)
-{
-std::cout << "drawCoincidences" << std::endl;
-	TFile* f = TFile::Open(filename);
-	TTree* coincidences = (TTree*)f->Get("Coincidences");
-
-	// define the variable(s) of interest, type of variable must be respected
-	Double_t X1;
-	Double_t Y1;
-	Double_t Z1;
-	Double_t X2;
-	Double_t Y2;
-	Double_t Z2;
-	Double_t time1;
-	Double_t time2;
-	Int_t eventID;
-
-	Double_t energie1;
-	Double_t energie2;
-
-	//variables interm�diaires et/ou finales
-	Double_t deltaT;
-
-	//branches d'int�r�t
-	TBranch* bX1;
-	TBranch* bY1;
-	TBranch* bZ1;
-	TBranch* bX2;
-	TBranch* bY2;
-	TBranch* bZ2;
-	TBranch* beventID;
-	TBranch* btime1;
-	TBranch* btime2;
-
-	TBranch* benergie1;
-	TBranch* benergie2;
-
-
-	// Set branch address
-	coincidences->SetBranchAddress("globalPosX1", &X1, &bX1);
-	coincidences->SetBranchAddress("globalPosY1", &Y1, &bY1);
-	coincidences->SetBranchAddress("globalPosZ1", &Z1, &bZ1);
-	std::cout << "salut" << std::endl;
-	coincidences->SetBranchAddress("globalPosX2", &X2, &bX2);
-	coincidences->SetBranchAddress("globalPosY2", &Y2, &bY2);
-	coincidences->SetBranchAddress("globalPosZ2", &Z2, &bZ2);
-	std::cout << "salut" << std::endl;
-	coincidences->SetBranchAddress("time1", &time1, &btime1);
-	coincidences->SetBranchAddress("time2", &time2, &btime2);
-	coincidences->SetBranchAddress("energy1", &energie1, &benergie1);
-	coincidences->SetBranchAddress("energy2", &energie2, &benergie2);
-
-
-	/*
-	TH3D* h = new TH3D("h", "positions des hits", 100, -800, 800, 100, -800, 800, 100, -800, 800);
-	TH3D* hfirst = new TH3D("hfirst", "positions des premiers hits", 100, -800, 800, 100, -800, 800, 100, -800, 800);
-	TH1D* ht = new TH1D("ht", "Delta t", 100, -220, 220);
-	*/
-
-
-
-	TGraph2D * test = new TGraph2D();
-	// Get number of hits in the TTree
-	int nC = (int)coincidences->GetEntries();
-
-	//initialisation
-	//remove the stat from upper right corner
-	gStyle->SetOptStat(0);
-	//remove the title
-	gStyle->SetOptTitle(0);
-	//define fonts sizes
-	gStyle->SetPalette(1);
-	gStyle->SetTextSize(0.16);
-	gStyle->SetLabelSize(0.06, "x");
-	gStyle->SetLabelSize(0.06, "y");
-	gStyle->SetLabelSize(0.06, "z");
-	gStyle->SetTitleSize(0.06, "x");
-	gStyle->SetTitleSize(0.05, "y");
-	gStyle->SetTitleSize(0.06, "z");
-	gStyle->SetLineWidth(2);
-
-	//Define canvas
-	TCanvas* can = new TCanvas("can", "can", 1920, 1080);
-	//Define paramters of the canvas
-	can->SetFillColor(0);
-	can->SetBorderMode(0);
-	can->SetBorderSize(3);
-	can->SetBottomMargin(0.14);
-	can->SetLeftMargin(0.3);
-	can->SetFrameBorderMode(2);
-	can->SetFrameLineWidth(1);
-
-	// Loop over hits
-	for (int i = 0; i < nC; i++)
-	{
-		//get event i
-		bX1->GetEntry(i);
-		bY1->GetEntry(i);
-		bZ1->GetEntry(i);
-		bX2->GetEntry(i);
-		bY2->GetEntry(i);
-		bZ2->GetEntry(i);
-
-		btime1->GetEntry(i);
-		btime2->GetEntry(i);
-
-		test->SetPoint(i,X1,Y1,Z1);
-		i++;
-		test->SetPoint(i,X2,Y2,Z2);
-
-		/*
-		//fill histogram
-		deltaT = time1 - time2;
-		ht->Fill(deltaT);
-		*/
-	}
-
-	test->Draw();
-
-	return can;
-/*
-	//Define canvas
-	TCanvas* can4 = new TCanvas("can4", "can4", 1920, 1080);
-	//Define paramters of the canvas
-	can4->SetFillColor(0);
-	can4->SetBorderMode(0);
-	can4->SetBorderSize(3);
-	can4->SetBottomMargin(0.14);
-	can4->SetLeftMargin(0.3);
-	can4->SetFrameBorderMode(2);
-	can4->SetFrameLineWidth(1);
-	//can4->SaveAs("test.png");
-
-	ht->GetXaxis()->SetTitle("dt");
-	ht->Draw();
-*/
-
-}
-
-
+//********************************************************************************
 
 void showGate_dt(TString  filename)
 {
+	//mini fonction pour afficher le dt depuis un fichier Gate
 	TFile* f = TFile::Open(filename);
 	TTree* Coincidences;
 	f->GetObject("Coincidences", Coincidences);
@@ -623,6 +492,8 @@ void showGate_dt(TString  filename)
 
 void GateScanHits(TString  filename)
 {
+//une fonction qui a servi à voir que des hits se baladaient dans plusieurs cristaux
+
 	TFile* f = TFile::Open(filename);
 	TTree* Hits;
 	f->GetObject("Hits", Hits);
@@ -787,10 +658,14 @@ void GateScanHits(TString  filename)
 	std::cout << "nombre d'events o� le track2 parcourt plusieurs cristaux : " << touriste2 << std:: endl; // [A MODIFIER SI DEPTH CHANGE ]
 	std::cout << nH << " nombre de hits : " << "nombre de singles (Gate) : " << nS << std:: endl;
 	printf("�cart relatif : %f \n" ,(double) ((1 - (nS -touriste1 -touriste2) / nS)) * 100);
-
 }
+
+//********************************************************************************
+
 TCanvas* fillDtGate_rand(TString filename)
 {
+//affiche le dt depuis un fichier Gate mais avec un signe aléatoire pour le résultat de la différence
+
   // open the file
 TFile *f = TFile::Open(filename);
 // get the TTree
@@ -847,68 +722,5 @@ for(int i=0;i<n;i++)
 	h->Draw();
 	return can;
 }
-/*
-TCanvas * showTimeMin(TString filename)
-{
-  // open the file
-TFile *f = TFile::Open(filename);
-// get the TTree
-TTree *TreeHits = (TTree*)f->Get("Hits");
-TTree *TreeCo = (TTree*)f->Get("Coincidences");
-//cout<< Tree->GetEntries()<<endl;
-// define the variable(s) of interest, type of variable must be respected
-Double_t hitGlobalTime;
-Double_t time1;
-Double_t time2;
-
-TBranch * bhitGlobalTime;
-TBranch * btime1;
-TBranch * btime2;
-
-Float_t dt;
-
-Int_t eventID1, eventID2, trackID;
-TBranch *beventID1,*beventID2, *btrackID;
-
-//Tree->SetBranchStatus("*",0);
-Tree->SetBranchStatus("time1",1);
-Tree->SetBranchStatus("time2",1);
-Tree->SetBranchStatus("eventID1",1);
-Tree->SetBranchStatus("eventID2",1);
-
-// Set branch address
-Tree->SetBranchAddress("time1",&time1,&btime1);
-Tree->SetBranchAddress("time2",&time2,&btime2);
-Tree->SetBranchAddress("eventID1",&eventID1,&beventID1);
-Tree->SetBranchAddress("eventID2",&eventID2,&beventID2);
-// Get number of events in the TTree
-int n=(int)Tree->GetEntries();
-
-// Define a histogram with 100 bins, on x from 0 to 1
- TH1F* h1 = new TH1F("h1","h1",100,0,2);
- TH1F* h2 = new TH1F("h2","h2",100,0,2);
-
-// Loop over events
-
-for(int i=0;i<n;i++)
-{
-	beventID1 -> GetEntry(i);
-	beventID2 -> GetEntry(i);
-			if (eventID1 == eventID2)
-			{
-			//get event i
-			btime1 -> GetEntry(i);
-			btime2 -> GetEntry(i);
-
-			dt = (time2 - time1) * (r.Binomial(ntot,prob) * 2 -1); // (a - b) * ({0;1} * 2 -1 = {-1;1})   ;
-			//dt = dt * pow(10,12); // pour mettre en ps
-
-			//fill histogram
-			 h->Fill(dt);
-			}
- }
-	TCanvas *can = new TCanvas("can","can",1920,1080);
-	h->Draw();
-	return can;
-}
-*/
+//********************************************************************************
+//********************************************************************************

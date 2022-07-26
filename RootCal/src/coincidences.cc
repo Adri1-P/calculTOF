@@ -6,13 +6,22 @@
 
 #include "structures.hh"
 
+//********************************************************************************
+//********************************************************************************
 
 coincidences::coincidences() {};
 coincidences::~coincidences() {delete Coincidences;};
 
+//********************************************************************************
 
 void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 {
+	//prend un arbre de singles provenant de la fonction fillTreeSingle_b2b (non validé avec d'autres arbres)
+	// et écrit automatiquement un fichier de coïncidences.
+	// il est possible de changer la fonction d'analyse, mais dans la mesure où elle traite uniquement deux singles.
+	// sinon autant faire un copier-coller de cette fonction.
+
+
 	//variables pour les coincidences
 	Double_t energy, energy1, energy2, globalPosX1,globalPosX2, time1,time2, globalPosY1,globalPosY2, globalPosZ1, globalPosZ2, dt;
 	Double_t x1, y1, z1, x2, y2, z2;
@@ -63,7 +72,6 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	// Loop over singles
 	while ( i < nS-1 )
 	{
-
 		s_Single Single1,Single2;
 		s_Coincidence c;
 		j = i+1;
@@ -96,9 +104,7 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 		bedep->GetEntry(j);
 		Single2.edep = edep;
 
-
 		processTwoSingles(Single1,Single2,c);
-
 
 		globalPosX1 = c.X1;
 		globalPosY1 = c.Y1;
@@ -118,8 +124,6 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 			i = i + 2;
 		}
 		else {i++;}
-
-
 	}
 
 	outputFile->WriteObject(this->Coincidences, "Coincidences");
@@ -127,9 +131,14 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	this->Coincidences->ResetBranchAddresses();
 }
 
+//********************************************************************************
 
 void coincidences::processTwoSingles(s_Single &Single1,s_Single &Single2,s_Coincidence &c)
 {
+	// traite les singles deux par deux et s'ils sont du même event et du bon track considère qu'il y a coincidence.
+	// pas de fenêtre ni de considération géométrique.
+
+
 	Single1.isInCoincidence = false; //présomption de non-coincidence
 	Single2.isInCoincidence = false;
 
@@ -170,16 +179,18 @@ void coincidences::processTwoSingles(s_Single &Single1,s_Single &Single2,s_Coinc
 			c.edep2 = Single1.edep;
 		}
 	}
-
 }
 
-void coincidences::writeTree(TTree* treeToWrite,TString filename)
-{
-  TFile* target= new TFile(filename,"recreate");
-  target->WriteObject(treeToWrite, "Coincidences");
-  target->Close();
-}
-Double_t coincidences::distance(Double_t x1,Double_t x2,Double_t y1,Double_t y2,Double_t z1,Double_t z2) //distance entre deux points
-{
-return sqrt(pow(x1-x2,2) + pow(y1-y2,2) + pow(z1-z2,2));
-}
+//********************************************************************************
+//********************************************************************************
+
+// void coincidences::writeTree(TTree* treeToWrite,TString filename)
+// {
+//   TFile* target= new TFile(filename,"recreate");
+//   target->WriteObject(treeToWrite, "Coincidences");
+//   target->Close();
+// }
+// Double_t coincidences::distance(Double_t x1,Double_t x2,Double_t y1,Double_t y2,Double_t z1,Double_t z2) //distance entre deux points
+// {
+// return sqrt(pow(x1-x2,2) + pow(y1-y2,2) + pow(z1-z2,2));
+// }

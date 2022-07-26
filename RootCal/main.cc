@@ -43,6 +43,8 @@ TString filenameSingle_c = "../../../calculTOF_outputs/RootOutputs/G4SingleTest_
 TString filenameCoincidences_c = "../../../calculTOF_outputs/RootOutputs/G4CoincidencesTest_c.root";
 TString filenameSingle_Twta = "../../../calculTOF_outputs/RootOutputs/G4SingleTest_Twta.root";
 TString filenameCoincidences_Twta = "../../../calculTOF_outputs/RootOutputs/G4CoincidencesTest_Twta.root";
+TString filenameSingle_EWC = "../../../calculTOF_outputs/RootOutputs/G4SingleTest_EWC.root";
+TString filenameCoincidences_EWC = "../../../calculTOF_outputs/RootOutputs/G4CoincidencesTest_EWC.root";
 TString filenameSingle_Debug = "../../../calculTOF_outputs/RootOutputs/SingleDebug.root";
 TString filenameCoincidences_Debug = "../../../calculTOF_outputs/RootOutputs/CoincidencesDebug.root";
 
@@ -50,25 +52,25 @@ TString filenameCoincidences_Debug = "../../../calculTOF_outputs/RootOutputs/Coi
 
 TString currentG4File = fileG4_ibd50Twta;
 TString currentGateFile = fileGate_c;
-TString currentRootFile = filenameCoincidences_Debug;
+TString currentRootFile = filenameCoincidences_EWC;
 
 //display
-
 TFile* f = TFile::Open(currentG4File);
 TTree* Hits;
 f->GetObject("Hits", Hits); //nom du NTuple, nom de l'arbre
 
-TFile* outputFileS= new TFile(filenameSingle_Debug,"recreate");
+TFile* outputFileS= new TFile(filenameSingle_EWC,"recreate");
 single* monSingle = new single(Hits);
-monSingle->setPolicyToWinnerTakeAll();
+monSingle->PrintAvailablePolicies();
+monSingle->setPolicyToCentroid();
 monSingle->createTreeSingle(Hits,outputFileS);
 outputFileS->Close();
 
-TFile * fSG4 = TFile::Open(filenameSingle_Debug);
+TFile * fSG4 = TFile::Open(filenameSingle_EWC);
 TTree* Singles;
 fSG4->GetObject("Singles", Singles);
 
-TFile* outputFileC= new TFile(filenameCoincidences_Debug,"recreate");
+TFile* outputFileC= new TFile(filenameCoincidences_EWC,"recreate");
 coincidences * mesCoincidences = new coincidences();
 mesCoincidences->fillTreeCoincidences(Singles,outputFileC);
 outputFileC->Close();

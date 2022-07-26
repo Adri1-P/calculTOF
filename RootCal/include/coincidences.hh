@@ -22,11 +22,12 @@ public:
 coincidences();
 ~coincidences();
 
+void fillTreeCoincidences (TTree * Singles,TFile* outputFile);
 
 TTree * getTreeCoincidences() {return Coincidences;}
-void fillTreeCoincidences (TTree * Singles,TFile* outputFile);
-void writeTree(TTree* treeToWrite,TString filename);
-Double_t distance(Double_t x1,Double_t x2,Double_t y1,Double_t y2,Double_t z1,Double_t z2);
+
+// void writeTree(TTree* treeToWrite,TString filename);
+// Double_t distance(Double_t x1,Double_t x2,Double_t y1,Double_t y2,Double_t z1,Double_t z2);
 
 
 };

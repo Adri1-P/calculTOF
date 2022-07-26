@@ -6,35 +6,53 @@
 #include <math.h>
 #include "structures.hh"
 
-single::single(TTree* Hits)
-{
-std::cout << "single::single" << std::endl;
-}
+//********************************************************************************
+//********************************************************************************
 
-
+single::single(TTree* Hits){std::cout << "single::single" << std::endl;}
 single::~single(){delete Single; std::cout << "single::~single" << std::endl;}
 
+//********************************************************************************
 
 void single::createTreeSingle(TTree* Hits, TFile* outputFile)
 {
+ //  entree : arbre de Hits de Geant4, nom du fichier de sortie voulu
+ // sachant que le fichier de sortie contiendra des singles.
+ //  effet : appelle une fonction de traitement des hits. Pour l'instant il n'y a
+ // que des fonctions de triatement des backToBacks, mais le code commenté pourra
+ // choisir la bonne fonction selon le nom de fichier de sortie voulu.
+ // La fonction appelée écrit automatiquement le fichier de sortie.
+
   /*const TString pattern = "positron";
   if (filename.Contains(pattern)) {fillTreeSingle_positron(Hits,filename);}
   else if (filename.Contains("v2")) {fillTreeSingle_b2b_v2(Hits,filename);}*/
-  fillTreeSingle_b2b_WTA(Hits,outputFile);
+  fillTreeSingle_b2b(Hits,outputFile);
 
 
   std::cout << "single::createTreeSingle" << std:: endl;
 }
 
+//********************************************************************************
+
 void single::fillTreeSingle_positron(TTree* Hits, TString filename)
 {
 //A remplir
-
-
 std::cout << "single::fillTreeSingle_positron" << std:: endl;
 }
-void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
+
+//********************************************************************************
+
+void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
 {
+  // cette fonction traite les hits selon la policy voulue : winnerTakeAll,centroid ou
+  // firstHit, appliquée avec une méthode setPolicyToCentroid, setPolicyToWinnerTakeAll
+  // ou setPolicyToFirstHit (à écrire).
+  // Elle écrit le fichier de sortie selon le nom passé en argument.
+  // Les structures utilisées sont définies dans structure.hh.
+  // Elle ne convient que pour des events lançant un backToBack à la fois, parce que
+  // la logique n'est basée que sur les deux premiers tracks.
+
+
 	//variables pour le single
 	Double_t energie, energie1, energie2, globalPosX,temps,globalPosY, globalPosZ;
 	Int_t STrackID;
@@ -45,11 +63,12 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 	Double_t x1, y1, z1, x2, y2, z2;
   Int_t Scoincidence;
 
-	// define the variable(s) of interest, type of variable must be respected
+	//define the variable(s) of interest, type of variable must be respected
 	Double_t X, Y, Z, time, edep; //edep : pondération (éventuelle) du centroïde
 	Int_t eventID;
 	Int_t trackID;
   Int_t rsectorID,moduleID,submoduleID,crystalID,layerID;
+  Int_t hitNumberTrack1, hitNumberTrack2;
   Char_t particleName; //Char_t* -> seg fault. string : pas le bon type...
 
 	//branches d'intérêt
@@ -65,6 +84,8 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 	TBranch* bsubmoduleID;
 	TBranch* bcrystalID;
 	TBranch* blayerID;
+  TBranch* bhitNumberTrack1;
+  TBranch* bhitNumberTrack2;
   TBranch* bparticleName;
 
 	// Set branch address
@@ -74,20 +95,20 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 	Hits->SetBranchAddress("eventID", &eventID, &beventID);
 	Hits->SetBranchAddress("trackID", &trackID, &btrackID);
 	Hits->SetBranchAddress("time", &time, &btime);
-	//Hits->SetBranchAddress("GateTime", &time, &btime); //positron
 	Hits->SetBranchAddress("edep", &edep, &bedep);
 	Hits->SetBranchAddress("rsectorID", &rsectorID, &brsectorID);
 	Hits->SetBranchAddress("moduleID", &moduleID, &bmoduleID);
 	Hits->SetBranchAddress("submoduleID", &submoduleID, &bsubmoduleID);
 	Hits->SetBranchAddress("crystalID", &crystalID, &bcrystalID);
 	Hits->SetBranchAddress("layerID", &layerID, &blayerID);
+  Hits->SetBranchAddress("hitNumberTrack1", &hitNumberTrack1, &bhitNumberTrack1);
+  Hits->SetBranchAddress("hitNumberTrack2", &hitNumberTrack2, &bhitNumberTrack2);
   Hits->SetBranchAddress("particleName", &particleName, &bparticleName);
 
 	// Get number of hits in the TTree
 	int nH = (int)Hits->GetEntries();
 
 	//initialisation
-
 	 this->Single->Branch("globalPosX",&globalPosX,"globalPosX/D");
 	 this->Single->Branch("globalPosY",&globalPosY,"globalPosY/D");
 	 this->Single->Branch("globalPosZ",&globalPosZ,"globalPosZ/D");
@@ -131,10 +152,12 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
     bcrystalID->GetEntry(i);
     blayerID->GetEntry(i);
     bparticleName->GetEntry(i);
+    bhitNumberTrack1->GetEntry(i);
+    bhitNumberTrack2->GetEntry(i);
 
     currentEvent = eventID;
 
-    s_Single Single1,Single2;
+    s_Single Single1,Single2; //maximum two singles per event
     Single1.edep = 0;
     Single1.time = time;
     Single1.X = 0;
@@ -147,7 +170,7 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
     Single2.time = time;
 
 
-		while ((i < nH) && (eventID == currentEvent))
+		while ((i < nH) && (eventID == currentEvent)) //loop over hits of the same event
 		{
       s_Hit aHit;
       aHit.X = X;
@@ -163,8 +186,15 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
       aHit.crystalID = crystalID;
       aHit.layerID = layerID;
       aHit.particleName = particleName;
+      aHit.hitNumberTrack1 = hitNumberTrack1;
+      aHit.hitNumberTrack2 = hitNumberTrack2;
 
-      processOneHit_WTA(aHit,Single1,Single2,energie1,energie2,gamma1,gamma2);
+      if(this->policy == "winnerTakeAll")
+      {processOneHit_b2b_WTA(aHit,Single1,Single2,energie1,energie2,gamma1,gamma2);}
+      else if (this->policy == "centroid")
+      {processOneHit_b2b_EWC(aHit,Single1,Single2,gamma1,gamma2);}
+      else if (this->policy == "firstHit")
+      {processOneHit_b2b_FH(aHit,Single1,Single2,gamma1,gamma2);}
 
 			i++;
       btrackID->GetEntry(i);
@@ -180,6 +210,8 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 			bcrystalID->GetEntry(i);
 			blayerID->GetEntry(i);
       bparticleName->GetEntry(i);
+      bhitNumberTrack1->GetEntry(i);
+      bhitNumberTrack2->GetEntry(i);
 		}
 
     if (gamma1 && Single1.edep>0)
@@ -215,7 +247,6 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 			SlayerID = Single2.layerID;
 			this->Single->Fill();
     }
-
     gamma1 = false;
     gamma2 = false;
 	}
@@ -225,9 +256,13 @@ void single::fillTreeSingle_b2b_WTA(TTree* Hits, TFile* outputFile)
 	this->Single->ResetBranchAddresses();
 }
 
+//********************************************************************************
 
-void single::processOneHit_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2, Double_t &energieMax1, Double_t &energieMax2, bool &gamma1, bool &gamma2)
+void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2, Double_t &energieMax1, Double_t &energieMax2, bool &gamma1, bool &gamma2)
 {
+  //WTA : WinnerTakeAll : l'énergie du single est la somme de celles des hits.
+  //  Sa position est celle du hit ayant déposé le plus d'énergie, idem pour le temps.
+
   if (aHit.particleName == 'g')
   {
     if (aHit.trackID == 1)
@@ -272,8 +307,15 @@ void single::processOneHit_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2,
     }
 }
 
-void single::processOneHit_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2)
-{ //adapté de GatePulse.cc  méthode CentroidMerge
+//********************************************************************************
+
+void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2)
+{
+  //EWC : Energy Weighted Centroid : la position est un barycentre de la position des hits pondéré à leur énergie déposé.
+  // le temps est pour l'instant celui du dernier hit.
+  // l'énergie est celle de la somme des hits.
+
+   //adapté de GatePulse.cc  méthode CentroidMerge
   Double_t totalEnergy1 = 0;
   Double_t totalEnergy2 = 0;
 
@@ -314,6 +356,69 @@ void single::processOneHit_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,
         }
     }
 }
+
+//********************************************************************************
+
+void single::processOneHit_b2b_FH(s_Hit &aHit,s_Single &Single1,s_Single &Single2,bool &gamma1,bool &gamma2)
+{
+  //FH : First Hit : toutes les infos sont celles du premier hit, sauf l'énergie qui est celle de la somme de tous les hits.
+
+  if (aHit.particleName == 'g')
+  {
+    if (aHit.trackID == 1)
+    {
+      Single1.edep = Single1.edep + aHit.edep;
+
+      if (aHit.hitNumberTrack1 == 1) //premier hit du track 1 ?
+      {
+        Single1.X = aHit.X;
+        Single1.Y = aHit.Y;
+        Single1.Z = aHit.Z;
+        Single1.rsectorID = aHit.rsectorID;
+        Single1.moduleID = aHit.moduleID;
+        Single1.submoduleID = aHit.submoduleID;
+        Single1.crystalID = aHit.crystalID;
+        Single1.layerID = aHit.layerID;
+        Single1.time = aHit.time; //comme dans Gate
+      }
+      gamma1 = true;
+    }
+
+      else if (aHit.trackID == 2)
+      {
+          Single2.edep = Single2.edep + aHit.edep;
+
+          if (aHit.hitNumberTrack2 == 2)
+          {
+            Single2.X = aHit.X;
+            Single2.Y = aHit.Y;
+            Single2.Z = aHit.Z;
+            Single2.rsectorID = aHit.rsectorID;
+            Single2.moduleID = aHit.moduleID;
+            Single2.submoduleID = aHit.submoduleID;
+            Single2.crystalID = aHit.crystalID;
+            Single2.layerID = aHit.layerID;
+            Single2.time = aHit.time; //comme dans Gate
+          }
+          gamma2 = true;
+        }
+    }
+}
+
+//********************************************************************************
+
+void single::PrintAvailablePolicies()
+{
+  printf("Pour des backToBacks : \n \
+          centroid (non testé) \n \
+          winnerTakeAll (testé) \n \
+          firstHit (non testé) \n");
+}
+
+//********************************************************************************
+//********************************************************************************
+
+/*
 void single::fillTreeSingle_b2b_v2(TTree* Hits, TString filename)
 {
 	//variables pour le single
@@ -515,3 +620,4 @@ void single::blurMyBranch(TTree* tree, Double_t sigma, TString branchName)
 	std::cout << "single::blurMyBranch" << std:: endl;
 
 }
+*/

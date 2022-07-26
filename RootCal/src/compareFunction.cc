@@ -43,8 +43,14 @@
 
 #include <iostream>
 
+//********************************************************************************
+//********************************************************************************
+
 TCanvas *compareGateG4XYZ()
 {
+// marche à suivre pour comparer les positions entre Geant4 et Gate.
+//Les deux graphes sont superposés.
+
 	//** Gate **//
 
 	TFile* fGate = TFile::Open("../outputs/Gate_cut1mm.root"); //lancer l'exécutable depuis build
@@ -176,149 +182,32 @@ TCanvas *compareGateG4XYZ()
 
 }
 
-
-
-
-TCanvas * compareGateG4time()
-{
-		//** Gate **//
-
-	TFile* fGate = TFile::Open("../outputs/Gate_cut1mm.root"); //lancer l'exécutable depuis build
-
-	TTree* HitsGate = (TTree*)fGate->Get("Hits");
-
-	// define the variable(s) of interest, type of variable must be respected
-	Double_t time;
-
-	//branches d'intérêt
-	TBranch* btime;
-
-	// Set branch address
-	HitsGate->SetBranchAddress("time", &time, &btime);
-
-
-	TH1D* h = new TH1D("h", "time Gate (Geant4 en rouge)", 100, -0.02, 1.2);
-
-	int nHG = (int)HitsGate->GetEntries();
-
-	//** Geant4 **//
-
-	TFile* fGeant4 = TFile::Open("../outputs/Geant4_cut1mm.root");
-
-	TTree* HitsG4 = (TTree*)fGeant4->Get("Hits");
-
-	// define the variable(s) of interest, type of variable must be respected
-	Double_t timeG4;
-
-	//branches d'intérêt
-	TBranch* btimeG4;
-
-	// Set branch address
-	HitsG4->SetBranchAddress("time", &timeG4, &btimeG4);
-
-	TH1D* h4 = new TH1D("h4", "time Geant4", 100, -0.02, 1.2);
-
-
-	// Get number of hits in the TTree
-	int nH4 = (int)HitsG4->GetEntries();
-
-
-	// Loop over hits
-
-	for (int i = 0; i < nHG; i++)
-	{
-		//get event i
-		btime->GetEntry(i);
-
-
-		//fill histogram
-		h->Fill(time);
-
-	}
-
-		// Loop over hits
-	for (int i = 0; i < nH4; i++)
-	{
-		//get event i
-		btimeG4->GetEntry(i);
-
-
-		//fill histogram
-		h4->Fill(timeG4);
-
-	}
-
-	//remove the stat from upper right corner
-
-	gStyle->SetOptStat(0);
-	//remove the title
-	//gStyle->SetOptTitle(0);
-	//define fonts sizes
-	gStyle->SetPalette(1);
-	gStyle->SetTextSize(0.16);
-	gStyle->SetLineWidth(2);
-
-	//Define canvas
-	TCanvas* can = new TCanvas("can", "can", 1920, 1080);
-	//Define paramters of the canvas
-	can->SetFillColor(0);
-	can->SetBorderMode(0);
-	can->SetBorderSize(3);
-	can->SetBottomMargin(0.14);
-	can->SetLeftMargin(0.3);
-	can->SetFrameBorderMode(2);
-	can->SetFrameLineWidth(1);
-
-/*
-	h->GetXaxis()->SetTitle("X");
-	h->GetYaxis()->SetTitleOffset(0.7);
-	h->GetYaxis()->SetTitle("Y");
-	h->GetZaxis()->SetTitle("Z");
-*/
-	h->Draw();
-
-	h4->SetLineColor(2);
-	h4->Draw("same");
-
-/*
-	auto legend = new TLegend(0.01, 0.1, 0.2, 0.9);
-	legend->SetHeader("time des Hits"); // option "C" allows to center the header
-	legend->AddEntry(h, "en rouge : time de Geant4 en ps. Gate en s");
-	legend->Draw();
-*/
-	return can;
-
-
-
-}
-
+//********************************************************************************
 
 TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString datatype)
 {
+//Fonction utilisée pour comparer le temps de geant4 avec son équivalent dans Gate.
+//Il faut avoir défini la variable geant4 T0 dans gate avant de pouvoir l'utiliser.
+//si on a des singles, décommenter la ligne indiquée "Singles" etcommenter la suivante.
+//éventuellement, inverser le sens d'écriture des graphes pour l'échelle.
+
 		//** Gate **//
 
 	TFile* fGate = TFile::Open(rootFileGate); //lancer l'exécutable depuis build
-
 	TTree* dataGate = (TTree*)fGate->Get(datatype);
-
-	// define the variable(s) of interest, type of variable must be respected
 	Double_t time;
 	Double_t T0;
 
-	//branches d'intérêt
 	TBranch* btime;
 	TBranch* bT0;
 
-	// Set branch address
 	dataGate->SetBranchAddress("time", &time, &btime);
 	dataGate->SetBranchAddress("T0", &T0, &bT0);
-
 
   Int_t nbins, xmin, xmax;
 	nbins = 100;
 	xmin = 250;
 	xmax = 450;
-
 	TH1D* h = new TH1D("h", "time-T0 Gate (en ?s) & globalTime Geant4 (en rouge en ps) :" + datatype, nbins, xmin, xmax);
 
 	int nHG = (int)dataGate->GetEntries();
@@ -326,63 +215,38 @@ TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString d
 	//** Geant4 **//
 
 	TFile* fGeant4 = TFile::Open(rootFileG4);
-
 	TTree* dataG4 = (TTree*)fGeant4->Get(datatype);
 
-	// define the variable(s) of interest, type of variable must be respected
 	Double_t timeG4;
-
-	//branches d'intérêt
 	TBranch* btimeG4;
 
-	// Set branch address
 	dataG4->SetBranchAddress("time", &timeG4, &btimeG4);
-
 	TH1D* h4 = new TH1D("h4","time-T0 Gate & globalTime Geant4 (en rouge en ps) :" + datatype, nbins, xmin,xmax);
 
-
-	// Get number of hits in the TTree
 	int nH4 = (int)dataG4->GetEntries();
-
-
-	// Loop over hits
 
 	for (int i = 0; i < nHG; i++)
 	{
-		//get event i
 		btime->GetEntry(i);
 		bT0->GetEntry(i);
 
-		//fill histogram
 		//h->Fill((time - (T0 * pow(10,9)) ) * pow(10,12));// pow(10,12)); //passage en ps Singles
 		h->Fill((time - T0 ) * pow(10,12));
 	}
 
-		// Loop over hits
 	for (int i = 0; i < nH4; i++)
 	{
-		//get event i
 		btimeG4->GetEntry(i);
-
-
-		//fill histogram
 		h4->Fill(timeG4);
-
 	}
 
-	//remove the stat from upper right corner
 
 	gStyle->SetOptStat(0);
-	//remove the title
-	//gStyle->SetOptTitle(0);
-	//define fonts sizes
 	gStyle->SetPalette(1);
 	gStyle->SetTextSize(0.16);
 	gStyle->SetLineWidth(2);
 
-	//Define canvas
 	TCanvas* can = new TCanvas("can", "can", 1920, 1080);
-	//Define paramters of the canvas
 	can->SetFillColor(0);
 	can->SetBorderMode(0);
 	can->SetBorderSize(3);
@@ -391,18 +255,11 @@ TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString d
 	can->SetFrameBorderMode(2);
 	can->SetFrameLineWidth(1);
 
-
 	h->GetXaxis()->SetTitle("time (ps)");
-	//h->GetYaxis()->SetTitle(rootFileGate + " " + rootFileG4);
 
 	h4->Draw();
 	h->Draw("same");
 	h4->SetLineColor(2);
-
-
-
-
-
 
 	auto legend = new TLegend(0.01, 0.1, 0.2, 0.9);
 	legend->SetHeader("fichiers root"); // option "C" allows to center the header
@@ -413,22 +270,20 @@ TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString d
 	return can;
 dataGate->ResetBranchAddresses();
 dataG4->ResetBranchAddresses();
-
-
-
 }
 
-
-
+//********************************************************************************
 
 TCanvas* compareDt_rand(TString fileGate, TString fileG4)
 {
-  // open the file
+//Permet de comparer la distribution de dt entre gate et geant4.
+//Ce n'est pas possible directement puisque le champ "dt" n'existe pas dans gate.
+
+
 TFile *f = TFile::Open(fileGate);
-// get the TTree
+
 TTree *Tree = (TTree*)f->Get("Coincidences");
-//cout<< Tree->GetEntries()<<endl;
-// define the variable(s) of interest, type of variable must be respected
+
 Double_t time1;
 Double_t time2;
 TBranch * btime1;
@@ -437,24 +292,22 @@ Float_t dt;
 Int_t eventID1, eventID2;
 TBranch *  beventID1,* beventID2;
 
-//Tree->SetBranchStatus("*",0);
+
 Tree->SetBranchStatus("time1",1);
 Tree->SetBranchStatus("time2",1);
 Tree->SetBranchStatus("eventID1",1);
 Tree->SetBranchStatus("eventID2",1);
 
-// Set branch address
+
 Tree->SetBranchAddress("time1",&time1,&btime1);
 Tree->SetBranchAddress("time2",&time2,&btime2);
 Tree->SetBranchAddress("eventID1",&eventID1,&beventID1);
-Tree->SetBranchAddress("eventID2",&eventID2,&beventID2);
-// Get number of events in the TTree
+
 int n=(int)Tree->GetEntries();
 
-// Define a histogram with 100 bins, on x from 0 to 1
+
  TH1F* h = new TH1F("h","dt Gate vs Geant4 (en rouge) en ps",100,-200  ,200 );//* pow(10,-10));
- //TH1F* h = new TH1F("h","h",100,-10000,10000);
-// Loop over events
+
 TRandom r;
 unsigned int ntot = 1;
 double prob = 0.5;
@@ -464,24 +317,22 @@ for(int i=0;i<n;i++)
 	beventID2 -> GetEntry(i);
 			if (eventID1 == eventID2)
 			{
-			//get event i
+
 			btime1 -> GetEntry(i);
 			btime2 -> GetEntry(i);
 
 			dt = (time2 - time1) * (r.Binomial(ntot,prob) * 2 -1); // (a - b) * ({0;1} * 2 -1 = {-1;1})   ;
 			dt = dt * pow(10,12); // pour mettre en ps
 
-			//fill histogram
+
 			 h->Fill(dt);
 			}
  }
 
-   // open the file
 TFile *f4 = TFile::Open(fileG4);
-// get the TTree
+
 TTree *Tree4 = (TTree*)f4->Get("Coincidences");
 
-//Tree->SetBranchStatus("*",0);
 Tree4->SetBranchStatus("time1",1);
 Tree4->SetBranchStatus("time2",1);
 
@@ -491,30 +342,26 @@ TBranch * G4_btime1;
 TBranch * G4_btime2;
 Float_t G4_dt;
 
-// Set branch address
+
 Tree4->SetBranchAddress("time1",&G4_time1,&G4_btime1);
 Tree4->SetBranchAddress("time2",&G4_time2,&G4_btime2);
-// Get number of events in the TTree
+
 int n4=(int)Tree4->GetEntries();
 
-// Define a histogram with 100 bins, on x from 0 to 1
- TH1F* h4 = new TH1F("h4","dt Gate vs Geant4 (en rouge) en ps",100,-200 ,200 );
-// Loop over events
+TH1F* h4 = new TH1F("h4","dt Gate vs Geant4 (en rouge) en ps",100,-200 ,200 );
+
 
 for(int j=0;j<n4;j++)
 {
 
-	//get event i
 	G4_btime1 -> GetEntry(j);
 	G4_btime2 -> GetEntry(j);
 
 	G4_dt = (G4_time1 - G4_time2);
-	//fill histogram
+
 	 h4->Fill(G4_dt);
 
  }
-
-
 
 	TCanvas *can = new TCanvas("can_fillDtGate_rand","can",1920,1080);
 	h->GetXaxis()->SetTitle("time (ps)");
@@ -525,6 +372,8 @@ for(int j=0;j<n4;j++)
 	h->Draw("same");
 	return can;
 }
+
+//********************************************************************************
 
 TCanvas * compareTwoTrees(TString champ, TString fileGate, TString fileG4, TString datatype = "Hits")
 {
@@ -567,6 +416,7 @@ TCanvas * compareTwoTrees(TString champ, TString fileGate, TString fileG4, TStri
 	return can;
 }
 
+//********************************************************************************
 
 TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype)
 {
@@ -610,24 +460,28 @@ TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString 
 	return can;
 }
 
+//********************************************************************************
+
 TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins)
 {
-		//** Gate **//
+
+//compare champ1 de file1 avec champ2 de file2 de datatype donné (singles ou coincidences)
+//xmin xmax et nBins sont les paramètres du TH1D affiché.
+
 	TFile* f1= TFile::Open(file1); //lancer l'exécutable depuis build
 	TTree* dataf1 = (TTree*)f1->Get(datatype);
 
 	TFile* f2= TFile::Open(file2); //lancer l'exécutable depuis build
 	TTree* dataf2 = (TTree*)f2->Get(datatype);
 
-	// define the variable(s) of interest, type of variable must be respected
+
 	Double_t data1;
 	Double_t data2;
 
-	//branches d'intérêt
 	TBranch* bdata1;
 	TBranch* bdata2;
 
-	// Set branch address
+
 	dataf1->SetBranchAddress(champ1, &data1, &bdata1);
 	dataf2->SetBranchAddress(champ2, &data2, &bdata2);
 
@@ -646,18 +500,15 @@ TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString 
 
 	int n1 = (int)dataf1->GetEntries();
 	int n2 = (int)dataf2->GetEntries();
-	// Loop over hits
+
 	for (int i = 0; i < n1; i++)
 	{
-		//get event i
 		bdata1->GetEntry(i);
 		h1->Fill(data1);
 	}
 
-	// Loop over hits
 	for (int i = 0; i < n2; i++)
 	{
-		//get event i
 		bdata2->GetEntry(i);
 		h2->Fill(data2);
 	}
@@ -678,93 +529,16 @@ TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString 
 	h2->Draw();
 	can->cd(4);
 
-
-
 	auto legend = new TLegend(0.5,0.7);
 	legend->SetHeader("fichiers root"); // option "C" allows to center the header
 	legend->AddEntry(h1,file1);
 	legend->AddEntry(h2,file2);
 	legend->Draw();
 
-
-
 	return can;
 	dataf1->ResetBranchAddresses();
 	dataf2->ResetBranchAddresses();
-
-
-
 }
- // TCanvas* compareTime_T0(TString rootFileG4, TString rootFileGate)
- // {
-	//  //Define canvas
- // 	TCanvas* can = new TCanvas("can", "can", 1920, 1080);
- // 	//Define paramters of the canvas
- // 	can->SetFillColor(0);
- // 	can->SetBorderMode(0);
- // 	can->SetBorderSize(3);
- // 	can->SetBottomMargin(0.14);
- // 	can->SetLeftMargin(0.3);
- // 	can->SetFrameBorderMode(2);
- // 	can->SetFrameLineWidth(1);
- //
- // 	can->Divide(2,2);
- //
- // 	//** Gate **//
- // 	TFile* Gate = TFile::Open(rootFileGate); //lancer l'exécutable depuis build
- // 	TTree* HitsG = (TTree*)f1->Get(Hits);
-	// TTree* SinglesG = (TTree*)f1->Get(Singles);
- // 	can->cd(1);
- //
-	// // define the variable(s) of interest, type of variable must be respected
-	// Double_t timeH;
-	// Double_t T0H;
- //
-	// //branches d'intérêt
-	// TBranch* btimeH;
-	// TBranch* bT0H;
- //
-	// // Set branch address
-	// HitsGate->SetBranchAddress("time", &time, &btime);
-	// HitsGate->SetBranchAddress("T0", &T0, &bT0);
- //
- //
-	// int nHG = (int)HitsG->GetEntries();
-	// // Loop over hits
- //
-	// for (int i = 0; i < nHG; i++)
-	// {
-	// 	//get event i
-	// 	btime->GetEntry(i);
-	// 	bT0->GetEntry(i);
- //
-	// 	//fill histogram
-	// 	h->Fill(timeH - T0H);
-	// }
- //
- //
- //
- // 	Hits->Draw("time-T0");
- //
- // 	can->cd(2);
- // 	Singles->Draw("time-T0");
- //
- //
- // 	//** Geant4 **//
- // 	TFile* f2 = TFile::Open(rootFileG4);
- //         TTree* tree2 = (TTree*)f2->Get(datatype);
- //         tree2->SetLineColor(2);
- //
- // 	tree2->Draw(champ2,"","same");
- //
- // 	can->cd(3);
- // 	tree2->Draw(champ2);
- //
- //
- //
- // 	return can;
- //
- //
- //
- //
- // }
+
+//********************************************************************************
+//********************************************************************************
