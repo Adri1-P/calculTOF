@@ -9,7 +9,6 @@
 
 /gate/source/flash/setActivity                 50. becquerel
 /gate/source/flash/gps/pos/centre 0. 0. 0. cm
-#/gate/source/flash/visualize 10000 red 10
 
 #/gate/source/flash/gps/ang/type iso
 
@@ -23,6 +22,6 @@
 /gate/source/flash/gps/ang/minphi 180. deg #180 - arctan((Ylength/2)/TranslationX) # 180
 /gate/source/flash/gps/ang/maxphi 180. deg #180
 
-/gate/source/flash/gps/direction 1 0 0 #1 0 0 
+/gate/source/flash/gps/direction 1 0 0  # 1 0 0 
 
 /gate/source/list

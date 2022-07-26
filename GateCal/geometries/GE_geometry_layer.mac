@@ -15,8 +15,6 @@
 #             crystal        (Gate level 5, layer0)
 
 
-
-  
 # Empty cylindricalPET
 /gate/world/daughters/name                      cylindricalPET
 /gate/world/daughters/insert                    cylinder
@@ -36,7 +34,7 @@
 # This is 311.8 mm radius + half depth 12.5
 /gate/module/placement/setTranslation           0. 324.3 0. mm
 /gate/module/setMaterial                        Air
-/gate/module/vis/forceWireframe                 
+/gate/module/vis/forceWireframe
 /gate/module/vis/setColor                       white
 #/gate/module/vis/setVisible             0
 
@@ -48,7 +46,7 @@
 /gate/unit/geometry/setZLength                  47.84 mm
 /gate/unit/placement/setTranslation             0. 0. 0. mm
 /gate/unit/setMaterial                          Air
-/gate/unit/vis/forceWireframe                   
+/gate/unit/vis/forceWireframe
 /gate/unit/vis/setColor                         blue
 #/gate/unit/vis/setVisible             0
 
@@ -60,7 +58,7 @@
 /gate/block/geometry/setZLength                 47.84 mm
 /gate/block/placement/setTranslation            0. 0. 0. mm
 /gate/block/setMaterial                         Air
-/gate/block/vis/forceWireframe                  
+/gate/block/vis/forceWireframe
 /gate/block/vis/setColor                        red
 #/gate/block/vis/setVisible             0
 
@@ -72,7 +70,7 @@
 /gate/optical/geometry/setZLength               15.9 mm
 /gate/optical/placement/setTranslation          0. 0. 0. mm
 /gate/optical/setMaterial                       Air
-/gate/optical/vis/forceWireframe                
+/gate/optical/vis/forceWireframe
 /gate/optical/vis/setColor                      yellow
 /gate/optical/vis/setVisible             1
 
@@ -85,7 +83,7 @@
 /gate/crystal/placement/setTranslation          0. 0. 0. mm
 #/gate/crystal/setMaterial                       Uranium
 /gate/crystal/setMaterial                       LYSO-GE
-/gate/crystal/vis/forceWireframe                    
+/gate/crystal/vis/forceWireframe
 /gate/crystal/vis/setColor                      green
 /gate/crystal/vis/setVisible                    1
 
@@ -106,18 +104,14 @@
 /gate/block/linear/setRepeatNumber              4
 /gate/block/linear/setRepeatVector              16.20 0.  0. mm
 
-
 # unit repeater -> Module = nombre de rings
 /gate/unit/repeaters/insert                     linear
 /gate/unit/linear/setRepeatNumber               5
 /gate/unit/linear/setRepeatVector               0. 0. 50.64 mm
 
-
 # module repeater (circular) -> Ring
 /gate/module/repeaters/insert                   ring
 /gate/module/ring/setRepeatNumber               28
-
-
 
 # Attach system geometry
 /gate/systems/cylindricalPET/rsector/attach      module
@@ -133,4 +127,3 @@
 /gate/systems/cylindricalPET/describe
 
 #-------------------------------------------------------------------------------#
-

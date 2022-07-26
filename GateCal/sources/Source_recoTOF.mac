@@ -7,8 +7,6 @@
 /gate/source/mySource/gps/ene/mono 511. keV
 /gate/source/mySource/setActivity                 10000000. becquerel
 
-#/gate/source/mySource/verbose 3
-
 /gate/source/mySource/gps/ang/type     iso
 /gate/source/mySource/gps/ang/mintheta 0. deg #perpendiculaire à z
 /gate/source/mySource/gps/ang/maxtheta 180. deg
@@ -33,7 +31,6 @@
 /gate/source/mySource2/gps/ene/mono 511. keV
 /gate/source/mySource2/setActivity                 1000000. becquerel
 
-#/gate/source/mySource2/verbose 3
 
 /gate/source/mySource2/gps/ang/type     iso
 /gate/source/mySource2/gps/ang/mintheta 0. deg #perpendiculaire à z

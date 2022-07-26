@@ -20,8 +20,7 @@
 /gate/world/setMaterial                   Air
 
 # Scanner
-/control/execute                          geometries/GE_geometry_layer.mac #geometryDebugTimeTOF50.mac
-
+/control/execute                          geometries/GE_geometry_layer.mac
 
 # Physics
 /control/execute                          physics.mac
@@ -30,10 +29,10 @@
 /gate/run/initialize
 
 # Digitizer
-/control/execute                         digitizers/GE_digitizer.mac  #DigitizerDebugTimeTOF.mac
+/control/execute                         digitizers/GE_digitizer.mac
 
 # Source
-/control/execute                         sources/SourcePonctuelle.mac #sourceDebugTime.mac #SourcePonctuelle.mac   # #Source_recoTOF.mac
+/control/execute                         sources/SourcePonctuelle.mac
 
 
 
@@ -62,12 +61,10 @@
 # Random generator
 /gate/random/setEngineName                MersenneTwister
 /gate/random/setEngineSeed                auto #123456789
-#/gate/random/verbose                     2
 
 # Acquisition
 /gate/application/setTimeSlice            1 s
 /gate/application/setTimeStart            0. s
 /gate/application/setTimeStop             1 s
 
-#/run/beamOn 50000
 /gate/application/startDAQ

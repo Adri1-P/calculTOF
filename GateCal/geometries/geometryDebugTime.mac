@@ -1,8 +1,3 @@
-################################
-## Modeling truc              ##
-## Adrien Paillet, CEA 2021   ##
-################################
-
 /gate/world/daughters/name                    ecat
 /gate/world/daughters/insert		       cylinder
 /gate/ecat/placement/setTranslation           0.0 0.0 0.0 cm
@@ -22,7 +17,7 @@
 /gate/crystal/geometry/setZLength               1 cm
 /gate/crystal/placement/setTranslation          20. 0. 0. cm
 /gate/crystal/setMaterial                       LSO
-#/gate/crystal/vis/forceSolid                    
+#/gate/crystal/vis/forceSolid
 /gate/crystal/vis/setColor                      green
 /gate/crystal/vis/setVisible                    1
 
@@ -34,4 +29,3 @@
 
 /gate/systems/ecat/describe
 #-------------------------------------------------------------------------------#
-

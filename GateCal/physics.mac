@@ -5,7 +5,6 @@
 
 /gate/physics/addPhysicsList emstandard_opt3
 
-
 /gate/physics/processList Enabled
 /gate/physics/processList Initialized
 
@@ -14,5 +13,3 @@
 /gate/physics/Electron/SetCutInRegion     world  1 mm
 
 /gate/physics/displayCuts
-
-
