@@ -1,15 +1,14 @@
 #include "TOFDebugDetector.hh"
 #include "MetaDetector.hh"
-TOFDebugDetector::TOFDebugDetector()
-{	G4cout<< "TOFDebugDetector" << G4endl;}
-TOFDebugDetector::~TOFDebugDetector()
-{	G4cout<< "~TOFDebugDetector" << G4endl;
-}
+
+TOFDebugDetector::TOFDebugDetector(){}
+TOFDebugDetector::~TOFDebugDetector(){}
 
 void TOFDebugDetector::Construct(G4LogicalVolume*logicWorld,G4Material* LSO)
 {
+  //deux cristaux en coincidence, ni plus ni moins
 
-  G4double xTarget = 3.0*0.5*cm; 
+  G4double xTarget = 3.0*0.5*cm;
 	G4double yTarget = 1.0*0.5*cm;
 	G4double zTarget = 1.0*0.5*cm;
   G4Box *solidTarget = new G4Box("solidTarget", xTarget, yTarget, zTarget);// x/2,y/2,z/2, en mètres

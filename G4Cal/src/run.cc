@@ -2,6 +2,8 @@
 #include "construction.hh"
 #include "G4RunManager.hh"
 
+//******************************************************************************
+//******************************************************************************
 
 MyRunAction::MyRunAction()
 {
@@ -14,6 +16,7 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("SposZ");
 	man->FinishNtuple(0); //numéro du Ntuple
 
+	//prendre le temps de virer ce NTuple et renuméroter les autres.
 	man->CreateNtuple("Steps","Steps");
 	man->CreateNtupleIColumn("EventID"); //I pour integer
 	man->CreateNtupleDColumn("X");
@@ -31,38 +34,11 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("edep");
 	man->FinishNtuple(1);
 
-/*	man->CreateNtuple("Hits", "Hits"); //noms vérifiés comme Gate
-	man->CreateNtupleIColumn("eventID"); //I pour integer
-	man->CreateNtupleDColumn("posX");
-	man->CreateNtupleDColumn("posY");
-	man->CreateNtupleDColumn("posZ");
-	//man->CreateNtupleDColumn("time");
-	man->CreateNtupleDColumn("time");
-	man->CreateNtupleDColumn("localTime");
-	man->CreateNtupleDColumn("properTime");
-	man->CreateNtupleDColumn("T0");
-	man->CreateNtupleSColumn("PreProcessName");//pas dans Gate
-	man->CreateNtupleSColumn("processName");
-	man->CreateNtupleIColumn("trackID");
-	man->CreateNtupleDColumn("totalEnergy"); //pas dans Gate
-	man->CreateNtupleDColumn("kineticEnergy"); //pas dans Gate
-	man->CreateNtupleIColumn("stepNumber"); //pas dans Gate
-	man->CreateNtupleIColumn("hitNumber"); //pas dans Gate
-	man->CreateNtupleIColumn("hitNumberTrack1"); //pas dans Gate
-	man->CreateNtupleIColumn("hitNumberTrack2"); //pas dans Gate
-	man->CreateNtupleIColumn("parentID");
-	man->CreateNtupleSColumn("volName"); //pas dans Gate
-	man->CreateNtupleSColumn("particleName");//pas dans Gate
-	man->CreateNtupleIColumn("layerID");
-	man->CreateNtupleIColumn("crystalID");
-	man->CreateNtupleIColumn("submoduleID");
-	man->CreateNtupleIColumn("moduleID");
-	man->CreateNtupleIColumn("rsectorID");
-	man->CreateNtupleDColumn("edep");
-	man->FinishNtuple(2);
-	*/
-
-	//NB : ce NTuple est lié à la classe "Hits"...
+	//NB : ce NTuple est lié à la classe "Hits"
+	//si on change le numéro, il faut aller le changer quand
+	//on appelle la méthode fillNTuple avec des arguments
+	//et dans tous les cas dans valeur par défaut
+	//dans le header myHit.hh
 	man->CreateNtuple("Hits", "Hits"); //noms vérifiés comme Gate
 	man->CreateNtupleIColumn("hitNumber"); //pas dans Gate
 	man->CreateNtupleIColumn("hitNumberTrack1"); //pas dans Gate
@@ -131,49 +107,31 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("d");
 
 	man->FinishNtuple(4);
-
-
-
-
-
-	//delete man;
-	G4cout<< "MyRunAction" << G4endl;
 }
 
-MyRunAction::~MyRunAction()
-{
-G4cout<< "~MyRunAction" << G4endl;
-}
+//******************************************************************************
+
+MyRunAction::~MyRunAction(){}
+
+//******************************************************************************
 
 void MyRunAction::BeginOfRunAction(const G4Run* run)
 {
-	//testé
+	//ici, on ouvre le fichier de sortie
+
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
-
-	G4int runID = run->GetRunID();
-
-	std::stringstream strRunID;
-	strRunID << runID;
-
-	const MyDetectorConstruction * detectorConstruction = static_cast<const MyDetectorConstruction*> (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-
-	G4int e = detectorConstruction->GetCristalWidth();
-
-	std::stringstream strCristalWidth;
-	strCristalWidth << e;
-	//man->OpenFile("../root/output" + strRunID.str() +"_e_"+ strCristalWidth.str() + ".root");
-
-	man->OpenFile("../../../calculTOF_outputs/G4Outputs/test" + strRunID.str() + ".root");
-
-	G4cout<< "BeginOfRunAction" << G4endl;
-
+	man->OpenFile("../../../calculTOF_outputs/G4Outputs/test.root");
 }
+
+//******************************************************************************
+
 void MyRunAction::EndOfRunAction(const G4Run*)
 {
+	//ici, on écrit les NTuples et on ferme le fichier
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
 
 	man->Write();
 	man->CloseFile();
-
-	G4cout<< "EndOfRunAction" << G4endl;
 }
+//******************************************************************************
+//******************************************************************************

@@ -1,14 +1,11 @@
 #include "ScanGE.hh"
 #include "MetaDetector.hh"
-ScanGE::ScanGE()
-{	G4cout<< "ScanGE" << G4endl;}
-ScanGE::~ScanGE()
-{	G4cout<< "~ScanGE" << G4endl;
-}
+
+ScanGE::ScanGE(){}
+ScanGE::~ScanGE(){}
 
 void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Material* worldMat)
 {
-
 	/* Dans Gate  :
 	 1) Signa PET/MR camera definition
 	 Hierarchy:
@@ -19,20 +16,19 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 			   4.optical unit  (Gate level 4, crystal) -> optical
 				 5.crystal        (Gate level 5, layer0) -> crystal
 	*/
+	//N.B. : les multiplications par 0.5 sont là pour avoir les mêmes dimensions que dans Gate.
 
 	// structure
-
 	G4String Name1 = "cylindricalPET";
 	G4double pRMin = 290. * mm;
 	G4double pRMax = 350. * mm;
 	G4double pDz = 270. *0.5* mm;
 	G4double startAngle = 0. * deg;
 	G4double spanningAngle = 360. * deg;
-
-	G4Tubs* cPET = new G4Tubs(Name1, pRMin, pRMax, pDz, startAngle, spanningAngle); //solid
+	//anneau depth = 0 dans gate, mais étage 5 pour les GetReplicaNumber
+	G4Tubs* cPET = new G4Tubs(Name1, pRMin, pRMax, pDz, startAngle, spanningAngle);
 	G4LogicalVolume *lPET = new G4LogicalVolume(cPET, worldMat, "lPET");
 	G4VPhysicalVolume *pPET = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), lPET, "pPET", logicWorld, false, 0, true);
-
 
 	// 1.
 
@@ -45,9 +41,8 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 	G4double ty_module = 324.3 * mm;
 	G4double tz_module = 0;
 
-	G4Box* Mod = new G4Box(Name2, x_module, y_module, z_module); //solid
+	G4Box* Mod = new G4Box(Name2, x_module, y_module, z_module);
 	G4LogicalVolume *lMod = new G4LogicalVolume(Mod, worldMat, "lMod");
-
 
 	// 2.
 
@@ -57,10 +52,7 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 	G4double y_unit = 25. *0.5* mm;
 	G4double z_unit = 47.84 *0.5* mm;
 
-
-	//G4Translate3D t2(G4ThreeVector(tx_unit, ty_unit, tz_unit)); //vecteur nul en fait
-
-	G4Box* Unit = new G4Box(Name3, x_unit, y_unit, z_unit); //solid
+	G4Box* Unit = new G4Box(Name3, x_unit, y_unit, z_unit);
 	G4LogicalVolume *lUnit = new G4LogicalVolume(Unit, worldMat, "lUnit");
 
 	// 3.
@@ -71,7 +63,7 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 	G4double y_block = 25. *0.5* mm;
 	G4double z_block = 47.84 *0.5* mm;
 
-	G4Box* Block = new G4Box(Name4, x_block, y_block, z_block); //solid
+	G4Box* Block = new G4Box(Name4, x_block, y_block, z_block);
 	G4LogicalVolume *lBlock = new G4LogicalVolume(Block, worldMat, "lBlock");
 
 	// 4.
@@ -82,9 +74,8 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 	G4double y_optical = 25*0.5*mm;
 	G4double z_optical = 15.9 *0.5* mm;
 
-	G4Box* Optical = new G4Box(Name5, x_optical, y_optical, z_optical); //solid
+	G4Box* Optical = new G4Box(Name5, x_optical, y_optical, z_optical);
 	G4LogicalVolume *lOptical = new G4LogicalVolume(Optical, worldMat, "lOptical");
-
 
 	// 5.
 
@@ -94,16 +85,14 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 	G4double y_crystal = 25*0.5*mm;
 	G4double z_crystal = 5.3 *0.5* mm;
 
-	G4Box* Crystal = new G4Box(Name6, x_crystal, y_crystal, z_crystal); //solid
+	G4Box* Crystal = new G4Box(Name6, x_crystal, y_crystal, z_crystal);
 	G4LogicalVolume *lCrystal = new G4LogicalVolume(Crystal, LYSO_GE, "lCrystal");
 
   this->SetScoringVolume(lCrystal);
 
-
 	// structure done
 
 	// replication
-
 	// crystal repeater -> optical unit cubic array
 
 	G4int ringRepeatNumber = 28; // de 0 à 28 marche
@@ -124,11 +113,7 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 	G4double crystalRepeatZ = 5.3 *mm;
 
 
-	//fScoringVolume = lCrystal;
-
-
 	//place the modules in a ring along the axial direction
-
 	for (G4int ring = 0; ring < ringRepeatNumber; ring++) // module repeater(circular) -> Ring
 	{
 		G4Rotate3D rotRingZ(ring * ringRepeatAngle, G4ThreeVector(0, 0, 1));
@@ -142,8 +127,8 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 
 	for (G4int unit = 0; unit < unitRepeatNumber; unit++) // unit repeater -> Module
 	{
-		G4double unit_OffsetZ = unitRepeatZ * .5 * ( 1 - unitRepeatNumber );
-		G4Translate3D transUnitZ(G4ThreeVector(0.*mm, 0. * mm, unit_OffsetZ + unitRepeatZ * unit ));//(z_unit/2) - (z_module/2) + unitRepeatZ * unit ));
+		G4double unit_OffsetZ = unitRepeatZ * .5 * ( 1 - unitRepeatNumber ); //parce que le repeater commence à partir centre du lvolume parent
+		G4Translate3D transUnitZ(G4ThreeVector(0.*mm, 0. * mm, unit_OffsetZ + unitRepeatZ * unit ));
 		G4VPhysicalVolume *pUnit = new G4PVPlacement(transUnitZ, lUnit, "pUnit", lMod, false, unit, true); //on inclut dans le Module
 	}
 
@@ -174,9 +159,6 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 			G4VPhysicalVolume *pCrystal = new G4PVPlacement(transCrystalXZ, lCrystal, "pCrystal", lOptical, false, monCrystalID++, true); //on inclut dans Optical
 		}
 	}
-
-
-
 
 	///////////////////// For Castor //////////////////////////
 			 // Fill this part if the geometry changes a lot (not only sizes, number of crystals and their positions)
@@ -235,27 +217,4 @@ void ScanGE::Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE, G4Materia
 			 /////////////////////////////////////////////////////////////////
 
 
-	/*GenerateLUT(G4String modality, G4double scannerRadius, G4int nRings,
-		G4int nElem, G4int nLayer, G4int nCrystByLayer,
-		G4double crystDepth, G4double crystTransaxial, G4double crystAxial,
-	G4int voxNTransaxial, G4int voxNAxial,
-	G4double fovTransaxial, G4double fovAxial,
-	G4double meanDOI, G4double minAngDiff,
-	G4String description );*/
-
-
 }
-
-/*
-GenerateHeaderLUT(G4String modality, G4double scannerRadius, G4int nRings,
-	G4int nElem, G4int nLayer, G4int nCrystByLayer,
-	G4double crystDepth, G4double crystTransaxial, G4double crystAxial,
-G4int voxNTransaxial, G4int voxNAxial,
-G4double fovTransaxial, G4double fovAxial,
-G4double meanDOI, G4double minAngDiff,
-G4String description )
-{
-
-	man->OpenFile("../root/outputs/test" + strRunID.str() + ".root");
-}
-*/

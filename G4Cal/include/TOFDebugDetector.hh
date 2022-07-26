@@ -12,8 +12,6 @@ public :
 
 	virtual void Construct(G4LogicalVolume*logicWorld,G4Material* LYSO_GE);
 
-
-
 private :
 G4LogicalVolume *MD_scoringVolume;
 

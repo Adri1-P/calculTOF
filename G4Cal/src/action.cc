@@ -1,17 +1,15 @@
 #include "action.hh"
 
-MyActionInitialization::MyActionInitialization(): G4VUserActionInitialization()
-{
-G4cout<< "MyActionInitialization" << G4endl;
-}
-
-MyActionInitialization::~MyActionInitialization()
-{
-	G4cout<< "~MyActionInitialization" << G4endl;
-}
+//******************************************************************************
+//******************************************************************************
+MyActionInitialization::MyActionInitialization(): G4VUserActionInitialization(){}
+MyActionInitialization::~MyActionInitialization(){}
+//******************************************************************************
 
 void MyActionInitialization::Build() const
 {
+	//je ne sais pas exactement à quoi elle sert
+	//mais cette méthode fait partie de celles de base
 	MyPrimaryGenerator *generator = new MyPrimaryGenerator();
 	SetUserAction(generator);
 
@@ -23,11 +21,15 @@ void MyActionInitialization::Build() const
 
 	MySteppingAction *steppingAction = new MySteppingAction(eventAction);
 	SetUserAction(steppingAction);
-
-	G4cout<< "MyActionInitialization::Build" << G4endl;
 }
+
+//******************************************************************************
+
 void MyActionInitialization::BuildForMaster() const
 {
+	//méthode utilisée pour le multithreading
 	MyRunAction *runAction = new MyRunAction();
 	SetUserAction(runAction);
 }
+//******************************************************************************
+//******************************************************************************

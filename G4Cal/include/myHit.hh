@@ -1,5 +1,3 @@
-// adapté de basic/B5 par A.Paillet
-///
 #ifndef MYHIT_HH
 #define MYHIT_HH
 
@@ -8,6 +6,9 @@
 #include "G4Allocator.hh"
 #include "G4THitsCollection.hh"
 
+//******************************************************************************
+// adapté de basic/B5
+//******************************************************************************
 
 class myHit : public G4VHit
 {
@@ -15,21 +16,16 @@ public:
 	myHit();
 	virtual ~myHit();
 
-
 	//obligatoire
 	inline void* operator new(size_t);
-   	inline void  operator delete(void*);
+	inline void  operator delete(void*);
 	//
 
-
+//******************************************************************************
 	void fillHitInfo(G4int myhitID,G4int myhitNumberTrack1, G4int myhitNumberTrack2, G4int myhitTrackID,G4int myhitEventID,G4int myhitParentID,
 	G4ThreeVector myhitPos,
 	G4double myhitEdep, G4double myhitTime,
-	G4int myhitLayerID,
-	G4int myhitCrystalID,
-	G4int myhitSubmoduleID,
-	G4int myhitModuleID,
-	G4int myhitRsectorID,
+	G4int myhitLayerID,	G4int myhitCrystalID,	G4int myhitSubmoduleID,	G4int myhitModuleID,	G4int myhitRsectorID,
 	G4String myhitParticleName);
 
 	G4int gethitID() {return hitID;}
@@ -53,8 +49,8 @@ public:
 	G4String gethitParticleName() {return hitParticleName;}
 
 	void Print();
-	void FillNTuple(char listOfTypes[]= "",int NTupleID= 2,...);
-
+	void FillNTuple(char listOfTypes[]= "",int NTupleID= 2,...); //Valeur par défaut à modifier ici si on veut changer le numéro du NTuple des hits dans run.cc
+//******************************************************************************
 private :
 
 	G4int hitID;
@@ -75,16 +71,14 @@ private :
 	G4int hitRsectorID;
 
 	G4String hitParticleName;
-
-
 };
 
 //récupéré de https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=hit
+// ne me demandez pas comment ça fonctionne.
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-//typedef G4THitsCollection<myHit> myHitsCollection; //alias
-using myHitsCollection = G4THitsCollection<myHit>;
+using myHitsCollection = G4THitsCollection<myHit>; // = typedef G4THitsCollection<myHit> myHitsCollection; //alias
 extern G4ThreadLocal G4Allocator<myHit>* myHitAllocator;//définition de variable globale dans plusieurs fichiers
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -94,16 +88,18 @@ inline void* myHit::operator new(size_t)
 {
   if(!myHitAllocator)
       myHitAllocator = new G4Allocator<myHit>;
-  return (void *) myHitAllocator->MallocSingle();
+  return (void *) myHitAllocator->MallocSingle(); //allocation dynamique de mémoire, cf malloc du C
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 inline void myHit::operator delete(void *hit)
 {
-  myHitAllocator->FreeSingle((myHit*) hit);
+  myHitAllocator->FreeSingle((myHit*) hit); //surcharge du destructeur pour libérer la mémoire qu'on a allouée "manuellement"
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif
+//******************************************************************************
+//******************************************************************************

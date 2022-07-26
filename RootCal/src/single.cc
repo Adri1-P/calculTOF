@@ -89,7 +89,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
   TBranch* bparticleName;
 
 	// Set branch address
-	Hits->SetBranchAddress("posX", &X, &bX);
+	Hits->SetBranchAddress("posX", &X, &bX); //on pourrait utiliser les attributs d'un hit directement ? Pas sûr.
 	Hits->SetBranchAddress("posY", &Y, &bY);
 	Hits->SetBranchAddress("posZ", &Z, &bZ);
 	Hits->SetBranchAddress("eventID", &eventID, &beventID);

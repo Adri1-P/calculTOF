@@ -8,6 +8,7 @@ DebugDetector::~DebugDetector()
 
 void DebugDetector::Construct(G4LogicalVolume*logicWorld,G4Material* LSO)
 {
+	//a un équivalent dans Gate. C'est un simple cristal de LSO à 20cm du centre sur l'axe x.
 	G4double x = 3.0*0.5*cm;
 	G4double y = 1.0*0.5*cm;
 	G4double z = 1.0*0.5*cm;

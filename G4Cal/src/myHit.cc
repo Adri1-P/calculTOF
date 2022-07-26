@@ -5,62 +5,72 @@
 
 #include "g4analysis.hh"
 
-G4ThreadLocal G4Allocator<myHit>* myHitAllocator = 0;
+//******************************************************************************
+// Définition de la classe hit, qui provient d'un template situé dans le book
+// for application developers de Geant4.
+// il a été suivi à la lettre avec quelques ajouts.
+//******************************************************************************
 
-myHit::myHit()
-{
-//G4cout << "myHit::myHit" << G4endl;
-}
-myHit::~myHit()
-{
-//G4cout << "myHit::~myHit" << G4endl;
-}
+G4ThreadLocal G4Allocator<myHit>* myHitAllocator = 0; //? dans le template.
 
+myHit::myHit(){}
+myHit::~myHit(){}
+
+//******************************************************************************
 
 void myHit::fillHitInfo(G4int myhitID,G4int myhitNumberTrack1, G4int myhitNumberTrack2, G4int myhitTrackID,G4int myhitEventID,G4int myhitParentID,
-	G4ThreeVector myhitPos,
-	G4double myhitEdep, G4double myhitTime,
-	G4int myhitLayerID,
-	G4int myhitCrystalID,
-	G4int myhitSubmoduleID,
-	G4int myhitModuleID,
-	G4int myhitRsectorID,
-	G4String myhitParticleName)
-
-
+												G4ThreeVector myhitPos,
+												G4double myhitEdep, G4double myhitTime,
+												G4int myhitLayerID, G4int myhitCrystalID,	G4int myhitSubmoduleID, G4int myhitModuleID, G4int myhitRsectorID,
+												G4String myhitParticleName)
 {
-hitID = myhitID;
-hitNumberTrack1 = myhitNumberTrack1;
-hitNumberTrack2 = hitNumberTrack2;
-hitTrackID = myhitTrackID;
-hitEventID = myhitEventID;
-hitParentID = myhitParentID;
+	//comme son nom l'indique, cette fonction se contente de recopier les propriétés du hit passées en argument dans le hit lui-même.
+	hitID = myhitID;
+	hitNumberTrack1 = myhitNumberTrack1;
+	hitNumberTrack2 = hitNumberTrack2;
+	hitTrackID = myhitTrackID;
+	hitEventID = myhitEventID;
+	hitParentID = myhitParentID;
 
-hitPos = myhitPos;
+	hitPos = myhitPos;
 
-hitEdep = myhitEdep;
-hitTime = myhitTime;
+	hitEdep = myhitEdep;
+	hitTime = myhitTime;
 
-hitLayerID = myhitLayerID;
-hitCrystalID = myhitCrystalID;
-hitSubmoduleID = myhitSubmoduleID;
-hitModuleID = myhitModuleID;
-hitRsectorID = myhitRsectorID;
+	hitLayerID = myhitLayerID;
+	hitCrystalID = myhitCrystalID;
+	hitSubmoduleID = myhitSubmoduleID;
+	hitModuleID = myhitModuleID;
+	hitRsectorID = myhitRsectorID;
 
-hitParticleName = myhitParticleName;
-
- //G4cout <<"myHit::fillHitInfo"<< G4endl;
+	hitParticleName = myhitParticleName;
 }
+
+//******************************************************************************
 
 void myHit::Print()
 {
-
+	//si on veut afficher les propriétés du hit. à remplir.
   G4cout << "test" << G4endl;
-
 }
+
+//******************************************************************************
 
 void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function, see https://en.cppreference.com/w/cpp/utility/variadic for more
 {
+		//cette méthode rempli le NTuple associé aux hits.
+		//Elle n'attend pas d'arguments
+		//si on veut ajouter des valeurs qui ne sont pas déjà dans le hit,
+		//il faut donner la liste des types des valeurs dans une chaîne de caractères :
+
+		//Exemple :
+		// char* listOfTypes = "ds"; //d pour double, s pour string, i pour int. Rien d'autre. Mettre les args dans l'ordre.
+		// hit->FillNTuple(listOfTypes,2,kEnergy,postpname);
+		//dans l'exemple, il y aura en plus les champs kEnergy et postpname dans le Ntuple
+		//du moins si on les a rajoutés dans run.cc
+
+		//N.B. : j'en suis assez fier.
+
 		G4AnalysisManager* man = G4AnalysisManager::Instance();
 		int i =0;
 
@@ -134,5 +144,7 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 			 va_end(args); //ends traversal of the variadic function arguments
 	 	}
 		man->AddNtupleRow(NTupleID);
-
 }
+
+//******************************************************************************
+//******************************************************************************

@@ -31,7 +31,6 @@ private :
 	G4SPSRandomGenerator* biasRndm;
 	G4SPSPosDistribution *posGenerator ;
 	BackToBackGenerator * BToB = new BackToBackGenerator(fSource,angGenerator,biasRndm,posGenerator);
-
 };
 
 

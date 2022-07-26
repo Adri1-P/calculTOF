@@ -13,7 +13,6 @@ public :
 	MyPhysicsList();
 	~MyPhysicsList();
 private :
-
 	void SetCuts();
 };
 

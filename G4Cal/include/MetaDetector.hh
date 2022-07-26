@@ -27,7 +27,7 @@ public :
 	virtual void Construct(G4LogicalVolume*logicWorld){};
 
 private :
-G4LogicalVolume *MD_scoringVolume;
+	G4LogicalVolume *MD_scoringVolume;
 
 };
 
