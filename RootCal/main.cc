@@ -50,61 +50,61 @@ TString filenameCoincidences_Debug = "../../../calculTOF_outputs/RootOutputs/Coi
 
 
 
-TString currentG4File = fileG4_ibd50Twta;
+TString currentG4File = fileG4_c;
 TString currentGateFile = fileGate_c;
-TString currentRootFile = filenameCoincidences_EWC;
+TString currentRootFile = filenameSingle_Twta;
 
 //display
 TFile* f = TFile::Open(currentG4File);
 TTree* Hits;
 f->GetObject("Hits", Hits); //nom du NTuple, nom de l'arbre
 
-TFile* outputFileS= new TFile(filenameSingle_EWC,"recreate");
+TFile* outputFileS= new TFile(filenameSingle_c,"recreate");
 single* monSingle = new single(Hits);
 monSingle->PrintAvailablePolicies();
-monSingle->setPolicyToCentroid();
+monSingle->setPolicyToWinnerTakeAll();
 monSingle->createTreeSingle(Hits,outputFileS);
 outputFileS->Close();
 
-TFile * fSG4 = TFile::Open(filenameSingle_EWC);
+TFile * fSG4 = TFile::Open(filenameSingle_c);
 TTree* Singles;
 fSG4->GetObject("Singles", Singles);
 
-TFile* outputFileC= new TFile(filenameCoincidences_EWC,"recreate");
+TFile* outputFileC= new TFile(filenameCoincidences_c,"recreate");
 coincidences * mesCoincidences = new coincidences();
 mesCoincidences->fillTreeCoincidences(Singles,outputFileC);
 outputFileC->Close();
 
-TApplication app("app", &argc, argv);
-
-TString champ1 = "globalPosX1";
-TString champ2 = "globalPosX1";
-TString file1 = filenameCoincidences_Twta ;
-TString file2 = currentRootFile;
-TString datatype ="Coincidences";
-Double_t xmin = -400;
-Double_t xmax = 400;
-Int_t nBins = 100;
-
-TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );
-
-	//c->Divide(2,1);
-	//c->cd(1);
-
-		/*
-		TString datatype = "Hits";
-		TCanvas*c = compareGateG4timeT0( currentGateFile, currentG4File, datatype);
-
-		TString field = "posX";
-		TCanvas*c1 = compareTwoTrees(field, field, currentGateFile,currentG4File,"Hits" );
-		TCanvas *c2 = compareDt_rand( currentGateFile,  currentG4File);
-		*/
-		//TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins);
-
-   	c->Modified(); c->Update();
-   	TRootCanvas*rc = (TRootCanvas *)c->GetCanvasImp();
-   	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-app.Run();
+// TApplication app("app", &argc, argv);
+//
+// TString champ1 = "globalPosX1";
+// TString champ2 = "globalPosX1";
+// TString file1 = filenameCoincidences_Twta ;
+// TString file2 = currentRootFile;
+// TString datatype ="Coincidences";
+// Double_t xmin = -400;
+// Double_t xmax = 400;
+// Int_t nBins = 100;
+//
+// TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );
+//
+// 	//c->Divide(2,1);
+// 	//c->cd(1);
+//
+//
+// 		TString datatype = "Hits";
+// 		TCanvas*c = compareGateG4timeT0( currentGateFile, currentG4File, datatype);
+//
+// 		TString field = "posX";
+// 		TCanvas*c1 = compareTwoTrees(field, field, currentGateFile,currentG4File,"Hits" );
+// 		TCanvas *c2 = compareDt_rand( currentGateFile,  currentG4File);
+//
+// 		//TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins);
+//
+//    	c->Modified(); c->Update();
+//    	TRootCanvas*rc = (TRootCanvas *)c->GetCanvasImp();
+//    	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+// app.Run();
 
 	return 0;
 }

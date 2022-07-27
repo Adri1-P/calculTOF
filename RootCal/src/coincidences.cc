@@ -25,12 +25,15 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	//variables pour les coincidences
 	Double_t energy, energy1, energy2, globalPosX1,globalPosX2, time1,time2, globalPosY1,globalPosY2, globalPosZ1, globalPosZ2, dt;
 	Double_t x1, y1, z1, x2, y2, z2;
+	Int_t rsectorID1,moduleID1,submoduleID1,crystalID1,layerID1;
+	Int_t rsectorID2,moduleID2,submoduleID2,crystalID2,layerID2;
 
 	// variables pour les singles
 	Double_t globalPosX, globalPosY, globalPosZ, time, edep;
 	Int_t eventID;
 	Int_t trackID;
 	Int_t coincidence;
+  Int_t rsectorID,moduleID,submoduleID,crystalID,layerID;
 
 	//branches d'intérêt
 	TBranch* bglobalPosX;
@@ -41,6 +44,11 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	TBranch* btime;
 	TBranch* bedep;
 	TBranch* bcoincidence;
+	TBranch* brsectorID;
+	TBranch* bmoduleID;
+	TBranch* bsubmoduleID;
+	TBranch* bcrystalID;
+	TBranch* blayerID;
 
 	// Set branch address
 	Singles->SetBranchAddress("globalPosX", &globalPosX, &bglobalPosX); //mm
@@ -51,6 +59,11 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	Singles->SetBranchAddress("time", &time, &btime);  //secondes
 	Singles->SetBranchAddress("energy", &edep, &bedep); //MeV
 	Singles->SetBranchAddress("coincidence", &coincidence, &bcoincidence);
+	Singles->SetBranchAddress("rsectorID", &rsectorID, &brsectorID);
+	Singles->SetBranchAddress("moduleID", &moduleID, &bmoduleID);
+	Singles->SetBranchAddress("submoduleID", &submoduleID, &bsubmoduleID);
+	Singles->SetBranchAddress("crystalID", &crystalID, &bcrystalID);
+	Singles->SetBranchAddress("layerID", &layerID, &blayerID);
 	//initialisation
 
 	this->Coincidences->Branch("globalPosX1",&globalPosX1,"globalPosX/D");
@@ -64,6 +77,16 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 	this->Coincidences->Branch("time2",&time2,"time/D");
 	this->Coincidences->Branch("energy2",&energy2,"energy/D");
 	this->Coincidences->Branch("dt",&dt,"dt/D");
+	this->Coincidences->Branch("rsectorID1", &rsectorID1, "rsectorID1/I");
+	this->Coincidences->Branch("moduleID1", &moduleID1, "moduleID1/I");
+	this->Coincidences->Branch("submoduleID1", &submoduleID1, "submoduleID1/I");
+	this->Coincidences->Branch("crystalID1", &crystalID1, "crystalID1/I");
+	this->Coincidences->Branch("layerID1", &layerID1, "layerID1/I");
+	this->Coincidences->Branch("rsectorID2", &rsectorID2, "rsectorID2/I");
+	this->Coincidences->Branch("moduleID2", &moduleID2, "moduleID2/I");
+	this->Coincidences->Branch("submoduleID2", &submoduleID2, "submoduleID2/I");
+	this->Coincidences->Branch("crystalID2", &crystalID2, "crystalID2/I");
+	this->Coincidences->Branch("layerID2", &layerID2, "layerID2/I");
   // Get number of hits in the TTree
   int nS = (int)Singles->GetEntries();
 	int i = 0;
@@ -103,6 +126,26 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 		Single1.edep = edep;
 		bedep->GetEntry(j);
 		Single2.edep = edep;
+		brsectorID->GetEntry(i);
+		Single1.rsectorID = rsectorID;
+		brsectorID->GetEntry(j);
+		Single2.rsectorID = rsectorID;
+		bmoduleID->GetEntry(i);
+		Single1.moduleID = moduleID;
+		bmoduleID->GetEntry(j);
+		Single2.moduleID = moduleID;
+		bsubmoduleID->GetEntry(i);
+		Single1.submoduleID = submoduleID;
+		bsubmoduleID->GetEntry(j);
+		Single2.submoduleID = submoduleID;
+		bcrystalID->GetEntry(i);
+		Single1.crystalID = crystalID;
+		bcrystalID->GetEntry(j);
+		Single2.crystalID = crystalID;
+		blayerID->GetEntry(i);
+		Single1.layerID = layerID;
+		blayerID->GetEntry(j);
+		Single2.layerID = layerID;
 
 		processTwoSingles(Single1,Single2,c);
 
@@ -117,6 +160,16 @@ void coincidences::fillTreeCoincidences (TTree * Singles, TFile* outputFile)
 		time1 = c.time1;
 		time2 = c.time2;
 		dt = c.dt;
+		rsectorID1 = c.rsectorID1;
+		moduleID1 = c.moduleID1;
+		submoduleID1 = c.submoduleID1;
+		crystalID1 = c.crystalID1;
+		layerID1 = c.layerID1;
+		rsectorID2 = c.rsectorID2;
+		moduleID2 = c.moduleID2;
+		submoduleID2 = c.submoduleID2;
+		crystalID2 = c.crystalID2;
+		layerID2 = c.layerID2;
 
 		if (Single1.isInCoincidence && Single2.isInCoincidence)
 		{
@@ -160,6 +213,16 @@ void coincidences::processTwoSingles(s_Single &Single1,s_Single &Single2,s_Coinc
 			c.Z2 = Single2.Z;
 			c.edep1 = Single1.edep;
 			c.edep2 = Single2.edep;
+			c.rsectorID1 = Single1.rsectorID;
+			c.moduleID1 = Single1.moduleID;
+		  c.submoduleID1 = Single1.submoduleID;
+			c.crystalID1 = Single1.crystalID;
+			c.layerID1 = Single1.layerID;
+			c.rsectorID2 = Single2.rsectorID;
+			c.moduleID2 = Single2.moduleID;
+			c.submoduleID2 = Single2.submoduleID;
+			c.crystalID2 = Single2.crystalID;
+			c.layerID2 = Single2.layerID;
 		}
 		else if (Single1.trackID == 2 && Single2.trackID == 1) //pareil mais dans l'autre sens. Utile?
 		{
@@ -177,6 +240,16 @@ void coincidences::processTwoSingles(s_Single &Single1,s_Single &Single2,s_Coinc
 			c.Z2 = Single1.Z;
 			c.edep1 = Single2.edep;
 			c.edep2 = Single1.edep;
+			c.rsectorID1 = Single2.rsectorID;
+			c.moduleID1 = Single2.moduleID;
+		  c.submoduleID1 = Single2.submoduleID;
+			c.crystalID1 = Single2.crystalID;
+			c.layerID1 = Single2.layerID;
+			c.rsectorID2 = Single1.rsectorID;
+			c.moduleID2 = Single1.moduleID;
+			c.submoduleID2 = Single1.submoduleID;
+			c.crystalID2 = Single1.crystalID;
+			c.layerID2 = Single1.layerID;
 		}
 	}
 }

@@ -44,11 +44,11 @@ void BackToBackGenerator::Prepare()
 
 //******************************************************************************
 
-void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX)
+void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4double posXYZ[])
 {
 	//adapted from https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/extended/eventgenerator/particleGun/src/PrimaryGeneratorAction1.cc
-	const G4double r = 10.0*sqrt(G4UniformRand())*mm; // rayon du cylindre
-  const G4double zmax = 10*mm; //0 source ponctuelle  135 source linéaire de 270mm
+	const G4double r = 0.0*sqrt(G4UniformRand())*mm; // rayon du cylindre
+  const G4double zmax = 0*mm; //0 source ponctuelle  135 source linéaire de 270mm
 
   //vertex 1 uniform on cylinder
   G4double alpha = CLHEP::twopi*G4UniformRand();  //alpha uniform in (0, 2*pi)
@@ -57,8 +57,9 @@ void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX)
   G4double z = zmax*(2*G4UniformRand() - 1);  //z uniform in (-zmax, +zmax)
 
   G4ThreeVector pos; //initialisation obligatoire...
-  if(straightToX) {pos.set(0,0,0);}
-	else{pos.set(r*ux,r*uy,z);}
+  if(straightToX)          {pos.set(0,0,0);}
+  else if (posXYZ != NULL) {pos.set(posXYZ[0],posXYZ[1],posXYZ[2]);}
+  else                     {pos.set(r*ux,r*uy,z);}
 
   fSource->SetParticlePosition(pos);
   //end adapted from

@@ -28,7 +28,10 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 	//Sa définition a été déportée dans une autre clase pour faciliter le changement de source.
 
 	G4bool	straightToX = false; //straightToX à true implique que toutes les particules suivront l'axe des x.
-	BToB->Shoot(anEvent,straightToX);
+	G4double pos1[3] = {10,0,0}; //si possible, remplacer par un G4ThreeVector un jour
+	G4double pos2[3] = {-10,0,0};
+	BToB->Shoot(anEvent,straightToX,pos1);
+	BToB->Shoot(anEvent,straightToX,pos2);
 }
 //******************************************************************************
 //******************************************************************************

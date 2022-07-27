@@ -54,6 +54,15 @@ Deux manières :
 		+ la liste des attributs dans l'ordre des types donnés
 		* cf exemple dans myHit::FillNTuple
 	4. tester
-	
+
+---------------------------------------------------------------------------------------------------------------
+
+			***Reconstruire une image avec Castor : ***
+1. Créer une LUT: 
+	castor-G4PetScannerLut -alias GE_G4 -optf G4toCastorOptFile.txt
+2. Convertir un fichier root dans le format de castor:
+	castor-G4datafileConversion -il test0.root -o test -s GE_G4 -optf G4toCastorOptFile.txt
+3. Reconstruire (castor standard):
+	castor-recon -df test_df.Cdh -fout img_test -it 4:28 -dim 256,256,89 -fov 300,300,247.42 -opti MLEM 	
 ---------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------

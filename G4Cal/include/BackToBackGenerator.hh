@@ -26,7 +26,7 @@ BackToBackGenerator(G4ParticleGun* Source,
 	~BackToBackGenerator();
 
 	void Prepare();
-	void Shoot(G4Event *anEvent, G4bool straightToX);
+	void Shoot(G4Event *anEvent, G4bool straightToX,G4double posXYZ[] = NULL);
 
 private :
 	G4ParticleGun* fSource;

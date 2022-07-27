@@ -32,7 +32,7 @@
 /control/execute                         digitizers/GE_digitizer.mac
 
 # Source
-/control/execute                         sources/SourcePonctuelle.mac
+/control/execute                         sources/Source_recoTOF.mac
 
 
 
