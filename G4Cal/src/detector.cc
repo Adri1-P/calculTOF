@@ -96,10 +96,10 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	//il va y avoir une seg fault.
 	// Pour y remédier, il suffit de mettre à 0 les étages qui n'existent pas.
 	G4int layerID = touchable->GetReplicaNumber(0);
-	G4int crystalID = touchable->GetReplicaNumber(1);
-	G4int submoduleID = touchable->GetReplicaNumber(2);
-	G4int moduleID = touchable->GetReplicaNumber(3);
-	G4int rsectorID = touchable->GetReplicaNumber(4);
+	G4int crystalID = touchable->GetReplicaNumber(0);
+	G4int submoduleID = touchable->GetReplicaNumber(0);
+	G4int moduleID = touchable->GetReplicaNumber(0);
+	G4int rsectorID = touchable->GetReplicaNumber(0);
 
 	if (edep <= 0) {return{true};}
 
@@ -120,7 +120,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 		submoduleID,
 		moduleID,
 		rsectorID,
-	  particleName);	
+	  particleName);
 
 		//cette fonction s'occupe de remplir le NTuple pour le hits. S'il y a un champ à rajouter, c'est ici.
 		//Mais il faut aussi modifier le hit.
