@@ -9,6 +9,14 @@
 /gate/ecat/vis/forceWireframe
 /gate/ecat/vis/setColor                       red
 
+/gate/ecat/daughters/name block
+/gate/ecat/daughters/insert box
+/gate/block/placement/setTranslation 20.0 0.0 0.0 cm
+/gate/block/geometry/setXLength 3 cm
+/gate/block/geometry/setYLength 1 cm
+/gate/block/geometry/setZLength 1 cm
+/gate/block/setMaterial Air
+
 # Crystal
 /gate/ecat/daughters/name                      crystal
 /gate/ecat/daughters/insert                    box
@@ -21,7 +29,7 @@
 /gate/crystal/vis/setColor                      green
 /gate/crystal/vis/setVisible                    1
 
-
+/gate/systems/ecat/block/attach block
 /gate/systems/ecat/crystal/attach  crystal
 
 # Attach crystal sensitive detector
