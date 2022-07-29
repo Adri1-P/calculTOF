@@ -38,6 +38,7 @@ TString fileGate_ib = "../../../calculTOF_outputs/GateOutputs/GateCalDebugTimeTO
 TString fileGate_ib50 = "../../../calculTOF_outputs/GateOutputs/GateCalDebugTimeTOF_blocks_droits50.root";//intermediaire avec deux blocks, grand nombre de cristaux
 TString fileGate_ibd50iso = "../../../calculTOF_outputs/GateOutputs/GateCalDebugTimeTOF_bd50iso.root";//intermediaire avec deux blocks (bon sens), grand nombre de cristaux, source iso
 TString fileGate_c = "../../../calculTOF_outputs/GateOutputs/GateCalRef.root";//complete
+TString fileGate_c_EWC = "../../../calculTOF_outputs/GateOutputs/GateCalRef_EWC.root";//complete
 
 TString filenameSingle_c = "../../../calculTOF_outputs/RootOutputs/G4SingleTest_c.root";
 TString filenameCoincidences_c = "../../../calculTOF_outputs/RootOutputs/G4CoincidencesTest_c.root";
@@ -51,60 +52,60 @@ TString filenameCoincidences_Debug = "../../../calculTOF_outputs/RootOutputs/Coi
 
 
 TString currentG4File = fileG4_c;
-TString currentGateFile = fileGate_c;
-TString currentRootFile = filenameSingle_Twta;
+TString currentGateFile = fileGate_c_EWC;
+TString currentRootFile = filenameSingle_EWC;
 
 //display
 TFile* f = TFile::Open(currentG4File);
 TTree* Hits;
 f->GetObject("Hits", Hits); //nom du NTuple, nom de l'arbre
 
-TFile* outputFileS= new TFile(filenameSingle_c,"recreate");
+TFile* outputFileS= new TFile(filenameSingle_EWC,"recreate");
 single* monSingle = new single(Hits);
 monSingle->PrintAvailablePolicies();
-monSingle->setPolicyToWinnerTakeAll();
+monSingle->setPolicyToCentroid();
 monSingle->createTreeSingle(Hits,outputFileS);
 outputFileS->Close();
 
-TFile * fSG4 = TFile::Open(filenameSingle_c);
+TFile * fSG4 = TFile::Open(filenameSingle_EWC);
 TTree* Singles;
 fSG4->GetObject("Singles", Singles);
 
-TFile* outputFileC= new TFile(filenameCoincidences_c,"recreate");
+TFile* outputFileC= new TFile(filenameCoincidences_EWC,"recreate");
 coincidences * mesCoincidences = new coincidences();
 mesCoincidences->fillTreeCoincidences(Singles,outputFileC);
 outputFileC->Close();
 
-// TApplication app("app", &argc, argv);
-//
-// TString champ1 = "globalPosX1";
-// TString champ2 = "globalPosX1";
-// TString file1 = filenameCoincidences_Twta ;
-// TString file2 = currentRootFile;
-// TString datatype ="Coincidences";
-// Double_t xmin = -400;
-// Double_t xmax = 400;
-// Int_t nBins = 100;
-//
-// TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );
-//
-// 	//c->Divide(2,1);
-// 	//c->cd(1);
-//
-//
-// 		TString datatype = "Hits";
-// 		TCanvas*c = compareGateG4timeT0( currentGateFile, currentG4File, datatype);
-//
-// 		TString field = "posX";
-// 		TCanvas*c1 = compareTwoTrees(field, field, currentGateFile,currentG4File,"Hits" );
-// 		TCanvas *c2 = compareDt_rand( currentGateFile,  currentG4File);
-//
-// 		//TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins);
-//
-//    	c->Modified(); c->Update();
-//    	TRootCanvas*rc = (TRootCanvas *)c->GetCanvasImp();
-//    	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
-// app.Run();
+TApplication app("app", &argc, argv);
+
+TString champ1 = "time";
+TString champ2 = "time";
+TString file1 = currentGateFile ;
+TString file2 = currentRootFile;
+TString datatype ="Singles";
+Double_t xmin = -400;
+Double_t xmax = 400;
+Int_t nBins = 100;
+
+TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );
+
+	//c->Divide(2,1);
+	//c->cd(1);
+
+
+		 datatype = "Singles";
+		 TCanvas*c1 = compareGateG4timeT0( currentGateFile, currentRootFile, datatype );
+		//
+		// TString field = "posX";
+		// TCanvas*c1 = compareTwoTrees(field, field, currentGateFile,currentG4File,"Hits" );
+		// TCanvas *c2 = compareDt_rand( currentGateFile,  currentG4File);
+
+		//TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins);
+
+   	c->Modified(); c->Update();
+   	TRootCanvas*rc = (TRootCanvas *)c->GetCanvasImp();
+   	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");
+app.Run();
 
 	return 0;
 }

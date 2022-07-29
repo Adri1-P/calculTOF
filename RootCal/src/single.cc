@@ -132,12 +132,15 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
 	Double_t energieTot2;
 	Double_t temps1;
 	Double_t temps2;
+  Double_t distanceMin1,distanceMin2;
 
 	// Loop over hits
 	while ( (i < nH) )
 	{
 		energie1 = 0;
 		energie2 = 0;
+    distanceMin1 = -1; //indique que ce n'est pas initialisé : la première valeur sera la première distance
+    distanceMin2 = -1;
 
     btrackID->GetEntry(i);
     beventID->GetEntry(i);
@@ -156,6 +159,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
     bhitNumberTrack2->GetEntry(i);
 
     currentEvent = eventID;
+
 
     s_Single Single1,Single2; //maximum two singles per event
     Single1.edep = 0;
@@ -192,7 +196,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
       if(this->policy == "winnerTakeAll")
       {processOneHit_b2b_WTA(aHit,Single1,Single2,energie1,energie2,gamma1,gamma2);}
       else if (this->policy == "centroid")
-      {processOneHit_b2b_EWC(aHit,Single1,Single2,gamma1,gamma2);}
+      {processOneHit_b2b_EWC(aHit,Single1,Single2,gamma1,gamma2,distanceMin1,distanceMin2);}
       else if (this->policy == "firstHit")
       {processOneHit_b2b_FH(aHit,Single1,Single2,gamma1,gamma2);}
 
@@ -309,7 +313,7 @@ void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Sing
 
 //********************************************************************************
 
-void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2)
+void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2, Double_t distanceMin1,Double_t distanceMin2)
 {
   //EWC : Energy Weighted Centroid : la position est un barycentre de la position des hits pondéré à leur énergie déposé.
   // le temps est pour l'instant celui du dernier hit.
@@ -318,6 +322,7 @@ void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Sing
    //adapté de GatePulse.cc  méthode CentroidMerge
   Double_t totalEnergy1 = 0;
   Double_t totalEnergy2 = 0;
+  Double_t d1,d2;
 
   if (aHit.particleName == 'g')
   {
@@ -333,27 +338,51 @@ void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Sing
       Single1.submoduleID = (Single1.submoduleID * Single1.edep + aHit.submoduleID * aHit.edep)/ totalEnergy1;
       Single1.crystalID = (Single1.crystalID * Single1.edep + aHit.crystalID * aHit.edep)/ totalEnergy1;
       Single1.layerID = (Single1.layerID * Single1.edep + aHit.layerID * aHit.edep)/ totalEnergy1;
-      Single1.time = aHit.time; //comme dans Gate ?
+      // Single1.time = (Single1.time * Single1.edep + aHit.time * aHit.edep)/ totalEnergy1;
       Single1.edep = totalEnergy1;
+
+      d1  = distance(aHit.X,Single1.X,aHit.Y,Single1.Y,aHit.Z,Single1.Z);
+      if ( d1 < distanceMin1)
+        {
+          distanceMin1 = d1;
+          Single1.time = aHit.time;
+        }
+        else if (distanceMin1 == -1) //initialisation
+        {
+          distanceMin1 = d1;
+          Single1.time = aHit.time;
+        }
       gamma1 = true;
     }
 
       else if (aHit.trackID == 2)
       {
-          totalEnergy2 = Single2.edep + aHit.edep;
+        totalEnergy2 = Single2.edep + aHit.edep;
 
-          Single2.X = (Single2.X * Single2.edep + aHit.X * aHit.edep)/ totalEnergy2;
-          Single2.Y = (Single2.Y * Single2.edep + aHit.Y * aHit.edep)/ totalEnergy2;
-          Single2.Z = (Single2.Z * Single2.edep + aHit.Z * aHit.edep)/ totalEnergy2;
-          Single2.rsectorID = (Single2.rsectorID * Single2.edep + aHit.rsectorID * aHit.edep)/ totalEnergy2;
-          Single2.moduleID = (Single2.moduleID * Single2.edep + aHit.moduleID * aHit.edep)/ totalEnergy2;
-          Single2.submoduleID = (Single2.submoduleID * Single2.edep + aHit.submoduleID * aHit.edep)/ totalEnergy2;
-          Single2.crystalID = (Single2.crystalID * Single2.edep + aHit.crystalID * aHit.edep)/ totalEnergy2;
-          Single2.layerID = (Single2.layerID * Single2.edep + aHit.layerID * aHit.edep)/ totalEnergy2;
-          Single2.time = aHit.time; //comme dans Gate ?
-          Single2.edep = totalEnergy2;
-          gamma2 = true;
-        }
+        Single2.X = (Single2.X * Single2.edep + aHit.X * aHit.edep)/ totalEnergy2;
+        Single2.Y = (Single2.Y * Single2.edep + aHit.Y * aHit.edep)/ totalEnergy2;
+        Single2.Z = (Single2.Z * Single2.edep + aHit.Z * aHit.edep)/ totalEnergy2;
+        Single2.rsectorID = (Single2.rsectorID * Single2.edep + aHit.rsectorID * aHit.edep)/ totalEnergy2;
+        Single2.moduleID = (Single2.moduleID * Single2.edep + aHit.moduleID * aHit.edep)/ totalEnergy2;
+        Single2.submoduleID = (Single2.submoduleID * Single2.edep + aHit.submoduleID * aHit.edep)/ totalEnergy2;
+        Single2.crystalID = (Single2.crystalID * Single2.edep + aHit.crystalID * aHit.edep)/ totalEnergy2;
+        Single2.layerID = (Single2.layerID * Single2.edep + aHit.layerID * aHit.edep)/ totalEnergy2;
+        // Single2.time = (Single2.time * Single2.edep + aHit.time * aHit.edep)/ totalEnergy2;
+        Single2.edep = totalEnergy2;
+
+        d2 = distance(aHit.X,Single2.X,aHit.Y,Single2.Y,aHit.Z,Single2.Z);
+        if (distance(aHit.X,Single2.X,aHit.Y,Single2.Y,aHit.Z,Single2.Z) < distanceMin2)
+          {
+            distanceMin2 = d2;
+            Single2.time = aHit.time;
+          }
+          else if (distanceMin2 == -1)
+          {
+            distanceMin2 = d2;
+            Single2.time = aHit.time;
+          }
+        gamma2 = true;
+      }
     }
 }
 
@@ -413,6 +442,12 @@ void single::PrintAvailablePolicies()
           centroid (non testé) \n \
           winnerTakeAll (testé) \n \
           firstHit (non testé) \n");
+}
+
+
+Double_t single::distance(Double_t x1,Double_t x2,Double_t y1,Double_t y2,Double_t z1,Double_t z2) //distance entre deux points
+{
+return sqrt(pow(x1-x2,2) + pow(y1-y2,2) + pow(z1-z2,2));
 }
 
 //********************************************************************************

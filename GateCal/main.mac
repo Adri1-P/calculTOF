@@ -29,10 +29,10 @@
 /gate/run/initialize
 
 # Digitizer
-/control/execute                         digitizers/GE_digitizer.mac
+/control/execute                         digitizers/GE_digitizer.mac  #!!!energy centroid !!!
 
 # Source
-/control/execute                         sources/Source_recoTOF.mac
+/control/execute                         sources/SourcePonctuelle.mac
 
 
 

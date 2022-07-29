@@ -206,8 +206,8 @@ TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString d
 
   Int_t nbins, xmin, xmax;
 	nbins = 100;
-	xmin = 250;
-	xmax = 450;
+	xmin = 1000;
+	xmax = 1400;
 	TH1D* h = new TH1D("h", "time-T0 Gate (en ?s) & globalTime Geant4 (en rouge en ps) :" + datatype, nbins, xmin, xmax);
 
 	int nHG = (int)dataGate->GetEntries();
@@ -230,8 +230,8 @@ TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString d
 		btime->GetEntry(i);
 		bT0->GetEntry(i);
 
-		//h->Fill((time - (T0 * pow(10,9)) ) * pow(10,12));// pow(10,12)); //passage en ps Singles
-		h->Fill((time - T0 ) * pow(10,12));
+		h->Fill((time - (T0 * pow(10,9)) ) * pow(10,12));// pow(10,12)); //passage en ps Singles
+		//h->Fill((time - T0 ) * pow(10,12));
 	}
 
 	for (int i = 0; i < nH4; i++)
@@ -257,9 +257,10 @@ TCanvas * compareGateG4timeT0(TString rootFileGate, TString rootFileG4,TString d
 
 	h->GetXaxis()->SetTitle("time (ps)");
 
-	h4->Draw();
-	h->Draw("same");
+
+	h->Draw();
 	h4->SetLineColor(2);
+	h4->Draw("same");
 
 	auto legend = new TLegend(0.01, 0.1, 0.2, 0.9);
 	legend->SetHeader("fichiers root"); // option "C" allows to center the header
@@ -474,6 +475,9 @@ TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString 
 	TFile* f2= TFile::Open(file2); //lancer l'exécutable depuis build
 	TTree* dataf2 = (TTree*)f2->Get(datatype);
 
+
+	// Double_t data1;
+	// Double_t data2;
 
 	Double_t data1;
 	Double_t data2;
