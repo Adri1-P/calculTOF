@@ -2,7 +2,7 @@
 /gate/source/addSource                        flash
 
 /gate/source/flash/gps/particle gamma
-/gate/source/flash/setType backtoback
+#/gate/source/flash/setType backtoback
 /gate/source/flash/gps/ene/type  Mono
 /gate/source/flash/gps/ene/mono 511. keV
 

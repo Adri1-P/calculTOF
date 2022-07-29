@@ -1,4 +1,5 @@
 /vis/open OGLSQt #800x600-0+0
+#/vis/open OGL
 /vis/viewer/set/viewpointThetaPhi 45 45
 /vis/viewer/zoom 3
 /vis/drawVolume

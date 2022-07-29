@@ -20,7 +20,7 @@
 /gate/world/setMaterial                   Air
 
 # Scanner
-/control/execute                          geometries/GE_geometry_layer.mac
+/control/execute                          geometries/geometryDebugTime.mac
 
 # Physics
 /control/execute                          physics.mac
@@ -29,10 +29,10 @@
 /gate/run/initialize
 
 # Digitizer
-/control/execute                         digitizers/GE_digitizer.mac  #!!!energy centroid !!!
+/control/execute                         digitizers/DigitizerDebugTimeTOF.mac  #!!!energy centroid !!!
 
 # Source
-/control/execute                         sources/SourcePonctuelle.mac
+/control/execute                         sources/sourceDebugTime.mac
 
 
 
