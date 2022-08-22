@@ -3,6 +3,8 @@
 #include "G4SPSPosDistribution.hh"
 #include "G4RandomDirection.hh"
 
+#include "generator.hh"
+
 #include <math.h>
 
 //******************************************************************************
@@ -44,7 +46,7 @@ void BackToBackGenerator::Prepare()
 
 //******************************************************************************
 
-void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4double posXYZ[])
+void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4ThreeVector *posXYZ)
 {
 	//adapted from https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/extended/eventgenerator/particleGun/src/PrimaryGeneratorAction1.cc
 	const G4double r = 0.0*sqrt(G4UniformRand())*mm; // rayon du cylindre
@@ -58,7 +60,7 @@ void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4double p
 
   G4ThreeVector pos; //initialisation obligatoire...
   if(straightToX)          {pos.set(0,0,0);}
-  else if (posXYZ != NULL) {pos.set(posXYZ[0],posXYZ[1],posXYZ[2]);}
+  else if (posXYZ != NULL) {pos = (*posXYZ);}
   else                     {pos.set(r*ux,r*uy,z);}
 
   fSource->SetParticlePosition(pos);
@@ -74,16 +76,7 @@ void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4double p
 	fSource->SetParticleMomentumDirection(-mom);
   fSource->GeneratePrimaryVertex(anEvent);
 
-  int i = 0;
-  G4AnalysisManager* man = G4AnalysisManager::Instance();
 
-  man->FillNtupleDColumn(0, i, pos[0]);
-  i++;
-  man->FillNtupleDColumn(0, i, pos[1]);
-  i++;
-  man->FillNtupleDColumn(0, i, pos[2]);
-  i++;
-  man->AddNtupleRow(0);
 }
 
 //******************************************************************************

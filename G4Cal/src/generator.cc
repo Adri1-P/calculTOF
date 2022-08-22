@@ -11,7 +11,9 @@
 
 MyPrimaryGenerator::MyPrimaryGenerator()
 {
-BToB->Prepare();
+	BToB->Prepare();
+	fTotalSourceNumber = 2;
+	fActivities = new G4double[fTotalSourceNumber] {250000, 250000};// dans le run BeamOn mettre la somme des activités
 }
 //******************************************************************************
 MyPrimaryGenerator::~MyPrimaryGenerator()
@@ -26,31 +28,41 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 {
 	//Quand on demande un /run/BeamOn c'est cette méthode qui génére les particules.
 	//Sa définition a été déportée dans une autre clase pour faciliter le changement de source.
-	G4cout << "test" << G4endl;
-	G4ThreeVector pos;
-	pos.set(0,0,0);
-	G4cout << "test" << G4endl;
-  fSource->SetParticlePosition(pos); //pbm d'accès au pointeur ici
-	G4cout << "test" << G4endl;
-  G4ThreeVector mom;
-  mom.set(1,0,0);
-	fSource->SetParticleMomentumDirection(mom);
-	fSource->GeneratePrimaryVertex(anEvent);
+	bool straightToX = false;
+	G4int evtID = anEvent->GetEventID();
+	G4ThreeVector *pos = new G4ThreeVector(0,0,0);
+  if (evtID > fActivities[fSourceID]) {fSourceID++;}; //on peut mettre un tirage aléatoire en remplacement
 
-  int i = 0;
+	switch (fSourceID)
+	{
+		case 0 :
+		pos->set(10,0,0);
+		break;
+
+		case 1 :
+		pos->set(-10,0,0);
+		break;
+	}
+	BToB->Shoot(anEvent,straightToX,pos);
+
+
+	int i = 0;
   G4AnalysisManager* man = G4AnalysisManager::Instance();
-  man->FillNtupleDColumn(0, i, pos[0]);
+
+  man->FillNtupleDColumn(0, i, pos->x());
   i++;
-  man->FillNtupleDColumn(0, i, pos[1]);
+  man->FillNtupleDColumn(0, i, pos->y());
   i++;
-  man->FillNtupleDColumn(0, i, pos[2]);
+  man->FillNtupleDColumn(0, i, pos->z());
+  i++;
+  man->FillNtupleIColumn(0, i, evtID);
+  i++;
+  man->FillNtupleIColumn(0, i, fTotalSourceNumber);
+  i++;
+  man->FillNtupleIColumn(0, i, fSourceID+1);
   i++;
   man->AddNtupleRow(0);
-	G4cout << "test" << G4endl;
-	// G4double pos1[3] = {10,0,0}; //si possible, remplacer par un G4ThreeVector un jour
-	// G4double pos2[3] = {-10,0,0};
-	// BToB->Shoot(anEvent,straightToX,pos1);
-	// BToB->Shoot(anEvent,straightToX,pos2);
+
 }
 //******************************************************************************
 //******************************************************************************

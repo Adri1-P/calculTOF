@@ -606,6 +606,7 @@ CMakeFiles/sim.dir/mysimu.cc.o: /volatile3/geant4.10.07.p02-GDML_MT_install/incl
 CMakeFiles/sim.dir/mysimu.cc.o: /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/trkdefs.hh
 
 CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o: ../include/BackToBackGenerator.hh
+CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o: ../include/generator.hh
 CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o: ../src/BackToBackGenerator.cc
 CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o: /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Geometry/BasicVector3D.h
 CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o: /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Geometry/Normal3D.h

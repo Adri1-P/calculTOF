@@ -14,6 +14,9 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("SposX");
 	man->CreateNtupleDColumn("SposY");
 	man->CreateNtupleDColumn("SposZ");
+	man->CreateNtupleIColumn("evtID");
+	man->CreateNtupleIColumn("totalSourceNumber");
+	man->CreateNtupleIColumn("sourceID");
 	man->FinishNtuple(0); //numéro du Ntuple
 
 	//prendre le temps de virer ce NTuple et renuméroter les autres.
