@@ -1,5 +1,6 @@
 #include "generator.hh"
 
+#include "G4AccumulableManager.hh"
 #include "G4SPSRandomGenerator.hh"
 #include "G4SPSPosDistribution.hh"
 
@@ -14,6 +15,12 @@ MyPrimaryGenerator::MyPrimaryGenerator()
 	BToB->Prepare();
 	fTotalSourceNumber = 2;
 	fActivities = new G4double[fTotalSourceNumber] {250000, 250000};// dans le run BeamOn mettre la somme des activités
+	for (int i = 0; i < fTotalSourceNumber; i++)
+	{
+		fTotalActivity = fTotalActivity + fActivities[i]; //activitées cumulées nécessaire pour le calcul des seuils si
+																										  //plus de deux sources
+	}
+
 }
 //******************************************************************************
 MyPrimaryGenerator::~MyPrimaryGenerator()
@@ -27,11 +34,18 @@ MyPrimaryGenerator::~MyPrimaryGenerator()
 void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 {
 	//Quand on demande un /run/BeamOn c'est cette méthode qui génére les particules.
-	//Sa définition a été déportée dans une autre clase pour faciliter le changement de source.
-	bool straightToX = false;
+	//Sa définition a été déportée dans une autre classe pour faciliter le changement de source.
 	G4int evtID = anEvent->GetEventID();
+	bool straightToX = false;
 	G4ThreeVector *pos = new G4ThreeVector(0,0,0);
-  if (evtID > fActivities[fSourceID]) {fSourceID++;}; //on peut mettre un tirage aléatoire en remplacement
+	// G4double seuil = fActivities[fSourceID];
+	//
+	// G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
+	// auto particleCount = accumulableManager->GetAccumulable<int>("fParticleCount");
+
+  //if (particleCount->GetValue() > seuil) {fSourceID++; seuil = seuil + fActivities[fSourceID];}; //on peut mettre un tirage aléatoire en remplacement
+	G4double seuil = fActivities[0] / fTotalActivity;
+	fSourceID = G4int(G4UniformRand() < seuil);
 
 	switch (fSourceID)
 	{
@@ -45,6 +59,10 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 	}
 	BToB->Shoot(anEvent,straightToX,pos);
 
+	// anEvent->getRunAction()->CountParticle();
+	// fparticleCount = anEvent->getRunAction()->getCount;
+	// G4cout << "ParticleCount : " << particleCount->GetValue() << " " << "fActivities[fSourceID] : " << fActivities[fSourceID] << " " <<"fSourceID : " << fSourceID << G4endl;
+	// G4cout << "seuil : " << seuil << G4endl;
 
 	int i = 0;
   G4AnalysisManager* man = G4AnalysisManager::Instance();

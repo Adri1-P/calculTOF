@@ -85,8 +85,8 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	logicWorld = new G4LogicalVolume(solidWorld, worldMat,"logicWorld");
 	physWorld = new G4PVPlacement(0, G4ThreeVector(0.,0.,0.), logicWorld, "physWorld", 0, false, 0, true);
 
-	DebugDetector *scanner = new DebugDetector();
-	scanner->Construct(logicWorld,LSO);
+	ScanGE *scanner = new ScanGE();
+	scanner->Construct(logicWorld,LYSO_GE,worldMat);
 	this->SetScoringVolume(scanner->GetScoringVolume());
 
 	return physWorld;

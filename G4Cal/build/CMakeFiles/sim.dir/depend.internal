@@ -85,6 +85,8 @@ CMakeFiles/sim.dir/mysimu.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4ASCIITree.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -193,6 +195,7 @@ CMakeFiles/sim.dir/mysimu.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4ModelingParameters.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4ModelingParameters.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
@@ -385,6 +388,8 @@ CMakeFiles/sim.dir/mysimu.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh
@@ -679,6 +684,8 @@ CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/RotationZ.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -754,6 +761,7 @@ CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistoryPool.hh
@@ -886,6 +894,8 @@ CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh
@@ -2662,6 +2672,8 @@ CMakeFiles/sim.dir/src/action.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/RotationZ.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -2752,6 +2764,7 @@ CMakeFiles/sim.dir/src/action.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistoryPool.hh
@@ -2906,6 +2919,8 @@ CMakeFiles/sim.dir/src/action.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh
@@ -3948,6 +3963,10 @@ CMakeFiles/sim.dir/src/event.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/RotationZ.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AccumulableManager.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AccumulableManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -4014,6 +4033,7 @@ CMakeFiles/sim.dir/src/event.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistoryPool.hh
@@ -4145,6 +4165,8 @@ CMakeFiles/sim.dir/src/event.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh
@@ -4376,6 +4398,10 @@ CMakeFiles/sim.dir/src/generator.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/RotationZ.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AccumulableManager.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AccumulableManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -4451,6 +4477,7 @@ CMakeFiles/sim.dir/src/generator.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistoryPool.hh
@@ -4582,6 +4609,8 @@ CMakeFiles/sim.dir/src/generator.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh
@@ -5503,6 +5532,10 @@ CMakeFiles/sim.dir/src/run.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/RotationZ.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AccumulableManager.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AccumulableManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -5583,6 +5616,7 @@ CMakeFiles/sim.dir/src/run.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistoryPool.hh
@@ -5730,6 +5764,8 @@ CMakeFiles/sim.dir/src/run.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh
@@ -5974,6 +6010,8 @@ CMakeFiles/sim.dir/src/stepping.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/RotationZ.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.h
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/CLHEP/Vector/ThreeVector.icc
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Accumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4AffineTransform.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4Allocator.hh
@@ -6054,6 +6092,7 @@ CMakeFiles/sim.dir/src/stepping.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertiesTable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialPropertyVector.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MaterialTable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4MergeMode.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistory.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4NavigationHistoryPool.hh
@@ -6202,6 +6241,8 @@ CMakeFiles/sim.dir/src/stepping.cc.o
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserStackingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserSteppingAction.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4UserTrackingAction.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.hh
+ /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAccumulable.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.hh
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisManager.icc
  /volatile3/geant4.10.07.p02-GDML_MT_install/include/Geant4/G4VAnalysisReader.hh

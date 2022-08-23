@@ -10,11 +10,12 @@
 class MyEventAction : public G4UserEventAction
 {
 public :
-	MyEventAction(MyRunAction*);
+	MyEventAction(MyRunAction*runAction);
 	~MyEventAction();
 
 	virtual void BeginOfEventAction(const G4Event*);
 	virtual void EndOfEventAction(const G4Event*);
+
 };
 
 #endif

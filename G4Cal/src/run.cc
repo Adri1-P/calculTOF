@@ -1,6 +1,8 @@
 #include "run.hh"
 #include "construction.hh"
 #include "G4RunManager.hh"
+#include "G4AccumulableManager.hh"
+
 
 //******************************************************************************
 //******************************************************************************
@@ -110,6 +112,10 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("d");
 
 	man->FinishNtuple(4);
+	//cf https://geant4-forum.web.cern.ch/t/usage-of-accumulables/8256 et exemple B3a
+	// G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
+  // accumulableManager->CreateAccumulable<G4int>("fParticleCount", 0);
+	// accumulableManager->RegisterAccumulable(fParticleCount);
 }
 
 //******************************************************************************
@@ -124,6 +130,10 @@ void MyRunAction::BeginOfRunAction(const G4Run* run)
 
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
 	man->OpenFile("../../../calculTOF_outputs/G4Outputs/test.root");
+
+	// G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
+	// accumulableManager->Reset();
+
 }
 
 //******************************************************************************
@@ -132,6 +142,11 @@ void MyRunAction::EndOfRunAction(const G4Run*)
 {
 	//ici, on écrit les NTuples et on ferme le fichier
 	G4AnalysisManager *man = G4AnalysisManager::Instance();
+// 	G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
+// auto particleCount = accumulableManager->GetAccumulable<int>("fParticleCount");
+// 	accumulableManager->Merge();
+// 	G4cout << "last merge done" << G4endl;
+// 		G4cout << "ParticleCount : " << particleCount->GetValue() << G4endl;
 
 	man->Write();
 	man->CloseFile();

@@ -16,6 +16,7 @@
 #include "G4GeneralParticleSource.hh"
 
 #include "BackToBackGenerator.hh"
+#include "G4Accumulable.hh"
 
 class MyPrimaryGenerator : public G4VUserPrimaryGeneratorAction
 {
@@ -39,6 +40,7 @@ private :
 	G4int fSourceID = 0;
 	G4int fTotalSourceNumber;
 	G4double *fActivities;
+	G4double fTotalActivity = 0;
 	// G4ThreeVector position;
 };
 
