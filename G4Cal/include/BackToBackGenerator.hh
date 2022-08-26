@@ -19,20 +19,26 @@
 class BackToBackGenerator
 {
 public :
-BackToBackGenerator(G4ParticleGun* Source,
-	G4SPSAngDistribution* angGen,
-	G4SPSRandomGenerator* bias,
-	G4SPSPosDistribution *posGen);
+BackToBackGenerator(G4ParticleGun* Source);
 	~BackToBackGenerator();
 
 	void Prepare();
-	void Shoot(G4Event *anEvent, G4bool straightToX,G4ThreeVector *posXYZ = NULL);
+	void PrepareMultipleSources(G4int TotalSourceNumber,G4double Activities[]);
+	void ShootOne(G4Event *anEvent, G4bool straightToX,G4ThreeVector *posXYZ = NULL);
+	void ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[]);
+	G4ThreeVector* findPosition(G4double listeSeuils[],G4ThreeVector listePos[], G4int a, G4int b);
+
+	// G4ThreeVector* GetListOfPos() {return fPos;}
 
 private :
 	G4ParticleGun* fSource;
-	G4SPSAngDistribution* angGenerator;
-	G4SPSRandomGenerator* biasRndm;
-	G4SPSPosDistribution *posGenerator ;
+	G4int fSourceID = 0;
+	G4int fTotalSourceNumber;
+	G4double *fActivities;
+	G4double *fCumulatedActivities;
+	G4double *fListeSeuils;
+	G4double fTotalActivity = 0;
+	// G4ThreeVector* fPos;
 };
 
 

@@ -14,7 +14,7 @@ single::~single(){delete Single; std::cout << "single::~single" << std::endl;}
 
 //********************************************************************************
 
-void single::createTreeSingle(TTree* Hits, TFile* outputFile)
+void single::createTreeSingle(TTree* Hits,TTree* Source, TFile* outputFile)
 {
  //  entree : arbre de Hits de Geant4, nom du fichier de sortie voulu
  // sachant que le fichier de sortie contiendra des singles.
@@ -26,7 +26,7 @@ void single::createTreeSingle(TTree* Hits, TFile* outputFile)
   /*const TString pattern = "positron";
   if (filename.Contains(pattern)) {fillTreeSingle_positron(Hits,filename);}
   else if (filename.Contains("v2")) {fillTreeSingle_b2b_v2(Hits,filename);}*/
-  fillTreeSingle_b2b(Hits,outputFile);
+  fillTreeSingle_b2b(Hits,Source,outputFile);
 
 
   std::cout << "single::createTreeSingle" << std:: endl;
@@ -42,7 +42,7 @@ std::cout << "single::fillTreeSingle_positron" << std:: endl;
 
 //********************************************************************************
 
-void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
+void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
 {
   // cette fonction traite les hits selon la policy voulue : winnerTakeAll,centroid ou
   // firstHit, appliquée avec une méthode setPolicyToCentroid, setPolicyToWinnerTakeAll
@@ -62,6 +62,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
 	Int_t SrsectorID2,SmoduleID2,SsubmoduleID2,ScrystalID2,SlayerID2;
 	Double_t x1, y1, z1, x2, y2, z2;
   Int_t Scoincidence;
+  Int_t SsourceID;
 
 	//define the variable(s) of interest, type of variable must be respected
 	Double_t X, Y, Z, time, edep; //edep : pondération (éventuelle) du centroïde
@@ -70,6 +71,11 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
   Int_t rsectorID,moduleID,submoduleID,crystalID,layerID;
   Int_t hitNumberTrack1, hitNumberTrack2;
   Char_t particleName; //Char_t* -> seg fault. string : pas le bon type...
+
+  //variables pour la source
+  Int_t sourceID;
+  Int_t sourceEventID;
+  Int_t totalSourceNumber;
 
 	//branches d'intérêt
 	TBranch* bX;
@@ -87,6 +93,9 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
   TBranch* bhitNumberTrack1;
   TBranch* bhitNumberTrack2;
   TBranch* bparticleName;
+  TBranch* bsourceID;
+  TBranch* bsourceEventID;
+  TBranch* btotalSourceNumber;
 
 	// Set branch address
 	Hits->SetBranchAddress("posX", &X, &bX); //on pourrait utiliser les attributs d'un hit directement ? Pas sûr.
@@ -105,6 +114,10 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
   Hits->SetBranchAddress("hitNumberTrack2", &hitNumberTrack2, &bhitNumberTrack2);
   Hits->SetBranchAddress("particleName", &particleName, &bparticleName);
 
+  Source->SetBranchAddress("sourceID", &sourceID, &bsourceID);
+  Source->SetBranchAddress("totalSourceNumber", &totalSourceNumber, &btotalSourceNumber);
+  Source->SetBranchAddress("evtID", &sourceEventID, &bsourceEventID);
+
 	// Get number of hits in the TTree
 	int nH = (int)Hits->GetEntries();
 
@@ -122,6 +135,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
 	 this->Single->Branch("crystalID",&ScrystalID,"crystalID/I");
 	 this->Single->Branch("layerID",&SlayerID,"layerID/I");
    this->Single->Branch("coincidence",&Scoincidence,"coincidence/I");
+   this->Single->Branch("sourceID",&SsourceID,"sourceID/I");
 
 	bool gamma1, gamma2;
 	gamma1 = false;
@@ -157,6 +171,8 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
     bparticleName->GetEntry(i);
     bhitNumberTrack1->GetEntry(i);
     bhitNumberTrack2->GetEntry(i);
+    bsourceID->GetEntry(i);
+    bsourceEventID->GetEntry(i);
 
     currentEvent = eventID;
 
@@ -176,6 +192,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
 
 		while ((i < nH) && (eventID == currentEvent)) //loop over hits of the same event
 		{
+      std::cout << "bsourceEventID : " << sourceEventID << "eventID : " << eventID << std::endl;
       s_Hit aHit;
       aHit.X = X;
       aHit.Y = Y;
@@ -192,6 +209,7 @@ void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
       aHit.particleName = particleName;
       aHit.hitNumberTrack1 = hitNumberTrack1;
       aHit.hitNumberTrack2 = hitNumberTrack2;
+      aHit.sourceID = sourceID;
 
       if(this->policy == "winnerTakeAll")
       {processOneHit_b2b_WTA(aHit,Single1,Single2,energie1,energie2,gamma1,gamma2);}

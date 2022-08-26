@@ -91,9 +91,9 @@ int main(int argc, char** argv)
   }
   else // interactive mode : define UI session
   {
-    UImanager->ApplyCommand("/run/verbose 1");
-    UImanager->ApplyCommand("/event/verbose 1");
-    UImanager->ApplyCommand("/tracking/verbose 1");
+    // UImanager->ApplyCommand("/run/verbose 1");
+    // UImanager->ApplyCommand("/event/verbose 1");
+    // UImanager->ApplyCommand("/tracking/verbose 1");
     UImanager->ApplyCommand("/control/execute ../macros/vis.mac");
     ui->SessionStart();
     delete ui;

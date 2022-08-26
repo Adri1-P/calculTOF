@@ -25,23 +25,13 @@ public :
 	~MyPrimaryGenerator();
 
 	virtual void GeneratePrimaries(G4Event*);
-  // void setActivities(G4double someActivities[]) {activities = someActivities;}
-	// void setSourceID (G4int anID) {sourceID = anID;}
-	void setTotalSourceNumber(G4int number) {fTotalSourceNumber = number;}
+  
 
 
 private :
 	G4ParticleGun* fSource;
-	G4SPSAngDistribution* angGenerator;
-	G4SPSRandomGenerator* biasRndm;
-	G4SPSPosDistribution *posGenerator ;
-	BackToBackGenerator * BToB = new BackToBackGenerator(fSource,angGenerator,biasRndm,posGenerator);
+	BackToBackGenerator * BToB = new BackToBackGenerator(fSource);
 
-	G4int fSourceID = 0;
-	G4int fTotalSourceNumber;
-	G4double *fActivities;
-	G4double fTotalActivity = 0;
-	// G4ThreeVector position;
 };
 
 

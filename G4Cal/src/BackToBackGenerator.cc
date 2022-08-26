@@ -13,17 +13,9 @@
 //Si possible, trouver un moyen pour que la méthode Shoot soit plus flexible.
 //******************************************************************************
 
-BackToBackGenerator::BackToBackGenerator(G4ParticleGun* Source,
-  G4SPSAngDistribution* angGen,
-  G4SPSRandomGenerator* bias,
-  G4SPSPosDistribution *posGen)
+BackToBackGenerator::BackToBackGenerator(G4ParticleGun* Source)
 {
-  //de ces arguments, seul fSource est utile ensuite
-  //du moins pour le moment, je garde donc les autres.
    fSource = Source;
-	 angGenerator = angGen;
-	 biasRndm = bias;
-	 posGenerator = posGen;
 }
 
 //******************************************************************************
@@ -36,17 +28,35 @@ void BackToBackGenerator::Prepare()
 {
 	G4int n_particle = 1;
 	fSource = new G4ParticleGun(n_particle);
-
 	G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
 	G4ParticleDefinition *particle = particleTable->FindParticle("gamma");
-
-	fSource->SetParticleMomentum(511.*keV); //default is meV
+  fSource->SetParticleMomentum(511.*keV); //default is meV
 	fSource->SetParticleDefinition(particle);
 }
 
 //******************************************************************************
 
-void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4ThreeVector *posXYZ)
+void BackToBackGenerator::PrepareMultipleSources(G4int TotalSourceNumber,G4double Activities[])
+{
+	this->Prepare();
+  fTotalSourceNumber = TotalSourceNumber;
+  fActivities = Activities;
+
+  fCumulatedActivities = new G4double[fTotalSourceNumber];
+  fListeSeuils = new G4double[fTotalSourceNumber];
+
+  for (int i = 0; i <fTotalSourceNumber;i++)
+  {
+    fTotalActivity = fTotalActivity + fActivities[i];
+    fCumulatedActivities[i] = fTotalActivity;
+  }
+  for (int i = 0; i <fTotalSourceNumber;i++)
+  {
+    fListeSeuils[i] = fCumulatedActivities[i]/fTotalActivity;
+  }
+}
+
+void BackToBackGenerator::ShootOne(G4Event *anEvent, G4bool straightToX, G4ThreeVector *posXYZ)
 {
 	//adapted from https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/extended/eventgenerator/particleGun/src/PrimaryGeneratorAction1.cc
 	const G4double r = 0.0*sqrt(G4UniformRand())*mm; // rayon du cylindre
@@ -63,21 +73,75 @@ void BackToBackGenerator::Shoot(G4Event *anEvent, G4bool straightToX, G4ThreeVec
   else if (posXYZ != NULL) {pos = (*posXYZ);}
   else                     {pos.set(r*ux,r*uy,z);}
 
-  fSource->SetParticlePosition(pos);
   //end adapted from
-
-  G4ThreeVector mom;
+  G4ParticleMomentum mom; //G4ParticleMomentum est un typedef de G4ThreeVector
   if (straightToX) {mom.set(1,0,0);}
 	else{mom = G4RandomDirection();}
 
-	fSource->SetParticleMomentumDirection(mom);
+  fSource->SetParticleMomentumDirection(mom);
 	fSource->GeneratePrimaryVertex(anEvent);
 
 	fSource->SetParticleMomentumDirection(-mom);
   fSource->GeneratePrimaryVertex(anEvent);
 
+  int i = 0;
+  G4AnalysisManager* man = G4AnalysisManager::Instance();
 
+  man->FillNtupleDColumn(0, i, pos.x());
+  i++;
+  man->FillNtupleDColumn(0, i, pos.y());
+  i++;
+  man->FillNtupleDColumn(0, i, pos.z());
+  i++;
+  // man->FillNtupleIColumn(0, i, evtID);
+  // i++;
+  // // man->FillNtupleIColumn(0, i, fTotalSourceNumber);
+  // // i++;
+  // // man->FillNtupleIColumn(0, i, fSourceID+1);
+  // // i++;
+  man->AddNtupleRow(0);
 }
 
+void BackToBackGenerator::ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[])
+{
+G4ThreeVector* fSourcePos = findPosition(fListeSeuils,listePos,0,fTotalSourceNumber-1);
+ShootOne(anEvent, straightToX, fSourcePos);
+}
+
+
+G4ThreeVector* BackToBackGenerator::findPosition(G4double listeSeuils[],G4ThreeVector listePos[], G4int a, G4int b)
+//une dichotomie (pas en récursif, C++ oblige)
+//Trouve la position entre les deux seuils
+//décidée par la valeur de k
+{
+
+
+  G4int l = b-a;
+  G4int milieu;
+  G4double k,seuil;
+  k = G4UniformRand();
+  while(l >0)
+  {
+    if (l%2) //longueur de l'intervalle impaire
+    {
+      milieu = (l-1)/2;
+      seuil = listeSeuils[milieu];
+
+      if (k<seuil) {b = milieu;}
+      else     {a = milieu+1;}
+    }
+    else //longueur de l'intervalle paire
+    {
+      milieu = l/2;
+      seuil = listeSeuils[milieu];
+
+      if (k<seuil) {b = milieu;}
+      else     {a = milieu+1;}
+    }
+    l = b-a;
+  }
+  return &listePos[a];
+
+}
 //******************************************************************************
 //******************************************************************************

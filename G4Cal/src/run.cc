@@ -17,8 +17,8 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("SposY");
 	man->CreateNtupleDColumn("SposZ");
 	man->CreateNtupleIColumn("evtID");
-	man->CreateNtupleIColumn("totalSourceNumber");
-	man->CreateNtupleIColumn("sourceID");
+	// man->CreateNtupleIColumn("totalSourceNumber");
+	// man->CreateNtupleIColumn("sourceID");
 	man->FinishNtuple(0); //numéro du Ntuple
 
 	//prendre le temps de virer ce NTuple et renuméroter les autres.
@@ -62,8 +62,9 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleIColumn("moduleID");
 	man->CreateNtupleIColumn("rsectorID");
 	man->CreateNtupleSColumn("particleName");//pas dans Gate
-	man->CreateNtupleDColumn("kineticEnergy"); //pas dans Gate
-	man->CreateNtupleSColumn("processName");
+	// man->CreateNtupleDColumn("kineticEnergy"); //pas dans Gate
+	// man->CreateNtupleSColumn("processName");
+	man->CreateNtupleIColumn("sourceID");
 	man->FinishNtuple(2);
 
 	man->CreateNtuple("Singles", "Singles"); //noms vérifiés comme Gate

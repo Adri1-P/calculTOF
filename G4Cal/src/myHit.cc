@@ -22,7 +22,8 @@ void myHit::fillHitInfo(G4int myhitID,G4int myhitNumberTrack1, G4int myhitNumber
 												G4ThreeVector myhitPos,
 												G4double myhitEdep, G4double myhitTime,
 												G4int myhitLayerID, G4int myhitCrystalID,	G4int myhitSubmoduleID, G4int myhitModuleID, G4int myhitRsectorID,
-												G4String myhitParticleName)
+												G4String myhitParticleName,
+												G4int myhitSourceID)
 {
 	//comme son nom l'indique, cette fonction se contente de recopier les propriétés du hit passées en argument dans le hit lui-même.
 	hitID = myhitID;
@@ -44,6 +45,7 @@ void myHit::fillHitInfo(G4int myhitID,G4int myhitNumberTrack1, G4int myhitNumber
 	hitRsectorID = myhitRsectorID;
 
 	hitParticleName = myhitParticleName;
+	hitSourceID = myhitSourceID;
 }
 
 //******************************************************************************
@@ -107,6 +109,8 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 		man->FillNtupleIColumn(NTupleID, i, this->gethitRsectorID());
 		i++;
 		man->FillNtupleSColumn(NTupleID, i, this->gethitParticleName());
+		i++;
+		man->FillNtupleIColumn(NTupleID, i, this->gethitSourceID());
 		i++;
 
 		int j=0;

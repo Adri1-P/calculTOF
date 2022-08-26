@@ -11,6 +11,7 @@
 #include "G4EventManager.hh"
 #include "G4RunManager.hh"
 #include "G4GDMLParser.hh"
+#include "G4GeneralParticleSourceData.hh"
 
 #include <math.h>
 
@@ -51,6 +52,8 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	//event
 	const G4Event * event = G4RunManager::GetRunManager()->GetCurrentEvent();
 	G4int evt = event->GetEventID();
+	G4GeneralParticleSourceData* G4GPSData = G4GeneralParticleSourceData::Instance();
+	G4int sourceID = G4GPSData->GetCurrentSourceIdx();
 
 	//step
 	G4Track* track = aStep->GetTrack();
@@ -101,7 +104,10 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	G4int moduleID = touchable->GetReplicaNumber(0);
 	G4int rsectorID = touchable->GetReplicaNumber(0);
 
+
+
 	if (edep <= 0) {return{true};}
+
 
 	//On a détecté un hit, on lui assigne ses propriétés.
 	if (HitsCollection != NULL)
@@ -120,7 +126,8 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 		submoduleID,
 		moduleID,
 		rsectorID,
-	  particleName);
+	  particleName,
+		sourceID);
 
 		//cette fonction s'occupe de remplir le NTuple pour le hits. S'il y a un champ à rajouter, c'est ici.
 		//Mais il faut aussi modifier le hit.
