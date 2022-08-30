@@ -72,6 +72,7 @@ void BackToBackGenerator::ShootOne(G4Event *anEvent, G4bool straightToX, G4Three
   if(straightToX)          {pos.set(0,0,0);}
   else if (posXYZ != NULL) {pos = (*posXYZ);}
   else                     {pos.set(r*ux,r*uy,z);}
+  fSource->SetParticlePosition(pos);
 
   //end adapted from
   G4ParticleMomentum mom; //G4ParticleMomentum est un typedef de G4ThreeVector
@@ -102,14 +103,56 @@ void BackToBackGenerator::ShootOne(G4Event *anEvent, G4bool straightToX, G4Three
   man->AddNtupleRow(0);
 }
 
-void BackToBackGenerator::ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[])
+void BackToBackGenerator::ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[],char listOfShape[], G4double listOfRadius[], G4double listOfz[])
 {
-G4ThreeVector* fSourcePos = findPosition(fListeSeuils,listePos,0,fTotalSourceNumber-1);
-ShootOne(anEvent, straightToX, fSourcePos);
+G4int id = findIndex(fListeSeuils,listePos,0,fTotalSourceNumber-1);
+G4ThreeVector* pos = &listePos[id];
+char shape = listOfShape[id];
+G4double radius = listOfRadius[id];
+if (shape == 'c')
+{
+  G4double z = listOfz[id];
+  ShootFromACylinder(anEvent,pos,radius,z);
+}
+else
+{
+  ShootFromASphere(anEvent,pos,radius);
+}
 }
 
+void BackToBackGenerator::ShootFromASphere(G4Event* anEvent,G4ThreeVector* centerCoord, G4double radius)
+{
+	const G4double r = radius*pow(G4UniformRand(),1/3.)*mm; // rayon. Racine cubique pour la dimension trois, je ne sais plus pourquoi
 
-G4ThreeVector* BackToBackGenerator::findPosition(G4double listeSeuils[],G4ThreeVector listePos[], G4int a, G4int b)
+  //vertex 1 uniform on
+  G4double alpha = CLHEP::twopi*G4UniformRand();
+  G4double beta = 2 * asin(sqrt(2*G4UniformRand() -1)); //inverse de la CDF venant du déterminant d'une jacobienne utilisée pour le passage cartésiennes vers sphérique : https://en.wikibooks.org/wiki/Mathematica/Uniform_Spherical_Distribution
+  G4double ux = std::cos(alpha)*std::sin(beta);
+  G4double uy = std::sin(alpha)*std::sin(beta);
+  G4double uz = std::cos(beta);
+
+  G4ThreeVector pos(r*ux,r*uy,r*uz);
+  pos = pos + (*centerCoord);
+  ShootOne(anEvent, false, &pos);
+}
+
+void BackToBackGenerator::ShootFromACylinder(G4Event* anEvent, G4ThreeVector* centerCoord, G4double radius,G4double halfz)
+{
+  //adapted from https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/extended/eventgenerator/particleGun/src/PrimaryGeneratorAction1.cc
+	const G4double r = radius*sqrt(G4UniformRand())*mm; // rayon du cylindre
+
+  //vertex 1 uniform on cylinder
+  G4double alpha = CLHEP::twopi*G4UniformRand();  //alpha uniform in (0, 2*pi)
+  G4double ux = std::cos(alpha);
+  G4double uy = std::sin(alpha);
+  G4double z = halfz*(2*G4UniformRand() - 1);
+
+  G4ThreeVector pos(r*ux,r*uy,z);
+  pos = pos + (*centerCoord);
+  ShootOne(anEvent, false, &pos);
+}
+
+G4int BackToBackGenerator::findIndex(G4double listeSeuils[],G4ThreeVector listePos[], G4int a, G4int b)
 //une dichotomie (pas en récursif, C++ oblige)
 //Trouve la position entre les deux seuils
 //décidée par la valeur de k
@@ -122,25 +165,25 @@ G4ThreeVector* BackToBackGenerator::findPosition(G4double listeSeuils[],G4ThreeV
   k = G4UniformRand();
   while(l >0)
   {
-    if (l%2) //longueur de l'intervalle impaire
+    if ((a+b)%2) //longueur de l'intervalle impaire
     {
-      milieu = (l-1)/2;
+      milieu = (a+b-1)/2;
       seuil = listeSeuils[milieu];
 
       if (k<seuil) {b = milieu;}
-      else     {a = milieu+1;}
+      else     {a = milieu; if (l ==1) {a = b;}}
     }
     else //longueur de l'intervalle paire
     {
-      milieu = l/2;
+      milieu = (a+b)/2;
       seuil = listeSeuils[milieu];
 
       if (k<seuil) {b = milieu;}
-      else     {a = milieu+1;}
+      else     {a = milieu; if (l ==1) {a = b;}}
     }
     l = b-a;
   }
-  return &listePos[a];
+  return a;
 
 }
 //******************************************************************************

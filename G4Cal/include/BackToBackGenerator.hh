@@ -25,8 +25,12 @@ BackToBackGenerator(G4ParticleGun* Source);
 	void Prepare();
 	void PrepareMultipleSources(G4int TotalSourceNumber,G4double Activities[]);
 	void ShootOne(G4Event *anEvent, G4bool straightToX,G4ThreeVector *posXYZ = NULL);
-	void ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[]);
-	G4ThreeVector* findPosition(G4double listeSeuils[],G4ThreeVector listePos[], G4int a, G4int b);
+	void ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[],char listOfShape[], G4double listOfRadius[], G4double listOfz[]);
+	G4int findIndex(G4double listeSeuils[], G4ThreeVector listePos[], G4int a, G4int b);
+	void ShootFromASphere(G4Event* anEvent, G4ThreeVector* centerCoord, G4double radius);
+	void ShootFromACylinder(G4Event* anEvent, G4ThreeVector* centerCoord, G4double radius,G4double halfz);
+
+
 
 	// G4ThreeVector* GetListOfPos() {return fPos;}
 

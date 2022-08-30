@@ -54,6 +54,9 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("posX");
 	man->CreateNtupleDColumn("posY");
 	man->CreateNtupleDColumn("posZ");
+	man->CreateNtupleDColumn("SposX");
+	man->CreateNtupleDColumn("SposY");
+	man->CreateNtupleDColumn("SposZ");
 	man->CreateNtupleDColumn("time");
 	man->CreateNtupleDColumn("edep");
 	man->CreateNtupleIColumn("layerID");
@@ -62,9 +65,6 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleIColumn("moduleID");
 	man->CreateNtupleIColumn("rsectorID");
 	man->CreateNtupleSColumn("particleName");//pas dans Gate
-	// man->CreateNtupleDColumn("kineticEnergy"); //pas dans Gate
-	// man->CreateNtupleSColumn("processName");
-	man->CreateNtupleIColumn("sourceID");
 	man->FinishNtuple(2);
 
 	man->CreateNtuple("Singles", "Singles"); //noms vérifiés comme Gate

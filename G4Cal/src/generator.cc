@@ -14,9 +14,11 @@
 MyPrimaryGenerator::MyPrimaryGenerator()
 {
  // BToB->Prepare();
- G4double listOfActivities[] = {250000, 250000,100000};
+ // G4double listOfActivities[] = {10000, 10000,10000,10000,99999};
+ G4double listOfActivities[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000};
 
- BToB->PrepareMultipleSources(3,listOfActivities);
+
+ BToB->PrepareMultipleSources(7,listOfActivities);
 	// fTotalSourceNumber = 2;
 	// fActivities = new G4double[fTotalSourceNumber] {250000, 250000};// dans le run BeamOn mettre la somme des activités
 	// for (int i = 0; i < fTotalSourceNumber; i++)
@@ -59,12 +61,19 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 
 	// G4ThreeVector pos(10. * mm,0.,0.);
 	// BToB->ShootOne(anEvent,straightToX,&pos);
-	G4ThreeVector pos1(10,0,0);
-	G4ThreeVector pos2(-10,0,0);
-	G4ThreeVector pos3(50,0,0);
+  G4ThreeVector pos1(-50,50,0);
+	G4ThreeVector pos2(50,50,0);
+	G4ThreeVector pos3(-50,0,0);
+	G4ThreeVector pos4(-25,0,0);
+  G4ThreeVector pos5(0,0,0);
+  G4ThreeVector pos6(25,0,0);
+  G4ThreeVector pos7(50,0,0);
 
-	G4ThreeVector listOfPos[] = {pos1, pos2,pos3};
-	BToB->ShootMultiple(anEvent,straightToX,listOfPos);
+	G4ThreeVector listOfPos[] = {pos1, pos2, pos3, pos4, pos5, pos6, pos7};
+  char listOfShape[] = {'c','c','s','s','s','s','s'};
+  G4double listOfRadius[] = {10,5,10,10,10,10,10};
+  G4double listOfz[] = {10,10};
+	BToB->ShootMultiple(anEvent, straightToX, listOfPos, listOfShape,  listOfRadius, listOfz);
 
 	// anEvent->getRunAction()->CountParticle();
 	// fparticleCount = anEvent->getRunAction()->getCount;

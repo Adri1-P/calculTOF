@@ -52,8 +52,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	//event
 	const G4Event * event = G4RunManager::GetRunManager()->GetCurrentEvent();
 	G4int evt = event->GetEventID();
-	G4GeneralParticleSourceData* G4GPSData = G4GeneralParticleSourceData::Instance();
-	G4int sourceID = G4GPSData->GetCurrentSourceIdx();
+	G4ThreeVector posSource = event->GetPrimaryVertex(0)->GetPosition();
 
 	//step
 	G4Track* track = aStep->GetTrack();
@@ -99,10 +98,10 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	//il va y avoir une seg fault.
 	// Pour y remédier, il suffit de mettre à 0 les étages qui n'existent pas.
 	G4int layerID = touchable->GetReplicaNumber(0);
-	G4int crystalID = touchable->GetReplicaNumber(0);
-	G4int submoduleID = touchable->GetReplicaNumber(0);
-	G4int moduleID = touchable->GetReplicaNumber(0);
-	G4int rsectorID = touchable->GetReplicaNumber(0);
+	G4int crystalID = touchable->GetReplicaNumber(1);
+	G4int submoduleID = touchable->GetReplicaNumber(2);
+	G4int moduleID = touchable->GetReplicaNumber(3);
+	G4int rsectorID = touchable->GetReplicaNumber(4);
 
 
 
@@ -119,15 +118,14 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	  else if (trackID==2) {hitNumberTrack2++;}
 
 		hit->fillHitInfo(hitNumber,hitNumberTrack1, hitNumberTrack2, trackID, evt,parentID,
-		posPhoton,
+		posPhoton,posSource,
 		edep,globalTime,
 		layerID,
 		crystalID,
 		submoduleID,
 		moduleID,
 		rsectorID,
-	  particleName,
-		sourceID);
+	  particleName);
 
 		//cette fonction s'occupe de remplir le NTuple pour le hits. S'il y a un champ à rajouter, c'est ici.
 		//Mais il faut aussi modifier le hit.
