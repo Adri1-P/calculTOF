@@ -10,7 +10,6 @@
 //******************************************************************************
 //Cette classe définit une source de BackToBacks.
 //Pour d'autres sources, s'en inspirer
-//Si possible, trouver un moyen pour que la méthode Shoot soit plus flexible.
 //******************************************************************************
 
 BackToBackGenerator::BackToBackGenerator(G4ParticleGun* Source)
@@ -45,6 +44,7 @@ void BackToBackGenerator::PrepareMultipleSources(G4int TotalSourceNumber,G4doubl
   fCumulatedActivities = new G4double[fTotalSourceNumber];
   fListeSeuils = new G4double[fTotalSourceNumber];
 
+  //Représente le calcul des seuils pour choisir la source aléatoirement, tout en tenant compte des activités de chacune
   for (int i = 0; i <fTotalSourceNumber;i++)
   {
     fTotalActivity = fTotalActivity + fActivities[i];
@@ -56,28 +56,18 @@ void BackToBackGenerator::PrepareMultipleSources(G4int TotalSourceNumber,G4doubl
   }
 }
 
-void BackToBackGenerator::ShootOne(G4Event *anEvent, G4bool straightToX, G4ThreeVector *posXYZ)
+void BackToBackGenerator::ShootOne(G4Event *anEvent,G4ThreeVector *posXYZ,G4ThreeVector *momXYZ)
 {
-	//adapted from https://gitlab.cern.ch/geant4/geant4/-/blob/master/examples/extended/eventgenerator/particleGun/src/PrimaryGeneratorAction1.cc
-	const G4double r = 0.0*sqrt(G4UniformRand())*mm; // rayon du cylindre
-  const G4double zmax = 0*mm; //0 source ponctuelle  135 source linéaire de 270mm
+  //fonction de base qui tire deux backToBack par event.
 
-  //vertex 1 uniform on cylinder
-  G4double alpha = CLHEP::twopi*G4UniformRand();  //alpha uniform in (0, 2*pi)
-  G4double ux = std::cos(alpha);
-  G4double uy = std::sin(alpha);
-  G4double z = zmax*(2*G4UniformRand() - 1);  //z uniform in (-zmax, +zmax)
-
-  G4ThreeVector pos; //initialisation obligatoire...
-  if(straightToX)          {pos.set(0,0,0);}
-  else if (posXYZ != NULL) {pos = (*posXYZ);}
-  else                     {pos.set(r*ux,r*uy,z);}
+  G4ThreeVector pos;
+  if (posXYZ != NULL) {pos = (*posXYZ);}
+  else                {G4double rdmPos = (2*G4UniformRand() -1) *20;pos.set(rdmPos,rdmPos,rdmPos);}
   fSource->SetParticlePosition(pos);
 
-  //end adapted from
   G4ParticleMomentum mom; //G4ParticleMomentum est un typedef de G4ThreeVector
-  if (straightToX) {mom.set(1,0,0);}
-	else{mom = G4RandomDirection();}
+  if (momXYZ != NULL)  {mom = (*momXYZ);}
+	else                 {mom = G4RandomDirection();}
 
   fSource->SetParticleMomentumDirection(mom);
 	fSource->GeneratePrimaryVertex(anEvent);
@@ -94,30 +84,25 @@ void BackToBackGenerator::ShootOne(G4Event *anEvent, G4bool straightToX, G4Three
   i++;
   man->FillNtupleDColumn(0, i, pos.z());
   i++;
-  // man->FillNtupleIColumn(0, i, evtID);
-  // i++;
-  // // man->FillNtupleIColumn(0, i, fTotalSourceNumber);
-  // // i++;
-  // // man->FillNtupleIColumn(0, i, fSourceID+1);
-  // // i++;
   man->AddNtupleRow(0);
 }
 
-void BackToBackGenerator::ShootMultiple(G4Event *anEvent, G4bool straightToX,G4ThreeVector listePos[],char listOfShape[], G4double listOfRadius[], G4double listOfz[])
+void BackToBackGenerator::ShootMultiple(G4Event *anEvent,G4ThreeVector listePos[],char listOfShape[], G4double listOfRadius[], G4double listOfz[])
 {
-G4int id = findIndex(fListeSeuils,listePos,0,fTotalSourceNumber-1);
-G4ThreeVector* pos = &listePos[id];
-char shape = listOfShape[id];
-G4double radius = listOfRadius[id];
-if (shape == 'c')
-{
-  G4double z = listOfz[id];
-  ShootFromACylinder(anEvent,pos,radius,z);
-}
-else
-{
-  ShootFromASphere(anEvent,pos,radius);
-}
+  G4int id = findIndex(fListeSeuils,listePos,0,fTotalSourceNumber-1);
+  G4ThreeVector* pos = &listePos[id];
+  char shape = listOfShape[id];
+  G4double radius = listOfRadius[id];
+
+  if (shape == 'c') //si c'est un cylindre
+  {
+    G4double z = listOfz[id];
+    ShootFromACylinder(anEvent,pos,radius,z);
+  }
+  else //seules deux formes possibles
+  {
+    ShootFromASphere(anEvent,pos,radius);
+  }
 }
 
 void BackToBackGenerator::ShootFromASphere(G4Event* anEvent,G4ThreeVector* centerCoord, G4double radius)
@@ -133,7 +118,7 @@ void BackToBackGenerator::ShootFromASphere(G4Event* anEvent,G4ThreeVector* cente
 
   G4ThreeVector pos(r*ux,r*uy,r*uz);
   pos = pos + (*centerCoord);
-  ShootOne(anEvent, false, &pos);
+  ShootOne(anEvent, &pos);
 }
 
 void BackToBackGenerator::ShootFromACylinder(G4Event* anEvent, G4ThreeVector* centerCoord, G4double radius,G4double halfz)
@@ -149,7 +134,7 @@ void BackToBackGenerator::ShootFromACylinder(G4Event* anEvent, G4ThreeVector* ce
 
   G4ThreeVector pos(r*ux,r*uy,z);
   pos = pos + (*centerCoord);
-  ShootOne(anEvent, false, &pos);
+  ShootOne(anEvent, &pos);
 }
 
 G4int BackToBackGenerator::findIndex(G4double listeSeuils[],G4ThreeVector listePos[], G4int a, G4int b)
@@ -157,12 +142,11 @@ G4int BackToBackGenerator::findIndex(G4double listeSeuils[],G4ThreeVector listeP
 //Trouve la position entre les deux seuils
 //décidée par la valeur de k
 {
-
-
   G4int l = b-a;
   G4int milieu;
   G4double k,seuil;
   k = G4UniformRand();
+
   while(l >0)
   {
     if ((a+b)%2) //longueur de l'intervalle impaire
@@ -183,8 +167,8 @@ G4int BackToBackGenerator::findIndex(G4double listeSeuils[],G4ThreeVector listeP
     }
     l = b-a;
   }
-  return a;
 
+  return a;
 }
 //******************************************************************************
 //******************************************************************************
