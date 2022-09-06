@@ -56,7 +56,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 
 	//step
 	G4Track* track = aStep->GetTrack();
-	G4double edep = aStep->GetTotalEnergyDeposit();
+	G4float edep = aStep->GetTotalEnergyDeposit();
 
 	//Track
 	G4int trackID = track->GetTrackID();

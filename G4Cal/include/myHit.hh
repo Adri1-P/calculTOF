@@ -38,7 +38,7 @@ public:
 	G4ThreeVector gethitPos() {return hitPos;}
 	G4ThreeVector gethitSourcePos() {return hitSourcePos;}
 
-	G4double gethitEdep() {return hitEdep;}
+	G4float gethitEdep() {return hitEdep;}
 	G4double gethitTime() {return hitTime;}
 
 	G4int gethitLayerID() {return hitLayerID;}
@@ -62,7 +62,7 @@ private :
 
 	G4ThreeVector hitPos,hitSourcePos;
 
-	G4double hitEdep;
+	G4float hitEdep;
 	G4double hitTime;
 
 	G4int hitLayerID;

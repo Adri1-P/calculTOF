@@ -8,7 +8,7 @@
 /gate/digitizer/Singles/insert                          adder
 /gate/digitizer/Singles/adder/positionPolicy           energyWeightedCentroid
 /gate/digitizer/Singles/insert                          readout
-/gate/digitizer/Singles/readout/setPolicy               TakeEnergyCentroid #TakeEnergyWinner
+/gate/digitizer/Singles/readout/setPolicy               TakeEnergyWinner #TakeEnergyCentroid #
 /gate/digitizer/Singles/readout/setDepth 1
 
 /gate/digitizer/Coincidences/setWindow 4.57 ns

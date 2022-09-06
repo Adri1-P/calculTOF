@@ -75,7 +75,7 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 
 		G4AnalysisManager* man = G4AnalysisManager::Instance();
 		int i =0;
-  	
+
 		man->FillNtupleIColumn(NTupleID, i, this->gethitID());
 		i++;
 		man->FillNtupleIColumn(NTupleID, i, this->gethitNumberTrack1());
@@ -88,11 +88,11 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 		i++;
 		man->FillNtupleIColumn(NTupleID, i, this->gethitParentID());
 		i++;
-		man->FillNtupleDColumn(NTupleID, i, this->gethitPos()[0]);
+		man->FillNtupleFColumn(NTupleID, i, this->gethitPos()[0]);
 		i++;
-		man->FillNtupleDColumn(NTupleID, i, this->gethitPos()[1]);
+		man->FillNtupleFColumn(NTupleID, i, this->gethitPos()[1]);
 		i++;
-		man->FillNtupleDColumn(NTupleID, i, this->gethitPos()[2]);
+		man->FillNtupleFColumn(NTupleID, i, this->gethitPos()[2]);
 		i++;
 		man->FillNtupleDColumn(NTupleID, i, this->gethitSourcePos()[0]);
 		i++;
@@ -102,7 +102,7 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 		i++;
 		man->FillNtupleDColumn(NTupleID, i, this->gethitTime());
 		i++;
-		man->FillNtupleDColumn(NTupleID, i, this->gethitEdep());
+		man->FillNtupleFColumn(NTupleID, i, this->gethitEdep());
 		i++;
 		man->FillNtupleIColumn(NTupleID, i, this->gethitLayerID());
 		i++;

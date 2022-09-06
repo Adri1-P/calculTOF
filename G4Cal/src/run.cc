@@ -51,14 +51,14 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleIColumn("trackID");
 	man->CreateNtupleIColumn("eventID"); //I pour integer
 	man->CreateNtupleIColumn("parentID");
-	man->CreateNtupleDColumn("posX");
-	man->CreateNtupleDColumn("posY");
-	man->CreateNtupleDColumn("posZ");
+	man->CreateNtupleFColumn("posX");
+	man->CreateNtupleFColumn("posY");
+	man->CreateNtupleFColumn("posZ");
 	man->CreateNtupleDColumn("SposX");
 	man->CreateNtupleDColumn("SposY");
 	man->CreateNtupleDColumn("SposZ");
 	man->CreateNtupleDColumn("time");
-	man->CreateNtupleDColumn("edep");
+	man->CreateNtupleFColumn("edep");
 	man->CreateNtupleIColumn("layerID");
 	man->CreateNtupleIColumn("crystalID");
 	man->CreateNtupleIColumn("submoduleID");

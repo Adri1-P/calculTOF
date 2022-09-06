@@ -14,7 +14,7 @@ single::~single(){delete Single; std::cout << "single::~single" << std::endl;}
 
 //********************************************************************************
 
-void single::createTreeSingle(TTree* Hits,TTree* Source, TFile* outputFile)
+void single::createTreeSingle(TTree* Hits, TFile* outputFile)
 {
  //  entree : arbre de Hits de Geant4, nom du fichier de sortie voulu
  // sachant que le fichier de sortie contiendra des singles.
@@ -26,7 +26,7 @@ void single::createTreeSingle(TTree* Hits,TTree* Source, TFile* outputFile)
   /*const TString pattern = "positron";
   if (filename.Contains(pattern)) {fillTreeSingle_positron(Hits,filename);}
   else if (filename.Contains("v2")) {fillTreeSingle_b2b_v2(Hits,filename);}*/
-  fillTreeSingle_b2b(Hits,Source,outputFile);
+  fillTreeSingle_b2b(Hits,outputFile);
 
 
   std::cout << "single::createTreeSingle" << std:: endl;
@@ -42,7 +42,7 @@ std::cout << "single::fillTreeSingle_positron" << std:: endl;
 
 //********************************************************************************
 
-void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
+void single::fillTreeSingle_b2b(TTree* Hits, TFile* outputFile)
 {
   // cette fonction traite les hits selon la policy voulue : winnerTakeAll,centroid ou
   // firstHit, appliquée avec une méthode setPolicyToCentroid, setPolicyToWinnerTakeAll
@@ -54,28 +54,26 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
 
 
 	//variables pour le single
-	Double_t energie, energie1, energie2, globalPosX,temps,globalPosY, globalPosZ;
+	Double_t temps;
+  Float_t globalPosX, globalPosY, globalPosZ, energie, energie1, energie2;
 	Int_t STrackID;
 	Int_t SeventID;
 	Int_t SrsectorID,SmoduleID,SsubmoduleID,ScrystalID,SlayerID;
 	Int_t SrsectorID1,SmoduleID1,SsubmoduleID1,ScrystalID1,SlayerID1;
 	Int_t SrsectorID2,SmoduleID2,SsubmoduleID2,ScrystalID2,SlayerID2;
-	Double_t x1, y1, z1, x2, y2, z2;
+	Float_t x1, y1, z1, x2, y2, z2;
   Int_t Scoincidence;
-  Int_t SsourceID;
+  Double_t SsourcePosX,SsourcePosY,SsourcePosZ;
 
 	//define the variable(s) of interest, type of variable must be respected
-	Double_t X, Y, Z, time, edep; //edep : pondération (éventuelle) du centroïde
+	Float_t X, Y, Z, edep; //edep : pondération (éventuelle) du centroïde
+  Double_t time;
 	Int_t eventID;
 	Int_t trackID;
   Int_t rsectorID,moduleID,submoduleID,crystalID,layerID;
   Int_t hitNumberTrack1, hitNumberTrack2;
   Char_t particleName; //Char_t* -> seg fault. string : pas le bon type...
-
-  //variables pour la source
-  Int_t sourceID;
-  Int_t sourceEventID;
-  Int_t totalSourceNumber;
+  Double_t sourcePosX,sourcePosY,sourcePosZ;
 
 	//branches d'intérêt
 	TBranch* bX;
@@ -93,9 +91,10 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
   TBranch* bhitNumberTrack1;
   TBranch* bhitNumberTrack2;
   TBranch* bparticleName;
-  TBranch* bsourceID;
-  TBranch* bsourceEventID;
-  TBranch* btotalSourceNumber;
+  TBranch* bsourcePosX;
+  TBranch* bsourcePosY;
+  TBranch* bsourcePosZ;
+
 
 	// Set branch address
 	Hits->SetBranchAddress("posX", &X, &bX); //on pourrait utiliser les attributs d'un hit directement ? Pas sûr.
@@ -113,20 +112,19 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
   Hits->SetBranchAddress("hitNumberTrack1", &hitNumberTrack1, &bhitNumberTrack1);
   Hits->SetBranchAddress("hitNumberTrack2", &hitNumberTrack2, &bhitNumberTrack2);
   Hits->SetBranchAddress("particleName", &particleName, &bparticleName);
-
-  Source->SetBranchAddress("sourceID", &sourceID, &bsourceID);
-  Source->SetBranchAddress("totalSourceNumber", &totalSourceNumber, &btotalSourceNumber);
-  Source->SetBranchAddress("evtID", &sourceEventID, &bsourceEventID);
+  Hits->SetBranchAddress("SposX", &sourcePosX, &bsourcePosX);
+  Hits->SetBranchAddress("SposY", &sourcePosY, &bsourcePosY);
+  Hits->SetBranchAddress("SposZ", &sourcePosZ, &bsourcePosZ);
 
 	// Get number of hits in the TTree
 	int nH = (int)Hits->GetEntries();
 
 	//initialisation
-	 this->Single->Branch("globalPosX",&globalPosX,"globalPosX/D");
-	 this->Single->Branch("globalPosY",&globalPosY,"globalPosY/D");
-	 this->Single->Branch("globalPosZ",&globalPosZ,"globalPosZ/D");
+	 this->Single->Branch("globalPosX",&globalPosX,"globalPosX/F");
+	 this->Single->Branch("globalPosY",&globalPosY,"globalPosY/F");
+	 this->Single->Branch("globalPosZ",&globalPosZ,"globalPosZ/F");
 	 this->Single->Branch("time",&temps,"time/D");
-	 this->Single->Branch("energy",&energie,"energy/D");
+	 this->Single->Branch("energy",&energie,"energy/F");
 	 this->Single->Branch("trackID",&STrackID,"trackID/I");
 	 this->Single->Branch("eventID",&SeventID,"eventID/I");
 	 this->Single->Branch("rsectorID",&SrsectorID,"rsectorID/I");
@@ -135,26 +133,25 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
 	 this->Single->Branch("crystalID",&ScrystalID,"crystalID/I");
 	 this->Single->Branch("layerID",&SlayerID,"layerID/I");
    this->Single->Branch("coincidence",&Scoincidence,"coincidence/I");
-   this->Single->Branch("sourceID",&SsourceID,"sourceID/I");
+   this->Single->Branch("sourcePosX",&SsourcePosX,"sourcePosX/D");
+   this->Single->Branch("sourcePosY",&SsourcePosY,"sourcePosY/D");
+   this->Single->Branch("sourcePosZ",&SsourcePosZ,"sourcePosZ/D");
 
 	bool gamma1, gamma2;
 	gamma1 = false;
 	gamma2 = false;
 	int i = 0;
 	int currentEvent = 0;
-	Double_t energieTot1;
-	Double_t energieTot2;
+	Float_t energieTot1;
+	Float_t energieTot2;
 	Double_t temps1;
 	Double_t temps2;
-  Double_t distanceMin1,distanceMin2;
 
 	// Loop over hits
 	while ( (i < nH) )
 	{
 		energie1 = 0;
 		energie2 = 0;
-    distanceMin1 = -1; //indique que ce n'est pas initialisé : la première valeur sera la première distance
-    distanceMin2 = -1;
 
     btrackID->GetEntry(i);
     beventID->GetEntry(i);
@@ -171,15 +168,17 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
     bparticleName->GetEntry(i);
     bhitNumberTrack1->GetEntry(i);
     bhitNumberTrack2->GetEntry(i);
-    bsourceID->GetEntry(i);
-    bsourceEventID->GetEntry(i);
+    bsourcePosX->GetEntry(i);
+    bsourcePosY->GetEntry(i);
+    bsourcePosZ->GetEntry(i);
+
 
     currentEvent = eventID;
 
 
     s_Single Single1,Single2; //maximum two singles per event
     Single1.edep = 0;
-    Single1.time = time;
+    Single1.time = 0;
     Single1.X = 0;
     Single1.Y = 0;
     Single1.Z = 0;
@@ -187,12 +186,11 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
     Single2.X = 0;
     Single2.Y = 0;
     Single2.Z = 0;
-    Single2.time = time;
+    Single2.time = 0;
 
 
 		while ((i < nH) && (eventID == currentEvent)) //loop over hits of the same event
 		{
-      std::cout << "bsourceEventID : " << sourceEventID << "eventID : " << eventID << std::endl;
       s_Hit aHit;
       aHit.X = X;
       aHit.Y = Y;
@@ -209,12 +207,15 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
       aHit.particleName = particleName;
       aHit.hitNumberTrack1 = hitNumberTrack1;
       aHit.hitNumberTrack2 = hitNumberTrack2;
-      aHit.sourceID = sourceID;
+      aHit.sourcePosX = sourcePosX;
+      aHit.sourcePosY = sourcePosY;
+      aHit.sourcePosZ = sourcePosZ;
+
 
       if(this->policy == "winnerTakeAll")
       {processOneHit_b2b_WTA(aHit,Single1,Single2,energie1,energie2,gamma1,gamma2);}
       else if (this->policy == "centroid")
-      {processOneHit_b2b_EWC(aHit,Single1,Single2,gamma1,gamma2,distanceMin1,distanceMin2);}
+      {processOneHit_b2b_EWC(aHit,Single1,Single2,gamma1,gamma2);}
       else if (this->policy == "firstHit")
       {processOneHit_b2b_FH(aHit,Single1,Single2,gamma1,gamma2);}
 
@@ -234,6 +235,9 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
       bparticleName->GetEntry(i);
       bhitNumberTrack1->GetEntry(i);
       bhitNumberTrack2->GetEntry(i);
+      bsourcePosX->GetEntry(i);
+      bsourcePosY->GetEntry(i);
+      bsourcePosZ->GetEntry(i);
 		}
 
     if (gamma1 && Single1.edep>0)
@@ -250,6 +254,9 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
 			SsubmoduleID = Single1.submoduleID;
 			ScrystalID = Single1.crystalID;
 			SlayerID = Single1.layerID;
+      SsourcePosX = Single1.sourcePosX;
+      SsourcePosY = Single1.sourcePosY;
+      SsourcePosZ = Single1.sourcePosZ;
 			this->Single->Fill();
     }
 
@@ -267,6 +274,9 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
 			SsubmoduleID = Single2.submoduleID;
 			ScrystalID = Single2.crystalID;
 			SlayerID = Single2.layerID;
+      SsourcePosX = Single2.sourcePosX;
+      SsourcePosY = Single2.sourcePosY;
+      SsourcePosZ = Single2.sourcePosZ;
 			this->Single->Fill();
     }
     gamma1 = false;
@@ -280,7 +290,7 @@ void single::fillTreeSingle_b2b(TTree* Hits,TTree* Source, TFile* outputFile)
 
 //********************************************************************************
 
-void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2, Double_t &energieMax1, Double_t &energieMax2, bool &gamma1, bool &gamma2)
+void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Single2, Float_t &energieMax1, Float_t &energieMax2, bool &gamma1, bool &gamma2)
 {
   //WTA : WinnerTakeAll : l'énergie du single est la somme de celles des hits.
   //  Sa position est celle du hit ayant déposé le plus d'énergie, idem pour le temps.
@@ -296,6 +306,9 @@ void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Sing
         Single1.X = aHit.X;
         Single1.Y = aHit.Y;
         Single1.Z = aHit.Z;
+        Single1.sourcePosX = aHit.sourcePosX;
+        Single1.sourcePosY = aHit.sourcePosY;
+        Single1.sourcePosZ = aHit.sourcePosZ;
         Single1.rsectorID = aHit.rsectorID;
         Single1.moduleID = aHit.moduleID;
         Single1.submoduleID = aHit.submoduleID;
@@ -316,6 +329,9 @@ void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Sing
             Single2.X = aHit.X;
             Single2.Y = aHit.Y;
             Single2.Z = aHit.Z;
+            Single2.sourcePosX = aHit.sourcePosX;
+            Single2.sourcePosY = aHit.sourcePosY;
+            Single2.sourcePosZ = aHit.sourcePosZ;
             Single2.rsectorID = aHit.rsectorID;
             Single2.moduleID = aHit.moduleID;
             Single2.submoduleID = aHit.submoduleID;
@@ -331,16 +347,15 @@ void single::processOneHit_b2b_WTA(s_Hit &aHit, s_Single &Single1,s_Single &Sing
 
 //********************************************************************************
 
-void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2, Double_t distanceMin1,Double_t distanceMin2)
+void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Single2,bool &gamma1, bool &gamma2)
 {
   //EWC : Energy Weighted Centroid : la position est un barycentre de la position des hits pondéré à leur énergie déposé.
   // le temps est pour l'instant celui du dernier hit.
   // l'énergie est celle de la somme des hits.
 
    //adapté de GatePulse.cc  méthode CentroidMerge
-  Double_t totalEnergy1 = 0;
-  Double_t totalEnergy2 = 0;
-  Double_t d1,d2;
+  Float_t totalEnergy1 = 0;
+  Float_t totalEnergy2 = 0;
 
   if (aHit.particleName == 'g')
   {
@@ -356,20 +371,12 @@ void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Sing
       Single1.submoduleID = (Single1.submoduleID * Single1.edep + aHit.submoduleID * aHit.edep)/ totalEnergy1;
       Single1.crystalID = (Single1.crystalID * Single1.edep + aHit.crystalID * aHit.edep)/ totalEnergy1;
       Single1.layerID = (Single1.layerID * Single1.edep + aHit.layerID * aHit.edep)/ totalEnergy1;
-      // Single1.time = (Single1.time * Single1.edep + aHit.time * aHit.edep)/ totalEnergy1;
+      Single1.time = (Single1.time * Single1.edep + aHit.time * aHit.edep)/ totalEnergy1;
       Single1.edep = totalEnergy1;
+      Single1.sourcePosX = aHit.sourcePosX;
+      Single1.sourcePosY = aHit.sourcePosY;
+      Single1.sourcePosZ = aHit.sourcePosZ;
 
-      d1  = distance(aHit.X,Single1.X,aHit.Y,Single1.Y,aHit.Z,Single1.Z);
-      if ( d1 < distanceMin1)
-        {
-          distanceMin1 = d1;
-          Single1.time = aHit.time;
-        }
-        else if (distanceMin1 == -1) //initialisation
-        {
-          distanceMin1 = d1;
-          Single1.time = aHit.time;
-        }
       gamma1 = true;
     }
 
@@ -385,20 +392,12 @@ void single::processOneHit_b2b_EWC(s_Hit &aHit, s_Single &Single1,s_Single &Sing
         Single2.submoduleID = (Single2.submoduleID * Single2.edep + aHit.submoduleID * aHit.edep)/ totalEnergy2;
         Single2.crystalID = (Single2.crystalID * Single2.edep + aHit.crystalID * aHit.edep)/ totalEnergy2;
         Single2.layerID = (Single2.layerID * Single2.edep + aHit.layerID * aHit.edep)/ totalEnergy2;
-        // Single2.time = (Single2.time * Single2.edep + aHit.time * aHit.edep)/ totalEnergy2;
+        Single2.time = (Single2.time * Single2.edep + aHit.time * aHit.edep)/ totalEnergy2;
         Single2.edep = totalEnergy2;
+        Single2.sourcePosX = aHit.sourcePosX;
+        Single2.sourcePosY = aHit.sourcePosY;
+        Single2.sourcePosZ = aHit.sourcePosZ;
 
-        d2 = distance(aHit.X,Single2.X,aHit.Y,Single2.Y,aHit.Z,Single2.Z);
-        if (distance(aHit.X,Single2.X,aHit.Y,Single2.Y,aHit.Z,Single2.Z) < distanceMin2)
-          {
-            distanceMin2 = d2;
-            Single2.time = aHit.time;
-          }
-          else if (distanceMin2 == -1)
-          {
-            distanceMin2 = d2;
-            Single2.time = aHit.time;
-          }
         gamma2 = true;
       }
     }
@@ -427,6 +426,9 @@ void single::processOneHit_b2b_FH(s_Hit &aHit,s_Single &Single1,s_Single &Single
         Single1.crystalID = aHit.crystalID;
         Single1.layerID = aHit.layerID;
         Single1.time = aHit.time; //comme dans Gate
+        Single1.sourcePosX = aHit.sourcePosX;
+        Single1.sourcePosY = aHit.sourcePosY;
+        Single1.sourcePosZ = aHit.sourcePosZ;
       }
       gamma1 = true;
     }
@@ -446,6 +448,9 @@ void single::processOneHit_b2b_FH(s_Hit &aHit,s_Single &Single1,s_Single &Single
             Single2.crystalID = aHit.crystalID;
             Single2.layerID = aHit.layerID;
             Single2.time = aHit.time; //comme dans Gate
+            Single2.sourcePosX = aHit.sourcePosX;
+            Single2.sourcePosY = aHit.sourcePosY;
+            Single2.sourcePosZ = aHit.sourcePosZ;
           }
           gamma2 = true;
         }

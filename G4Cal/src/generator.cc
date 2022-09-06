@@ -15,6 +15,8 @@ MyPrimaryGenerator::MyPrimaryGenerator()
 {
  G4double listOfActivities[] = {100000, 100000, 100000, 500000};
  BToB->PrepareMultipleSources(4,listOfActivities);
+ // BToB->Prepare();
+
 }
 //******************************************************************************
 MyPrimaryGenerator::~MyPrimaryGenerator()
@@ -28,15 +30,17 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 	G4ThreeVector pos2(50,0,0);
 	G4ThreeVector pos3(61,0,0);
 	G4ThreeVector pos4(0,0,0);
-  G4ThreeVector pos5(0,0,0);
-  G4ThreeVector pos6(25,0,0);
-  G4ThreeVector pos7(50,0,0);
-
+  // G4ThreeVector pos5(0,0,0);
+  // G4ThreeVector pos6(25,0,0);
+  // G4ThreeVector pos7(50,0,0);
+  //
 	G4ThreeVector listOfPos[] = {pos1, pos2, pos3, pos4};
   char listOfShape[] = {'c','s','s','s'};
   G4double listOfRadius[] = {10,5,5,2};
   G4double listOfz[] = {10};
 	BToB->ShootMultiple(anEvent, listOfPos, listOfShape,  listOfRadius, listOfz);
+  // G4ThreeVector pos(0,0,0);
+  // BToB->ShootOne(anEvent,&pos);
 }
 //******************************************************************************
 //******************************************************************************
