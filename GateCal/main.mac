@@ -5,34 +5,71 @@
 ## CEA 2021                   ##
 ################################
 
-# Visualization
-/vis/disable
-#/control/execute visu.mac
+
 
 # Material database
 /gate/geometry/setMaterialDatabase        GateMaterials.db
+/gate/geometry/setMaterialDatabase  ClMind_GateMaterials.db
 
 # World
-/gate/world/geometry/setXLength           1000. mm
-/gate/world/geometry/setYLength           1000. mm
-/gate/world/geometry/setZLength           1000. mm
+/gate/world/geometry/setXLength           2000. mm
+/gate/world/geometry/setYLength           2000. mm
+/gate/world/geometry/setZLength           2000. mm
 /gate/world/vis/setVisible                1
 /gate/world/setMaterial                   Air
 
 # Scanner
-/control/execute                          geometries/GE_geometry_layer.mac
+#GE_geometry_layer.mac
+#ClearMind.mac
+/control/execute                          geometries/GE_TB.mac
 
 # Physics
-/control/execute                          physics.mac
+#ClearMindphysics.mac
+#physics.mac
+/control/execute                          physiques/physics.mac
+
+# Phantom
+#TOF_phantom.mac
+#phantomNormalisation.mac
+#ResoSpatiale_phantom.mac
+#IQ_NEMA_Phantom.mac
+#/control/execute 	                   fantomes/IQ_NEMA_Phantom.mac
 
 # Initialize geometry and cross sections
 /gate/run/initialize
 
+# Blurring
+#/control/execute                         digitizers/GE_ResolutionBlurring.mac
+
+#/gate/digitizer/Singles/insert timeResolution
+#/gate/digitizer/Singles/timeResolution/setTimeResolution 170 ps
+#/gate/digitizer/Singles/insert spblurring
+#/gate/digitizer/Singles/spblurring/setSpresolution 7.0 mm
+
 # Digitizer
-/control/execute                         digitizers/GE_digitizer.mac  #!!!WTA !!!
+/control/execute                         digitizers/GE_digitizer.mac  #!!!WTA !!! (ne pas toucher) !!!avec spBlurring 1mm !!!
+
+
 
 # Source
-/control/execute                         sources/sourceMultiplesVolumiques.mac
+#sourceDebugTime.mac
+#SourcePonctuelle.mac
+#sourceResoSpatialeGE.mac
+#sourceNormalisation.mac
+#sourceTOF_phantom.mac
+#VoxelizedSourceUpdate.mac
+#sourceNormalisation.mac
+#IQ_NEMA_source.mac
+/control/execute                         sources/IQ_NEMA_source.mac
+
+
+
+
+
+
+# Visualization
+#/vis/disable
+/control/execute visu.mac
 
 
 
@@ -40,31 +77,39 @@
 #/control/verbose			   2
 #/run/verbose                              2
 #/event/verbose                            10
-#/tracking/verbose                         10
+#/tracking/verbose                         3
 #/particle/verbose			   10
-#/gate/systems/verbose                     6
-#/gate/distributions/verbose               6
+#/gate/systems/verbose                   6
+#/gate/distributions/verbose             6
 #/gate/timing/verbose			   20
-#/gate/stepping/verbose                    200
+#/gate/stepping/verbose                  200
 #/gate/generator/verbose	          568
-#/gate/source/verbose 3
-
+#/gate/source/verbose                    3
+#/gate/digitizer/verbose                 3
+#/gate/singles/verbose                   3
+#/gate/convertor/verbose                 3
+#/geometry/navigator/verbose             4
 
 # Output
 /gate/output/root/enable
-/gate/output/root/setFileName             ../../calculTOF_outputs/GateOutputs/test
+/gate/output/root/setFileName             ../../calculTOF_outputs/GateOutputs/NEMA_IQ  #valeurs d'act normale *10
 /gate/output/root/setRootHitFlag          1
 /gate/output/root/setRootSinglesFlag      1
 /gate/output/root/setRootCoincidencesFlag 1
 
+# /gate/output/root/setOutFileSinglesAdderFlag         1
+# /gate/output/root/setOutFileSinglesReadoutFlag       1
+# /gate/output/root/setOutFileSinglesSpblurringFlag    1
+
+#/gate/output/root/setRootOpticalFlag      1
 
 # Random generator
 /gate/random/setEngineName                MersenneTwister
-/gate/random/setEngineSeed                auto #123456789
+/gate/random/setEngineSeed                auto #123456789 #auto #
 
 # Acquisition
 /gate/application/setTimeSlice            1 s
 /gate/application/setTimeStart            0. s
 /gate/application/setTimeStop             1 s
 
-/gate/application/startDAQ
+#/gate/application/startDAQ

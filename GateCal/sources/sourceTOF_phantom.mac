@@ -1,0 +1,115 @@
+/gate/source/addSource                        sourceBodyWater
+
+/gate/source/sourceBodyWater/gps/particle gamma
+/gate/source/sourceBodyWater/setType backtoback
+/gate/source/sourceBodyWater/gps/ene/type  Mono
+/gate/source/sourceBodyWater/gps/ene/mono 511. keV
+
+# bruit de fond
+/gate/source/sourceBodyWater/setActivity                 40000000. becquerel #concentration de 4.1 kBq
+/gate/source/sourceBodyWater/gps/type                    Volume
+/gate/source/sourceBodyWater/gps/angtype                 iso
+/gate/source/sourceBodyWater/gps/shape                   Cylinder
+/gate/source/sourceBodyWater/gps/radius                  93. mm
+/gate/source/sourceBodyWater/gps/halfz                   180. mm
+/gate/source/sourceBodyWater/gps/pos/centre              0. 0. 0. mm
+
+
+#bruit de la balle1
+/gate/source/addSource                        sourceBall1
+
+/gate/source/sourceBall1/gps/particle       gamma
+/gate/source/sourceBall1/setType            backtoback
+/gate/source/sourceBall1/gps/ene/type       Mono
+/gate/source/sourceBall1/gps/ene/mono       511. keV
+
+
+/gate/source/sourceBall1/setActivity                 12880. becquerel # ratio 6 pour 1 en concentration
+/gate/source/sourceBall1/gps/type                    Volume
+/gate/source/sourceBall1/gps/angtype                 iso
+/gate/source/sourceBall1/gps/shape                   Sphere
+/gate/source/sourceBall1/gps/radius                  5. mm
+/gate/source/sourceBall1/gps/pos/centre              28.6 49.54 75. mm
+
+
+#bruit de la balle2
+/gate/source/addSource                        sourceBall2
+
+/gate/source/sourceBall2/gps/particle       gamma
+/gate/source/sourceBall2/setType            backtoback
+/gate/source/sourceBall2/gps/ene/type       Mono
+/gate/source/sourceBall2/gps/ene/mono       511. keV
+
+
+/gate/source/sourceBall2/setActivity                 28000. becquerel
+/gate/source/sourceBall2/gps/type                    Volume
+/gate/source/sourceBall2/gps/angtype                 iso
+/gate/source/sourceBall2/gps/shape                   Sphere
+/gate/source/sourceBall2/gps/radius                  6.5 mm
+/gate/source/sourceBall2/gps/pos/centre              -28.6 49.54 75. mm
+
+#bruit de la balle3
+/gate/source/addSource                        sourceBall3
+
+/gate/source/sourceBall3/gps/particle       gamma
+/gate/source/sourceBall3/setType            backtoback
+/gate/source/sourceBall3/gps/ene/type       Mono
+/gate/source/sourceBall3/gps/ene/mono       511. keV
+
+
+/gate/source/sourceBall3/setActivity                 63000. becquerel
+/gate/source/sourceBall3/gps/type                    Volume
+/gate/source/sourceBall3/gps/angtype                 iso
+/gate/source/sourceBall3/gps/shape                   Sphere
+/gate/source/sourceBall3/gps/radius                  8.5 mm
+/gate/source/sourceBall3/gps/pos/centre              -57.2 0. 75. mm
+
+#bruit de la balle4
+/gate/source/addSource                        sourceBall4
+
+/gate/source/sourceBall4/gps/particle       gamma
+/gate/source/sourceBall4/setType            backtoback
+/gate/source/sourceBall4/gps/ene/type       Mono
+/gate/source/sourceBall4/gps/ene/mono       511. keV
+
+
+/gate/source/sourceBall4/setActivity                 137000. becquerel
+/gate/source/sourceBall4/gps/type                    Volume
+/gate/source/sourceBall4/gps/angtype                 iso
+/gate/source/sourceBall4/gps/shape                   Sphere
+/gate/source/sourceBall4/gps/radius                  11. mm
+/gate/source/sourceBall4/gps/pos/centre              -28.6 -49.54 75. mm
+
+
+#bruit de la balle5
+/gate/source/addSource                        sourceBall5
+
+/gate/source/sourceBall5/gps/particle       gamma
+/gate/source/sourceBall5/setType            backtoback
+/gate/source/sourceBall5/gps/ene/type       Mono
+/gate/source/sourceBall5/gps/ene/mono       511. keV
+
+
+/gate/source/sourceBall5/setActivity                 282000. becquerel
+/gate/source/sourceBall5/gps/type                    Volume
+/gate/source/sourceBall5/gps/angtype                 iso
+/gate/source/sourceBall5/gps/shape                   Sphere
+/gate/source/sourceBall5/gps/radius                  14. mm
+/gate/source/sourceBall5/gps/pos/centre              28.6 -49.54 75. mm
+
+
+#bruit de la balle6
+/gate/source/addSource                        sourceBall6
+
+/gate/source/sourceBall6/gps/particle       gamma
+/gate/source/sourceBall6/setType            backtoback
+/gate/source/sourceBall6/gps/ene/type       Mono
+/gate/source/sourceBall6/gps/ene/mono       511. keV
+
+
+/gate/source/sourceBall6/setActivity                 652000. becquerel
+/gate/source/sourceBall6/gps/type                    Volume
+/gate/source/sourceBall6/gps/angtype                 iso
+/gate/source/sourceBall6/gps/shape                   Sphere
+/gate/source/sourceBall6/gps/radius                  18.5 mm
+/gate/source/sourceBall6/gps/pos/centre              57.2 0. 75. mm

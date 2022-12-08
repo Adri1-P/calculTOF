@@ -1,0 +1,53 @@
+[Elements]
+Yttrium:    S= Y   ; Z= 39. ; A=  88.91  g/mole
+Rubidium:   S= Rb  ; Z= 37. ; A=  85.468 g/mole
+Antimony:   S= Sb  ; Z= 51. ; A= 121.76 g/mole
+
+[Materials]
+PbF2:   d=7.77 g/cm3 ; n=2   ; state=Solid
+        +el: name=Lead       ; n=1
+        +el: name=Fluorine   ; n=2
+
+Sapphire: d=3.98 g/cm3; n=2;  state=Solid
+        +el: name=Aluminium   ; n=2
+        +el: name=Oxygen      ; n=3
+
+Sapphire_mat: d=3.98 g/cm3; n=2;  state=Solid
+        +el: name=Aluminium   ; n=2
+        +el: name=Oxygen      ; n=3
+
+#PbW04_Y: d=8.28 g/cm3; n=3;  state=Solid
+#        +el: name=Lead       ; n=15
+#        +el: name=Tungsten   ; n=16
+#        +el: name=Oxygen     ; n=64
+
+#PbW04_Black: d=8.28 g/cm3; n=3;  state=Solid
+#        +el: name=Lead       ; n=15
+#        +el: name=Tungsten   ; n=16
+#        +el: name=Oxygen     ; n=64
+
+PbWO4_Y: d=8.28 g/cm3; n=3;  state=Solid
+        +el: name=Lead       ; n=1
+        +el: name=Tungsten   ; n=1
+        +el: name=Oxygen     ; n=4
+
+PbWO4_Black: d=8.28 g/cm3; n=3;  state=Solid
+        +el: name=Lead       ; n=1
+        +el: name=Tungsten   ; n=1
+        +el: name=Oxygen     ; n=4
+
+Bialkali_Bleu: d=2. g/cm3; n=3;  state=Solid
+        +el: name=Potassium  ; n=2
+        +el: name=Cesium     ; n=1
+        +el: name=Antimony ; n=1
+
+Bialkali_Green: d=2. g/cm3; n=3;  state=Solid
+        +el: name=Rubidium    ; n=2
+        +el: name=Cesium      ; n=1
+        +el: name=Antimony  ; n=1
+
+Multialkali_S20: d=2. g/cm3; n=4;  state=Solid
+        +el: name=Sodium      ; n=1
+        +el: name=Potassium   ; n=1
+        +el: name=Cesium      ; n=1
+        +el: name=Antimony  ; n=1

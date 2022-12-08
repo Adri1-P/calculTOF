@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sim.dir/mysimu.cc.o"
   "CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o"
+  "CMakeFiles/sim.dir/src/ClearMindDetector.cc.o"
   "CMakeFiles/sim.dir/src/DebugDetector.cc.o"
   "CMakeFiles/sim.dir/src/ScanGE.cc.o"
   "CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o"

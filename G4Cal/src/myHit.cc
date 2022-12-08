@@ -22,12 +22,12 @@ void myHit::fillHitInfo(G4int myhitID,G4int myhitNumberTrack1, G4int myhitNumber
 												G4ThreeVector myhitPos,G4ThreeVector myhitSourcePos,
 												G4double myhitEdep, G4double myhitTime,
 												G4int myhitLayerID, G4int myhitCrystalID,	G4int myhitSubmoduleID, G4int myhitModuleID, G4int myhitRsectorID,
-												G4String myhitParticleName)
+												G4String myhitParticleName, G4String myhitProcessName, G4String myhitVolumeName)
 {
 	//comme son nom l'indique, cette fonction se contente de recopier les propriétés du hit passées en argument dans le hit lui-même.
 	hitID = myhitID;
 	hitNumberTrack1 = myhitNumberTrack1;
-	hitNumberTrack2 = hitNumberTrack2;
+	hitNumberTrack2 = myhitNumberTrack2;
 	hitTrackID = myhitTrackID;
 	hitEventID = myhitEventID;
 	hitParentID = myhitParentID;
@@ -45,6 +45,8 @@ void myHit::fillHitInfo(G4int myhitID,G4int myhitNumberTrack1, G4int myhitNumber
 	hitRsectorID = myhitRsectorID;
 
 	hitParticleName = myhitParticleName;
+	hitProcessName = myhitProcessName;
+	hitVolumeName = myhitVolumeName;
 
 }
 
@@ -102,7 +104,7 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 		i++;
 		man->FillNtupleDColumn(NTupleID, i, this->gethitTime());
 		i++;
-		man->FillNtupleFColumn(NTupleID, i, this->gethitEdep());
+		man->FillNtupleDColumn(NTupleID, i, this->gethitEdep()); //!!changer en FColumn pour la reco d'images
 		i++;
 		man->FillNtupleIColumn(NTupleID, i, this->gethitLayerID());
 		i++;
@@ -115,6 +117,10 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 		man->FillNtupleIColumn(NTupleID, i, this->gethitRsectorID());
 		i++;
 		man->FillNtupleSColumn(NTupleID, i, this->gethitParticleName());
+		i++;
+		man->FillNtupleSColumn(NTupleID, i, this->gethitProcessName());
+		i++;
+		man->FillNtupleSColumn(NTupleID, i, this->gethitVolumeName());
 		i++;
 
 		int j=0;
@@ -151,6 +157,7 @@ void myHit::FillNTuple(char listOfTypes[],int NTupleID ,...) //variadic function
 			 }
 			 va_end(args); //ends traversal of the variadic function arguments
 	 	}
+
 		man->AddNtupleRow(NTupleID);
 }
 

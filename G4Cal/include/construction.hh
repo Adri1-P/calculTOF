@@ -26,6 +26,7 @@ public :
 
 	G4LogicalVolume *GetScoringVolume() const {return fScoringVolume;} //utilisé pour les cuts.
 	void SetScoringVolume ( G4LogicalVolume * lV)  {fScoringVolume = lV;}
+	void SetScoringVolumes ( G4LogicalVolume **lVs)  {fScoringVolumes = lVs;}
 	G4int GetCristalWidth() const {return e;}
 	void GenerateCastorOptionFile(G4float scanner_radius, // radius in mm (from isocenter to cry
 //stal surface)
@@ -58,9 +59,10 @@ private :
 
 	//pour les cuts
 	G4LogicalVolume *fScoringVolume;
+	G4LogicalVolume **fScoringVolumes;
 
 	//matériaux
-	G4Material *SiO2, *H2O, *Aerogel, *worldMat, *LYSO_GE,*LSO;
+	G4Material *worldMat, *LYSO_GE,*LSO, *PbW04_Black, *PbW04_Y, *Bialkali_Bleu, *Aerogel;
 	G4Element *C;
 
 	//messengers

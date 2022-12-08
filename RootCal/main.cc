@@ -2,6 +2,7 @@
 #include "drawFunction.hh"
 #include "single.hh"
 #include "coincidences.hh"
+#include "normalisation.hh"
 
 #include <TApplication.h>
 #include <TRootCanvas.h>
@@ -61,53 +62,68 @@ TString currentGateFile = fileGate_c_EWC;
 TString currentSRootFile = filenameSingle_sv;
 TString currentCRootFile = filenameCoincidences_sv;
 
+// binTotxt();
+TString GateTestFile = "../../../calculTOF_outputs/GateOutputs/test_170ps.root";
+TString G4testFile = "../../../calculTOF_outputs/G4Outputs/test.root";
+// afficheCastorID(testFile);
+
 //display
-TFile* f = TFile::Open(currentG4File);
-TTree* Hits;
-f->GetObject("Hits", Hits); //nom du NTuple, nom de l'arbre
-
-TFile* outputFileS= new TFile(currentSRootFile,"recreate");
-single* monSingle = new single(Hits);
-monSingle->PrintAvailablePolicies();
-monSingle->setPolicyToWinnerTakeAll();
-monSingle->createTreeSingle(Hits,outputFileS);
-outputFileS->Close();
-
-TFile * fSG4 = TFile::Open(currentSRootFile);
-TTree* Singles;
-fSG4->GetObject("Singles", Singles);
-
-TFile* outputFileC= new TFile(currentCRootFile,"recreate");
-coincidences * mesCoincidences = new coincidences();
-mesCoincidences->fillTreeCoincidences(Singles,outputFileC);
-outputFileC->Close();
+// TFile* f = TFile::Open(currentG4File);
+// TTree* Hits;
+// f->GetObject("Hits", Hits); //nom du NTuple, nom de l'arbre
 //
+// TFile* outputFileS= new TFile(currentSRootFile,"recreate");
+// single* monSingle = new single(Hits);
+// monSingle->PrintAvailablePolicies();
+// monSingle->setPolicyToWinnerTakeAll();
+// monSingle->createTreeSingle(Hits,outputFileS);
+// outputFileS->Close();
+//
+// TFile * fSG4 = TFile::Open(currentSRootFile);
+// TTree* Singles;
+// fSG4->GetObject("Singles", Singles);
+//
+// TFile* outputFileC= new TFile(currentCRootFile,"recreate");
+// coincidences * mesCoincidences = new coincidences();
+// mesCoincidences->fillTreeCoincidences(Singles,outputFileC);
+// outputFileC->Close();
+// //
 TApplication app("app", &argc, argv);
+//
+// TString champ1 = "time";
+// TString champ2 = "time";
+// TString file1 = currentGateFile ;
+// TString file2 = currentSRootFile;
+// TString datatype ="Singles";
+// Double_t xmin = -400;
+// Double_t xmax = 400;
+// Int_t nBins = 100;
+//
+// // TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );
+//
+// 	//c->Divide(2,1);
+// 	//c->cd(1);
+//
+//
+// 		 datatype = "Singles";
+// 		 TCanvas*c = compareGateG4timeT0( currentGateFile, currentSRootFile, datatype );
+// 		//
+// 		// TString field = "posX";
+// 		// TCanvas*c1 = compareTwoTrees(field, field, currentGateFile,currentG4File,"Hits" );
+// 		// TCanvas *c2 = compareDt_rand( currentGateFile,  currentG4File);
+//
+// 		//TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins);
+//
+Int_t n = 9;
+//Double_t x[n] = {-14,-11,-8,-5,1,5,8,11,14};
+Double_t x[n] = {14,11,8,5,1,5,8,11,14};
+Double_t y_simu[n] = {4.869,4.477,3.407,2.942,3.046,2.914,3.559,4.726,5.755};  
+Double_t y_exp[n] =  {5.374,4.493,3.946,2.874,3.164,2.579,3.691,4.263,5.677};
 
-TString champ1 = "time";
-TString champ2 = "time";
-TString file1 = currentGateFile ;
-TString file2 = currentSRootFile;
-TString datatype ="Singles";
-Double_t xmin = -400;
-Double_t xmax = 400;
-Int_t nBins = 100;
-
-// TCanvas *c = compareTwoTrees( champ1, champ2,  file1,  file2,  datatype, xmin, xmax, nBins );
-
-	//c->Divide(2,1);
-	//c->cd(1);
 
 
-		 datatype = "Singles";
-		 TCanvas*c = compareGateG4timeT0( currentGateFile, currentSRootFile, datatype );
-		//
-		// TString field = "posX";
-		// TCanvas*c1 = compareTwoTrees(field, field, currentGateFile,currentG4File,"Hits" );
-		// TCanvas *c2 = compareDt_rand( currentGateFile,  currentG4File);
 
-		//TCanvas * compareTwoTrees(TString champ1,TString champ2, TString file1, TString file2, TString datatype, Double_t xmin,Double_t xmax, Int_t nBins);
-
+  TCanvas * c = Draw2Arrays(n, x, y_simu,x,y_exp);
    	c->Modified(); c->Update();
    	TRootCanvas*rc = (TRootCanvas *)c->GetCanvasImp();
    	rc->Connect("CloseWindow()", "TApplication", gApplication, "Terminate()");

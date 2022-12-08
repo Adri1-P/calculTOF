@@ -109,9 +109,22 @@ CMakeFiles/analyse.dir/src/drawFunction.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/analyse.dir/src/drawFunction.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /biomaps/physique/apaillet/calculTOF/RootCal/src/drawFunction.cc -o CMakeFiles/analyse.dir/src/drawFunction.cc.s
 
+CMakeFiles/analyse.dir/src/normalisation.cc.o: CMakeFiles/analyse.dir/flags.make
+CMakeFiles/analyse.dir/src/normalisation.cc.o: ../src/normalisation.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/RootCal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/analyse.dir/src/normalisation.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/analyse.dir/src/normalisation.cc.o -c /biomaps/physique/apaillet/calculTOF/RootCal/src/normalisation.cc
+
+CMakeFiles/analyse.dir/src/normalisation.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/analyse.dir/src/normalisation.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /biomaps/physique/apaillet/calculTOF/RootCal/src/normalisation.cc > CMakeFiles/analyse.dir/src/normalisation.cc.i
+
+CMakeFiles/analyse.dir/src/normalisation.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/analyse.dir/src/normalisation.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /biomaps/physique/apaillet/calculTOF/RootCal/src/normalisation.cc -o CMakeFiles/analyse.dir/src/normalisation.cc.s
+
 CMakeFiles/analyse.dir/src/single.cc.o: CMakeFiles/analyse.dir/flags.make
 CMakeFiles/analyse.dir/src/single.cc.o: ../src/single.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/RootCal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/analyse.dir/src/single.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/RootCal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/analyse.dir/src/single.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/analyse.dir/src/single.cc.o -c /biomaps/physique/apaillet/calculTOF/RootCal/src/single.cc
 
 CMakeFiles/analyse.dir/src/single.cc.i: cmake_force
@@ -128,6 +141,7 @@ analyse_OBJECTS = \
 "CMakeFiles/analyse.dir/src/coincidences.cc.o" \
 "CMakeFiles/analyse.dir/src/compareFunction.cc.o" \
 "CMakeFiles/analyse.dir/src/drawFunction.cc.o" \
+"CMakeFiles/analyse.dir/src/normalisation.cc.o" \
 "CMakeFiles/analyse.dir/src/single.cc.o"
 
 # External object files for target analyse
@@ -137,29 +151,29 @@ analyse: CMakeFiles/analyse.dir/main.cc.o
 analyse: CMakeFiles/analyse.dir/src/coincidences.cc.o
 analyse: CMakeFiles/analyse.dir/src/compareFunction.cc.o
 analyse: CMakeFiles/analyse.dir/src/drawFunction.cc.o
+analyse: CMakeFiles/analyse.dir/src/normalisation.cc.o
 analyse: CMakeFiles/analyse.dir/src/single.cc.o
 analyse: CMakeFiles/analyse.dir/build.make
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libCore.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libImt.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libRIO.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libNet.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libHist.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libGraf.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libGraf3d.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libGpad.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libROOTDataFrame.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libTree.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libTreePlayer.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libRint.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libPostscript.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libMatrix.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libPhysics.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libMathCore.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libThread.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libMultiProc.so
-analyse: /volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libROOTVecOps.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libCore.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libImt.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libRIO.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libNet.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libHist.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libGraf.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libGraf3d.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libGpad.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libROOTDataFrame.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libTree.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libTreePlayer.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libRint.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libPostscript.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libMatrix.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libPhysics.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libMathCore.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libThread.so
+analyse: /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libMultiProc.so
 analyse: CMakeFiles/analyse.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/biomaps/physique/apaillet/calculTOF/RootCal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable analyse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/biomaps/physique/apaillet/calculTOF/RootCal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable analyse"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/analyse.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

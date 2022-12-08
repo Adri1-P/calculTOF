@@ -8,6 +8,10 @@
 #include "G4ProductionCutsTable.hh"
 #include "CLHEP/Random/RandomEngine.h"
 #include "CLHEP/Random/Random.h"
+#include "G4OpticalPhysics.hh"
+#include "G4EmStandardPhysics_option3.hh"
+#include "FTFP_BERT.hh"
+
 
 #include "G4RunManagerFactory.hh"
 
@@ -79,6 +83,8 @@ int main(int argc, char** argv)
 
   if (noUI)
   {
+    G4UImanager *UImanager = G4UImanager::GetUIpointer();
+    // UImanager->ApplyCommand("/tracking/verbose 1");
     runManager->BeamOn(numberOfEvent);
     delete runManager;
   }
@@ -103,9 +109,9 @@ int main(int argc, char** argv)
   }
   else // interactive mode : define UI session
   {
-    // UImanager->ApplyCommand("/run/verbose 1");
-    // UImanager->ApplyCommand("/event/verbose 1");
-    // UImanager->ApplyCommand("/tracking/verbose 1");
+    //UImanager->ApplyCommand("/run/verbose 1");
+    //UImanager->ApplyCommand("/event/verbose 1");
+    //UImanager->ApplyCommand("/tracking/verbose 1");
     UImanager->ApplyCommand("/control/execute ../macros/vis.mac");
     ui->SessionStart();
     delete ui;

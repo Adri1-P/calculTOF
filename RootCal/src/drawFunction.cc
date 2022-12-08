@@ -23,7 +23,7 @@
 #include <TBenchmark.h>
 #include <TSystem.h>
 #include <TApplication.h>
-#include <TClassTable.h>
+//#include <TClassTable.h>
 #include <TGraphErrors.h>
 #include <TLegend.h>
 #include <TString.h>
@@ -34,6 +34,7 @@
 #include <TSystemDirectory.h>
 #include <TImageDump.h>
 #include <TGraph2D.h>
+#include <TMarker.h>
 
 #include <math.h>
 #include <unistd.h>
@@ -45,7 +46,72 @@
 
 //********************************************************************************
 //********************************************************************************
+void afficheCastorID(TString filenameRootGate)
+{
 
+	TFile* f = TFile::Open(filenameRootGate);
+	TTree* Coincidences = (TTree*)f->Get("Coincidences");
+
+	Int_t rsectorID1,moduleID1,submoduleID1,crystalID1,layerID1,CastorID1;
+	Int_t rsectorID2,moduleID2,submoduleID2,crystalID2,layerID2,CastorID2;
+
+	TBranch* brsectorID1;
+	TBranch* bmoduleID1;
+	TBranch* bsubmoduleID1;
+	TBranch* bcrystalID1;
+	TBranch* blayerID1;
+	TBranch* bCastorID1;
+
+	TBranch* brsectorID2;
+	TBranch* bmoduleID2;
+	TBranch* bsubmoduleID2;
+	TBranch* bcrystalID2;
+	TBranch* blayerID2;
+	TBranch* bCastorID2;
+
+
+	Coincidences->SetBranchAddress("rsectorID1", &rsectorID1, &brsectorID1);
+	Coincidences->SetBranchAddress("moduleID1", &moduleID1, &bmoduleID1);
+	Coincidences->SetBranchAddress("submoduleID1", &submoduleID1, &bsubmoduleID1);
+	Coincidences->SetBranchAddress("crystalID1", &crystalID1, &bcrystalID1);
+	Coincidences->SetBranchAddress("layerID1", &layerID1, &blayerID1);
+	Coincidences->SetBranchAddress("CastorID1", &CastorID1, &bCastorID1);
+
+
+	Coincidences->SetBranchAddress("rsectorID2", &rsectorID2, &brsectorID2);
+	Coincidences->SetBranchAddress("moduleID2", &moduleID2, &bmoduleID2);
+	Coincidences->SetBranchAddress("submoduleID2", &submoduleID2, &bsubmoduleID2);
+	Coincidences->SetBranchAddress("crystalID2", &crystalID2, &bcrystalID2);
+	Coincidences->SetBranchAddress("layerID2", &layerID2, &blayerID2);
+	Coincidences->SetBranchAddress("CastorID2", &CastorID2, &bCastorID2);
+
+	int nC = (int) Coincidences->GetEntries();
+
+	for (int i = 0; i < nC;i++)
+	{
+
+    brsectorID1->GetEntry(i);
+    bmoduleID1->GetEntry(i);
+    bsubmoduleID1->GetEntry(i);
+    bcrystalID1->GetEntry(i);
+    blayerID1->GetEntry(i);
+		bCastorID1->GetEntry(i);
+
+		brsectorID2->GetEntry(i);
+    bmoduleID2->GetEntry(i);
+    bsubmoduleID2->GetEntry(i);
+    bcrystalID2->GetEntry(i);
+    blayerID2->GetEntry(i);
+		bCastorID2->GetEntry(i);
+
+		std::cout << " rsectorID1 : " << rsectorID1 << " " << " moduleID1 : " << moduleID1 << " " <<" submoduleID1 : " << submoduleID1 << " " <<" crystalID1 : " << crystalID1 << " " <<" layerID1 : " << layerID1 << " " <<" CastorID1 : " << CastorID1 <<  std::endl;
+
+
+		std::cout << " rsectorID2 : " << rsectorID2 << " " << " moduleID2 : " << moduleID2 << " " <<" submoduleID2 : " << submoduleID2 << " " <<" crystalID2 : " << crystalID2 << " " <<" layerID2 : " << layerID2 << " " <<" CastorID2 : " << CastorID2 <<  std::endl;
+
+	}
+
+}
 void drawgraphs() {
 
 //fonction de base pour faire un plot. à améliorer. Ne donne pas toujours le même résultat que la fonction draw.
@@ -481,14 +547,20 @@ void DrawDirectory() {
 
 //********************************************************************************
 
-void showGate_dt(TString  filename)
+TCanvas* showGate_dt(TString  filename)
 {
 	//mini fonction pour afficher le dt depuis un fichier Gate
 	TFile* f = TFile::Open(filename);
 	TTree* Coincidences;
 	f->GetObject("Coincidences", Coincidences);
+
+	TCanvas *can = new TCanvas("can_fillDtGate_rand","can",1920,1080);
 	Coincidences->Draw("time1-time2");
+	return can;
 }
+
+
+
 
 void GateScanHits(TString  filename)
 {
@@ -695,7 +767,7 @@ Tree->SetBranchAddress("eventID2",&eventID2,&beventID2);
 int n=(int)Tree->GetEntries();
 
 // Define a histogram with 100 bins, on x from 0 to 1
- TH1F* h = new TH1F("h","h",100,-2 *pow(10,-10)  ,2 * pow(10,-10) );//* pow(10,-10));
+ TH1F* h = new TH1F("h","Gate TOF measure (GE)",100,-3 *pow(10,-10)  ,3 * pow(10,-10) );//* pow(10,-10));
  //TH1F* h = new TH1F("h","h",100,-10000,10000);
 // Loop over events
 TRandom r;
@@ -719,8 +791,206 @@ for(int i=0;i<n;i++)
 			}
  }
 	TCanvas *can = new TCanvas("can_fillDtGate_rand","can",1920,1080);
-	h->Draw();
+
+	Int_t ci;      // for color index setting
+	TColor *color; // for color definition with alpha
+	ci = TColor::GetColor("#000099");
+	h->SetLineColor(ci);
+	h->GetXaxis()->SetTitle("TOF (s)");
+	h->GetXaxis()->SetLabelFont(42);
+	h->GetXaxis()->SetTitleOffset(1);
+	h->GetXaxis()->SetTitleFont(42);
+	h->GetYaxis()->SetTitle("# of coincidences");
+	h->GetYaxis()->SetLabelFont(42);
+	h->GetYaxis()->SetTitleFont(42);
+	h->GetZaxis()->SetLabelFont(42);
+	h->GetZaxis()->SetTitleOffset(1);
+	h->GetZaxis()->SetTitleFont(42);
+	h->Draw("");
+	h->Fit("gaus");
+
+	TF1 * fitFun = h->GetFunction("gaus");
+	double sigma = fitFun->	GetParameter("Sigma");
+	gStyle->SetOptFit(1011);
+	std::cout << "FWHM = " << sigma*pow(10,12)*2.35 << "ps" << std::endl;
 	return can;
 }
+
+TCanvas* DrawArray(Int_t n, Double_t x[], Double_t y[])
+{
+	TGraph * gr = new TGraph(n,x,y);
+	TCanvas * can = new TCanvas("gr","MyGraph",1920,1080);
+	/*
+	for (Int_t i = 0; i < n; i++)
+	{
+		TMarker *m = new TMarker (x[i],y[i],0);
+		m->Draw();
+	}
+	*/
+	gr->Draw("AP*");
+	
+	return can;
+
+}
+
+TCanvas* Draw2Arrays(Int_t n, Double_t x1[], Double_t y1[],Double_t x2[], Double_t y2[])
+{
+	TGraph * gr1 = new TGraph(n,x1,y1);
+	TGraph * gr2 = new TGraph(n,x2,y2);
+	
+	
+	
+	
+	Double_t x_moyenne[4] = {5,8,11,14};
+	Double_t y_moyenne_simu[4] = {(2.942 + 2.914)/2.0, (3.407 + 3.559)/2.0, (4.477 + 4.726) / 2.0, (4.869 + 5.755)/2.0};
+	Double_t y_moyenne_exp[4] = {(2.874 + 2.579) / 2.0, (3.946 + 3.691) /2.0, (4.493 + 4.263)/2.0, (5.374 + 5.677)/2.0};
+	
+	Double_t ex[5] = {0,0,0,0,0};
+	Double_t ey[5] = {0, abs((2.942-y_moyenne_simu[0])),abs((3.407 - y_moyenne_simu[1])), abs((4.477 - y_moyenne_simu[2])), abs((4.869 - y_moyenne_simu[3]))}; 
+	
+	Double_t ey_exp[5] = {0, abs((2.874-y_moyenne_exp[0])),abs((3.946 - y_moyenne_exp[1])), abs((4.493 - y_moyenne_exp[2])), abs((5.374 - y_moyenne_exp[3]))}; 
+	
+	
+	/*
+	for (int i = 0; i < 5; i++)
+	{
+	std::cout << ey[i] << std::endl;
+	}
+	*/
+	
+	Double_t x[5] = {1,5,8,11,14};
+	Double_t y[5] = {y1[4],y_moyenne_simu[0],y_moyenne_simu[1],y_moyenne_simu[2],y_moyenne_simu[3]};
+	
+	Double_t y_simu[5] = {y2[4],y_moyenne_exp[0],y_moyenne_exp[1],y_moyenne_exp[2],y_moyenne_exp[3]};
+	
+	TGraphErrors* gr = new TGraphErrors(5,x,y,ex,ey);
+	
+	TGraphErrors* gr_exp = new TGraphErrors(5,x,y_simu,ex,ey_exp);
+	
+	
+	Double_t xpubli[3] = {1,10,20};
+	Double_t ypubli[3] = {3.55,3.98,4.58};
+	Double_t ey_publi[3] = {0.61/2.0,0.28/2.0,0.61/2.0};
+	
+	TGraphErrors* gr_pub = new TGraphErrors(3,xpubli,ypubli,ex,ey_publi);
+	
+	
+	TGraph * gr3 = new TGraph(3,xpubli,ypubli);
+	TGraph * gr4 = new TGraph(4,x_moyenne,y_moyenne_simu);
+	TGraph * gr5 = new TGraph(4,x_moyenne,y_moyenne_exp);
+		
+	TCanvas * can = new TCanvas("gr","MyGraph",1920,1080);
+	gStyle->SetLegendFont(42);
+	//gStyle->SetLegendTextSize(0.1);
+	gr_pub->GetXaxis()->SetTitle("Distance of source from the center (cm)");
+	gr_pub->GetXaxis()->CenterTitle(true);
+	gr_pub->GetYaxis()->SetTitle("Spatial resolution FWHM (mm)");	
+	gr_pub->GetYaxis()->CenterTitle(true);	
+	gr_pub->GetYaxis()->SetRangeUser(2,6);
+	//gr_pub->GetXaxis()->SetRangeUser(2,6);	
+	
+	gr_pub->SetTitle("");
+	gr_pub->SetMarkerSize(2);	
+	gr_exp->SetMarkerSize(2);
+	gr->SetMarkerSize(2);				
+	//gr1->Draw("A*");
+			
+	gr->SetMarkerStyle(3);	
+	gr_exp->SetMarkerStyle(3);
+	gr_pub->SetMarkerStyle(3);
+	
+	gr_exp->SetMarkerColor(2);
+	gr_pub->SetMarkerColor(3);
+	
+	gr_exp->SetLineColor(2);
+	gr_pub->SetLineColor(3);
+	
+	gr_pub->Draw("A*");	//formule magique
+	gr->Draw("*");		
+	gr_exp->Draw("P*");
+	/*
+	gr3->SetMarkerSize(2);
+	gr3->SetMarkerColor(3);
+	gr3->Draw("*");
+	
+	gr4->SetMarkerSize(2);
+	gr4->SetMarkerColor(1); //simu c'est couleur 1
+	gr4->Draw("*");
+	
+	gr5->SetMarkerSize(2);
+	gr5->SetMarkerColor(2); //exp c'est couleur 2
+	gr5->Draw("*");
+	
+	gr2->Draw("P*");
+	*/
+	
+	
+	TLegend *legend = new TLegend (0.1501043,0.6998106,0.4498957,0.8996212);
+	legend->AddEntry(gr,"FWHM blurring 1mm simu");
+	legend->AddEntry(gr_exp,"FWHM exp");
+	legend->AddEntry(gr_pub,"FWHM  Medical Physics");
+	legend->SetTextSize(0.03);
+	legend->Draw();
+	
+	
+	
+	return can;
+
+}
+
 //********************************************************************************
 //********************************************************************************
+// TCanvas* showHitProperty_CutOnAString(TString filename, TString property, TString  cut, TString booleanOperator, TString aString)
+// {
+// 	TFile* f = TFile::Open(filename);
+// 	TTree* Hits;
+// 	f->GetObject("Hits", Hits);
+//
+// 	Int_t hitNumber, hitNumberTrack1, hitNumberTrack2, trackID, eventID, parentID, layerID;
+//   Float_t posX,posY,posZ,SposX,SposY,SposZ,time,edep;
+// 	TString particleName,processName,volumeName;
+//
+// 	TBranch* bhitNumber, bhitNumberTrack1, bhitNumberTrack2, btrackID, beventID, bparentID, blayerID;
+// 	TBranch* bposX, bposY, bposZ, bSposX, bSposY, bSposZ, btime, bedep;
+// 	TBranch* bparticleName, bprocessName, bvolumeName;
+//
+// 	Hits->SetBranchAddress("hitNumber", &hitNumber, &bhitNumber);
+// 	Hits->SetBranchAddress("hitNumberTrack1", &hitNumberTrack1, &bhitNumberTrack1);
+// 	Hits->SetBranchAddress("hitNumberTrack2", &hitNumberTrack2, &bhitNumberTrack2);
+// 	Hits->SetBranchAddress("trackID", &trackID, &btrackID);
+// 	Hits->SetBranchAddress("eventID", &eventID, &beventID);
+// 	Hits->SetBranchAddress("parentID", &parentID, &bparentID);
+// 	Hits->SetBranchAddress("layerID", &layerID, &blayerID);
+//
+// 	Hits->SetBranchAddress("posX", &posX, &bposX);
+// 	Hits->SetBranchAddress("posY", &posY, &bposY);
+// 	Hits->SetBranchAddress("posZ", &posZ, &bposZ);
+// 	Hits->SetBranchAddress("SposX", &SposX, &bSposX);
+// 	Hits->SetBranchAddress("SposY", &SposY, &bSposY);
+// 	Hits->SetBranchAddress("SposZ", &SposZ, &bSposZ);
+// 	Hits->SetBranchAddress("time", &time, &btime);
+// 	Hits->SetBranchAddress("edep", &edep, &bedep);
+//
+// 	Hits->SetBranchAddress("particleName", &particleName, &bparticleName);
+// 	Hits->SetBranchAddress("processName", &processName, &bprocessName);
+// 	Hits->SetBranchAddress("volumeName", &volumeName, &bvolumeName);
+//
+// 	int nH = (int)Hits->GetEntries();
+//
+// 	TH1F* h = new TH1F("h","h",100,-2 *pow(10,-10)  ,2 * pow(10,-10) );//* pow(10,-10));
+//
+//
+// 	for(int i=0;i<n;i++)
+// 	{
+// 		bhitNumber -> GetEntry(i);
+// 		bhitNumberTrack1 -> GetEntry(i);
+// 		bhitNumberTrack2 -> GetEntry(i);
+//
+// 		bprocessName -> GetEntry(i);
+// 		bvolumeName -> GetEntry(i);
+// 		bparticleName -> GetEntry(i);
+// 	}
+//
+// 	TCanvas *can = new TCanvas("myCanvas","can",1920,1080);
+// 	return can;
+// }

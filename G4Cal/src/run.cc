@@ -58,13 +58,20 @@ MyRunAction::MyRunAction()
 	man->CreateNtupleDColumn("SposY");
 	man->CreateNtupleDColumn("SposZ");
 	man->CreateNtupleDColumn("time");
-	man->CreateNtupleFColumn("edep");
+	man->CreateNtupleDColumn("edep"); //!! changer en FColumn pour la reco d'image !!
 	man->CreateNtupleIColumn("layerID");
 	man->CreateNtupleIColumn("crystalID");
 	man->CreateNtupleIColumn("submoduleID");
 	man->CreateNtupleIColumn("moduleID");
 	man->CreateNtupleIColumn("rsectorID");
 	man->CreateNtupleSColumn("particleName");//pas dans Gate
+	man->CreateNtupleSColumn("processName");//pas dans Gate
+	man->CreateNtupleSColumn("volumeName");//pas dans Gate
+	man->CreateNtupleSColumn("preprocessName");//pas dans Gate
+	man->CreateNtupleSColumn("trackCreatorProcessName");//pas dans Gate
+	man->CreateNtupleIColumn("CerenkovNumber");//pas dans Gate
+	man->CreateNtupleDColumn("totalEnergy");
+	man->CreateNtupleDColumn("kineticEnergy");
 	man->FinishNtuple(2);
 
 	man->CreateNtuple("Singles", "Singles"); //noms vérifiés comme Gate

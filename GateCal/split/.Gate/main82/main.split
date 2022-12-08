@@ -1,0 +1,115 @@
+Number of files: 16
+
+Root filename: rootfile1
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0 s
+Virtual stopTime: 0.0625 s
+
+Root filename: rootfile2
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.0625 s
+Virtual stopTime: 0.125 s
+
+Root filename: rootfile3
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.125 s
+Virtual stopTime: 0.1875 s
+
+Root filename: rootfile4
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.1875 s
+Virtual stopTime: 0.25 s
+
+Root filename: rootfile5
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.25 s
+Virtual stopTime: 0.3125 s
+
+Root filename: rootfile6
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.3125 s
+Virtual stopTime: 0.375 s
+
+Root filename: rootfile7
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.375 s
+Virtual stopTime: 0.4375 s
+
+Root filename: rootfile8
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.4375 s
+Virtual stopTime: 0.5 s
+
+Root filename: rootfile9
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.5 s
+Virtual stopTime: 0.5625 s
+
+Root filename: rootfile10
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.5625 s
+Virtual stopTime: 0.625 s
+
+Root filename: rootfile11
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.625 s
+Virtual stopTime: 0.6875 s
+
+Root filename: rootfile12
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.6875 s
+Virtual stopTime: 0.75 s
+
+Root filename: rootfile13
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.75 s
+Virtual stopTime: 0.8125 s
+
+Root filename: rootfile14
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.8125 s
+Virtual stopTime: 0.875 s
+
+Root filename: rootfile15
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.875 s
+Virtual stopTime: 0.9375 s
+
+Root filename: rootfile16
+Timeslice is: 1 s
+Start time is: 0. s
+Stop time is: 1 s
+Virtual startTime: 0.9375 s
+Virtual stopTime: 1 s
+
+Original Root filename: rootfile

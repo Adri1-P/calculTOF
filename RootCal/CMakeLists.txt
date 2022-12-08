@@ -1,11 +1,12 @@
 include(CMakePrintHelpers)
 cmake_minimum_required(VERSION 3.16)
 
-project(Analyse) 
+project(Analyse)
    # You need to tell CMake where to find the ROOT installation. This can be done in a number of ways:
 #   - ROOT built with classic configure/make use the provided $ROOTSYS/etc/cmake/FindROOT.cmake
 #   - ROOT built with CMake. Add in CMAKE_PREFIX_PATH the installation prefix for ROOT
-list(APPEND volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/ $ENV{ROOTSYS})
+#list(APPEND /volatile3/root_v6.24.06.source/bin/bin $ENV{ROOTSYS})
+list(APPEND /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/bin/root $ENV{ROOTSYS})
 
 
 #---Locate the ROOT package and defines a number of variables (e.g. ROOT_INCLUDE_DIRS)

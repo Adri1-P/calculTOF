@@ -1,0 +1,173 @@
+
+############################################
+##  Macros for TOF simulation             ##
+##  cylinder filled with water            ##
+##  With 6 spheres at central axial plane ##
+##                                        ##
+## Maya Khalifé, CEA 2015                 ##
+############################################
+    
+
+
+# body cylinder
+/gate/world/daughters/name                             body_cylinder
+/gate/world/daughters/insert                           cylinder
+/gate/body_cylinder/geometry/setRmin                   0.  mm
+/gate/body_cylinder/geometry/setRmax                   100. mm
+/gate/body_cylinder/geometry/setHeight                 180. mm
+/gate/body_cylinder/placement/setTranslation           0. 0. 0. mm
+/gate/body_cylinder/setMaterial                        PMMA
+/gate/body_cylinder/attachPhantomSD
+/gate/body_cylinder/vis/forceSolid
+/gate/body_cylinder/vis/setColor                       white
+
+# filled with water
+/gate/body_cylinder/daughters/name                     body_water
+/gate/body_cylinder/daughters/insert                   cylinder
+/gate/body_water/geometry/setRmin                      0.  mm
+/gate/body_water/geometry/setRmax                      93. mm
+/gate/body_water/geometry/setHeight                    180. mm
+/gate/body_water/setMaterial                           Water
+/gate/body_water/attachPhantomSD
+#/gate/body_water/vis/forceSolid
+/gate/body_water/vis/setVisible                        0
+
+#ball 1 
+/gate/body_cylinder/daughters/name                     ball1
+/gate/body_cylinder/daughters/insert                   sphere
+/gate/ball1/geometry/setRmin                           0.   mm
+/gate/ball1/geometry/setRmax                           5.9  mm
+/gate/ball1/placement/setTranslation                   28.6 49.54 75. mm
+/gate/ball1/setMaterial                                Glass
+/gate/ball1/attachPhantomSD
+/gate/ball1/vis/setVisible                             1
+/gate/ball1/vis/forceSolid
+/gate/ball1/vis/setColor                               red
+
+#filled with water
+/gate/ball1/daughters/name                             water_ball1
+/gate/ball1/daughters/insert                           sphere
+/gate/water_ball1/geometry/setRmin                     0.   mm
+/gate/water_ball1/geometry/setRmax                     5.  mm
+/gate/water_ball1/setMaterial                          Water
+/gate/water_ball1/attachPhantomSD
+/gate/water_ball1/vis/setVisible                       0
+
+#ball 2 
+/gate/body_cylinder/daughters/name                     ball2
+/gate/body_cylinder/daughters/insert                   sphere
+/gate/ball2/geometry/setRmin                           0.   mm
+/gate/ball2/geometry/setRmax                           7.4  mm
+/gate/ball2/placement/setTranslation                   -28.6 49.54 75. mm
+/gate/ball2/setMaterial                                Glass
+/gate/ball2/attachPhantomSD
+/gate/ball2/vis/setVisible                             1
+/gate/ball2/vis/forceSolid
+/gate/ball2/vis/setColor                               red
+
+#filled with water
+/gate/ball2/daughters/name                             water_ball2
+/gate/ball2/daughters/insert                           sphere
+/gate/water_ball2/geometry/setRmin                     0.   mm
+/gate/water_ball2/geometry/setRmax                     6.5  mm
+/gate/water_ball2/setMaterial                          Water
+/gate/water_ball2/attachPhantomSD
+/gate/water_ball2/vis/setVisible                       0
+
+#ball 3 
+/gate/body_cylinder/daughters/name                     ball3
+/gate/body_cylinder/daughters/insert                   sphere
+/gate/ball3/geometry/setRmin                           0.   mm
+/gate/ball3/geometry/setRmax                           9.4  mm
+/gate/ball3/placement/setTranslation                   -57.2 0. 75. mm
+/gate/ball3/setMaterial                                Glass
+/gate/ball3/attachPhantomSD
+/gate/ball3/vis/setVisible                             1
+/gate/ball3/vis/forceSolid
+/gate/ball3/vis/setColor                               red
+
+#filled with water
+/gate/ball3/daughters/name                             water_ball3
+/gate/ball3/daughters/insert                           sphere
+/gate/water_ball3/geometry/setRmin                     0.   mm
+/gate/water_ball3/geometry/setRmax                     8.5  mm
+/gate/water_ball3/setMaterial                          Water
+/gate/water_ball3/attachPhantomSD
+/gate/water_ball3/vis/setVisible                       0
+
+#ball 4 
+/gate/body_cylinder/daughters/name                     ball4
+/gate/body_cylinder/daughters/insert                   sphere
+/gate/ball4/geometry/setRmin                           0.   mm
+/gate/ball4/geometry/setRmax                           11.9  mm
+/gate/ball4/placement/setTranslation                   -28.6 -49.54 75. mm
+/gate/ball4/setMaterial                                Glass
+/gate/ball4/attachPhantomSD
+/gate/ball4/vis/setVisible                             1
+/gate/ball4/vis/forceSolid
+/gate/ball4/vis/setColor                               red
+
+#filled with water
+/gate/ball4/daughters/name                             water_ball4
+/gate/ball4/daughters/insert                           sphere
+/gate/water_ball4/geometry/setRmin                     0.   mm
+/gate/water_ball4/geometry/setRmax                     11.  mm
+/gate/water_ball4/setMaterial                          Water
+/gate/water_ball4/attachPhantomSD
+/gate/water_ball4/vis/setVisible                       0
+
+#ball 5 
+/gate/body_cylinder/daughters/name                     ball5
+/gate/body_cylinder/daughters/insert                   sphere
+/gate/ball5/geometry/setRmin                           0.   mm
+/gate/ball5/geometry/setRmax                           14.9  mm
+/gate/ball5/placement/setTranslation                   28.6 -49.54 75. mm
+/gate/ball5/setMaterial                                Glass
+/gate/ball5/attachPhantomSD
+/gate/ball5/vis/setVisible                             1
+/gate/ball5/vis/forceSolid
+/gate/ball5/vis/setColor                               green
+
+#filled with water
+/gate/ball5/daughters/name                             water_ball5
+/gate/ball5/daughters/insert                           sphere
+/gate/water_ball5/geometry/setRmin                     0.   mm
+/gate/water_ball5/geometry/setRmax                     14.  mm
+/gate/water_ball5/setMaterial                          Water
+/gate/water_ball5/attachPhantomSD
+/gate/water_ball5/vis/setVisible                       0
+
+#ball 6 
+/gate/body_cylinder/daughters/name                     ball6
+/gate/body_cylinder/daughters/insert                   sphere
+/gate/ball6/geometry/setRmin                           0.   mm
+/gate/ball6/geometry/setRmax                           19.4  mm
+/gate/ball6/placement/setTranslation                   57.2 0. 75. mm
+/gate/ball6/setMaterial                                Glass
+/gate/ball6/attachPhantomSD
+/gate/ball6/vis/setVisible                             1
+/gate/ball6/vis/forceSolid
+/gate/ball6/vis/setColor                               green
+
+#filled with water
+/gate/ball6/daughters/name                             water_ball6
+/gate/ball6/daughters/insert                           sphere
+/gate/water_ball6/geometry/setRmin                     0.   mm
+/gate/water_ball6/geometry/setRmax                     18.5  mm
+/gate/water_ball6/setMaterial                          Water
+/gate/water_ball6/attachPhantomSD
+/gate/water_ball6/vis/setVisible                       0
+
+
+
+
+
+
+
+
+
+
+
+
+
+

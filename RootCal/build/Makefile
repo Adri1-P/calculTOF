@@ -290,6 +290,33 @@ src/drawFunction.cc.s:
 	$(MAKE) -f CMakeFiles/analyse.dir/build.make CMakeFiles/analyse.dir/src/drawFunction.cc.s
 .PHONY : src/drawFunction.cc.s
 
+src/normalisation.o: src/normalisation.cc.o
+
+.PHONY : src/normalisation.o
+
+# target to build an object file
+src/normalisation.cc.o:
+	$(MAKE) -f CMakeFiles/analyse.dir/build.make CMakeFiles/analyse.dir/src/normalisation.cc.o
+.PHONY : src/normalisation.cc.o
+
+src/normalisation.i: src/normalisation.cc.i
+
+.PHONY : src/normalisation.i
+
+# target to preprocess a source file
+src/normalisation.cc.i:
+	$(MAKE) -f CMakeFiles/analyse.dir/build.make CMakeFiles/analyse.dir/src/normalisation.cc.i
+.PHONY : src/normalisation.cc.i
+
+src/normalisation.s: src/normalisation.cc.s
+
+.PHONY : src/normalisation.s
+
+# target to generate assembly for a file
+src/normalisation.cc.s:
+	$(MAKE) -f CMakeFiles/analyse.dir/build.make CMakeFiles/analyse.dir/src/normalisation.cc.s
+.PHONY : src/normalisation.cc.s
+
 src/single.o: src/single.cc.o
 
 .PHONY : src/single.o
@@ -343,6 +370,9 @@ help:
 	@echo "... src/drawFunction.o"
 	@echo "... src/drawFunction.i"
 	@echo "... src/drawFunction.s"
+	@echo "... src/normalisation.o"
+	@echo "... src/normalisation.i"
+	@echo "... src/normalisation.s"
 	@echo "... src/single.o"
 	@echo "... src/single.i"
 	@echo "... src/single.s"

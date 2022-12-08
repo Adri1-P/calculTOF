@@ -1,0 +1,81 @@
+
+ *** Break *** segmentation violation
+
+
+
+===========================================================
+There was a crash.
+This is the entire stack trace of all threads:
+===========================================================
+#0  0x000015356c90ec3a in __GI___wait4 (pid=141481, stat_loc=stat_loc
+entry=0x7ffdb223aae8, options=options
+entry=0, usage=usage
+entry=0x0) at ../sysdeps/unix/sysv/linux/wait4.c:27
+#1  0x000015356c90ebfb in __GI___waitpid (pid=<optimized out>, stat_loc=stat_loc
+entry=0x7ffdb223aae8, options=options
+entry=0) at waitpid.c:38
+#2  0x000015356c87df67 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:172
+#3  0x000015356df76e2e in TUnixSystem::StackTrace() () from /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libCore.so.6.22
+#4  0x000015356df73cb5 in TUnixSystem::DispatchSignals(ESignals) () from /volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/lib/libCore.so.6.22
+#5  <signal handler called>
+#6  0x000056487ee04f89 in GateVolumeSelector::GateVolumeSelector(G4VPhysicalVolume*) ()
+#7  0x000056487eb42e3f in GatePulse::ChangeVolumeIDAndOutputVolumeIDValue(unsigned long, int) ()
+#8  0x000056487eb79440 in GateSpblurring::ProcessOnePulse(GatePulse const*, GatePulseList&) ()
+#9  0x000056487ef274d4 in GateVPulseProcessor::ProcessPulseList(GatePulseList const*) ()
+#10 0x000056487ee97412 in GatePulseProcessorChain::ProcessPulseList() ()
+#11 0x000056487ea2e80c in GateDigitizer::DigitizePulses() ()
+#12 0x000056487ea2ebd2 in GateDigitizer::Digitize() ()
+#13 0x000056487eb08a5d in GateOutputMgr::RecordEndOfEvent(G4Event const*) ()
+#14 0x000056487e99954f in GateEventAction::EndOfEventAction(G4Event const*) ()
+#15 0x0000153570621f23 in G4EventManager::DoProcessing(G4Event*) () from /volatile3/geant4.10.07.p02-install/lib/libG4event.so
+#16 0x00001535706c00f7 in G4RunManager::DoEventLoop(int, char const*, int) () from /volatile3/geant4.10.07.p02-install/lib/libG4run.so
+#17 0x00001535706bdd22 in G4RunManager::BeamOn(int, char const*, int) () from /volatile3/geant4.10.07.p02-install/lib/libG4run.so
+#18 0x000056487ec746cc in GateApplicationMgr::StartDAQCluster(CLHEP::Hep3Vector) ()
+#19 0x000056487ec7828e in GateApplicationMgrMessenger::SetNewValue(G4UIcommand*, G4String) ()
+#20 0x000015356e2dc35f in G4UIcommand::DoIt(G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#21 0x000015356e2cf70b in G4UIcmdWith3VectorAndUnit::DoIt(G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#22 0x000015356e2f9c9a in G4UImanager::ApplyCommand(char const*) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#23 0x000015356e2ca251 in G4UIbatch::ExecCommand(G4String const&) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#24 0x000015356e2cc206 in G4UIbatch::SessionStart() () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#25 0x000015356e2fb400 in G4UImanager::ExecuteMacroFile(char const*) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#26 0x000015356e2e7d6d in G4UIcontrolMessenger::SetNewValue(G4UIcommand*, G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#27 0x000015356e2dc35f in G4UIcommand::DoIt(G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#28 0x000015356e2f9c9a in G4UImanager::ApplyCommand(char const*) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#29 0x000056487e93d2f0 in main ()
+===========================================================
+
+
+The lines below might hint at the cause of the crash.
+You may get help by asking at the ROOT forum http://root.cern.ch/forum
+Only if you are really convinced it is a bug in ROOT then please submit a
+report at http://root.cern.ch/bugs Please post the ENTIRE stack trace
+from above as an attachment in addition to anything else
+that might help us fixing this issue.
+===========================================================
+#6  0x000056487ee04f89 in GateVolumeSelector::GateVolumeSelector(G4VPhysicalVolume*) ()
+#7  0x000056487eb42e3f in GatePulse::ChangeVolumeIDAndOutputVolumeIDValue(unsigned long, int) ()
+#8  0x000056487eb79440 in GateSpblurring::ProcessOnePulse(GatePulse const*, GatePulseList&) ()
+#9  0x000056487ef274d4 in GateVPulseProcessor::ProcessPulseList(GatePulseList const*) ()
+#10 0x000056487ee97412 in GatePulseProcessorChain::ProcessPulseList() ()
+#11 0x000056487ea2e80c in GateDigitizer::DigitizePulses() ()
+#12 0x000056487ea2ebd2 in GateDigitizer::Digitize() ()
+#13 0x000056487eb08a5d in GateOutputMgr::RecordEndOfEvent(G4Event const*) ()
+#14 0x000056487e99954f in GateEventAction::EndOfEventAction(G4Event const*) ()
+#15 0x0000153570621f23 in G4EventManager::DoProcessing(G4Event*) () from /volatile3/geant4.10.07.p02-install/lib/libG4event.so
+#16 0x00001535706c00f7 in G4RunManager::DoEventLoop(int, char const*, int) () from /volatile3/geant4.10.07.p02-install/lib/libG4run.so
+#17 0x00001535706bdd22 in G4RunManager::BeamOn(int, char const*, int) () from /volatile3/geant4.10.07.p02-install/lib/libG4run.so
+#18 0x000056487ec746cc in GateApplicationMgr::StartDAQCluster(CLHEP::Hep3Vector) ()
+#19 0x000056487ec7828e in GateApplicationMgrMessenger::SetNewValue(G4UIcommand*, G4String) ()
+#20 0x000015356e2dc35f in G4UIcommand::DoIt(G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#21 0x000015356e2cf70b in G4UIcmdWith3VectorAndUnit::DoIt(G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#22 0x000015356e2f9c9a in G4UImanager::ApplyCommand(char const*) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#23 0x000015356e2ca251 in G4UIbatch::ExecCommand(G4String const&) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#24 0x000015356e2cc206 in G4UIbatch::SessionStart() () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#25 0x000015356e2fb400 in G4UImanager::ExecuteMacroFile(char const*) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#26 0x000015356e2e7d6d in G4UIcontrolMessenger::SetNewValue(G4UIcommand*, G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#27 0x000015356e2dc35f in G4UIcommand::DoIt(G4String) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#28 0x000015356e2f9c9a in G4UImanager::ApplyCommand(char const*) () from /volatile3/geant4.10.07.p02-install/lib/libG4intercoms.so
+#29 0x000056487e93d2f0 in main ()
+===========================================================
+
+

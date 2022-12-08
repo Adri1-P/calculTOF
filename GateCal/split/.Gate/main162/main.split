@@ -1,0 +1,108 @@
+Number of files: 15
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm1
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0 s
+Virtual stopTime: 0.000666667 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm2
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.000666667 s
+Virtual stopTime: 0.00133333 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm3
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00133333 s
+Virtual stopTime: 0.002 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm4
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.002 s
+Virtual stopTime: 0.00266667 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm5
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00266667 s
+Virtual stopTime: 0.00333333 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm6
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00333333 s
+Virtual stopTime: 0.004 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm7
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.004 s
+Virtual stopTime: 0.00466667 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm8
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00466667 s
+Virtual stopTime: 0.00533333 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm9
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00533333 s
+Virtual stopTime: 0.006 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm10
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.006 s
+Virtual stopTime: 0.00666667 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm11
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00666667 s
+Virtual stopTime: 0.00733333 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm12
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00733333 s
+Virtual stopTime: 0.008 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm13
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.008 s
+Virtual stopTime: 0.00866667 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm14
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00866667 s
+Virtual stopTime: 0.00933333 s
+
+Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm15
+Timeslice is: 0.01 s
+Start time is: 0. s
+Stop time is: 0.01 s
+Virtual startTime: 0.00933333 s
+Virtual stopTime: 0.01 s
+
+Original Root filename: ../../calculTOF_outputs/GateOutputs/spblurringAftTest_30mm

@@ -32,12 +32,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake"
   "/usr/share/cmake-3.16/Modules/Platform/Linux.cmake"
   "/usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake"
-  "/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig-targets-release.cmake"
-  "/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig-targets.cmake"
-  "/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig-version.cmake"
-  "/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig.cmake"
-  "/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTUseFile.cmake"
-  "/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/RootMacros.cmake"
+  "/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig-targets-release.cmake"
+  "/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig-targets.cmake"
+  "/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig-version.cmake"
+  "/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTConfig.cmake"
+  "/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/ROOTUseFile.cmake"
+  "/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/cmake/RootMacros.cmake"
   )
 
 # The corresponding makefile is:

@@ -1,0 +1,118 @@
+Ajouter une variable dans Gate
+Au niveau du hit : 
+
+GateCrystalSD.cc
+
+G4bool GateCrystalSD::ProcessHits(G4Step*aStep, G4TouchableHistory*) (in 2 places)
+
+ G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
+      //evt->GetPrimaryVertex(0)->GetT0(); --> G4Event evt;
+
+aHit->SetT0(....)
+
+GateCrystalHit.cc
+
+GateHit::GateHit()
+
+
+GateHit.hh
+
+Add new attibute
+
+Add Get and Set Methods
+
+GateRootDefs.cc
+
+void GateRootHitBuffer::Clear()
+
+void GateRootHitBuffer::FillGND(GateHitGND* aHit)
+
+GateHitGND* GateRootHitBuffer::CreateHitGND()
+
+void GateHitTree::Init(GateRootHitBuffer& buffer)
+
+void GateHitTree::SetBranchAddresses(TTree* hitTree,GateRootHitBuffer& buffer)
+
+GateRootDefs.hh
+
+Add new attibute
+
+
+make
+make install
+
+********************************************************
+Au niveau du single :
+
+***
+
+GateCrystalSD.cc
+
+G4bool GateCrystalSD::ProcessHits(G4Step*aStep, G4TouchableHistory*) (in 2 places)
+
+ G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
+      //evt->GetPrimaryVertex(0)->GetT0(); --> G4Event evt;
+
+aHit->SetT0(....)
+***
+-> pas besoin de refaire
+
+
+***
+
+GateCrystalHit.cc
+
+GateHit::GateHit()
+
+
+GateHit.hh
+
+Add new attibute
+
+Add Get and Set Methods
+***
+-> je n'ai pas trouvé de "GateSingle"...
+
+
+***
+
+GateRootDefs.cc
+
+void GateRootHitBuffer::Clear()
+
+void GateRootHitBuffer::FillGND(GateHitGND* aHit)
+
+GateHitGND* GateRootHitBuffer::CreateHitGND()
+
+void GateHitTree::Init(GateRootHitBuffer& buffer)
+
+void GateHitTree::SetBranchAddresses(TTree* hitTree,GateRootHitBuffer& buffer)
+
+GateRootDefs.hh
+
+Add new attibute
+***
+-> facilement adaptable en changeant Hit par Single
+
+
+il n'y a pas de classe GateSingle.
+Il faut regarder GatePulse et GateHitConvertor
+
+Dans GateRootDefs il faut changer:
+
+ GateRootSingleBuffer
+GateRootSingleBuffer::Clear()
+GateRootSingleBuffer::Fill(GateSingleDigi* aDigi) --> Effectivement SingleDigi à modifier aussi
+void GateSingleTree::Init(GateRootSingleBuffer& buffer)
+
+pour GateSingleTree::Init :
+
+tu ajoutes qqhc comme ca :
+  Branch("time",           &buffer.time,"time/D");
+sans condition, i.e. sans  "if ( GateSingleDigi::GetSingleASCIIMask(8) )"
+
+Avec un regard vite sur GetSingleASCIIMask -> c'est la defintion si on ajoute le branch dans le tree ou pas, donc sans cette condition tu dois avoir le branch simplement
+
+********************************************************
+Ajouter une variable pour les coincidences :
+

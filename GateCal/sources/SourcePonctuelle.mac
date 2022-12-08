@@ -4,7 +4,7 @@
 /gate/source/mySource/setType backtoback
 /gate/source/mySource/gps/ene/type  Mono
 /gate/source/mySource/gps/ene/mono 511. keV
-/gate/source/mySource/setActivity                 500000. becquerel
+/gate/source/mySource/setActivity                 1000. becquerel
 
 /gate/source/mySource/gps/ang/type     iso
 #/gate/source/mySource/gps/ang/mintheta 0. deg #perpendiculaire à z

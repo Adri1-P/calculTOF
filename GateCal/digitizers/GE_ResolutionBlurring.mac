@@ -1,0 +1,6 @@
+# /gate/digitizer/Singles/insert timeResolution
+# /gate/digitizer/Singles/timeResolution/setTimeResolution {timeRes} ps
+
+
+# /gate/digitizer/Singles/insert spblurring
+# /gate/digitizer/Singles/spblurring/setSpresolution 7.0 mm

@@ -83,9 +83,22 @@ CMakeFiles/sim.dir/src/BackToBackGenerator.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/BackToBackGenerator.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /biomaps/physique/apaillet/calculTOF/G4Cal/src/BackToBackGenerator.cc -o CMakeFiles/sim.dir/src/BackToBackGenerator.cc.s
 
+CMakeFiles/sim.dir/src/ClearMindDetector.cc.o: CMakeFiles/sim.dir/flags.make
+CMakeFiles/sim.dir/src/ClearMindDetector.cc.o: ../src/ClearMindDetector.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sim.dir/src/ClearMindDetector.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/ClearMindDetector.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/ClearMindDetector.cc
+
+CMakeFiles/sim.dir/src/ClearMindDetector.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/ClearMindDetector.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /biomaps/physique/apaillet/calculTOF/G4Cal/src/ClearMindDetector.cc > CMakeFiles/sim.dir/src/ClearMindDetector.cc.i
+
+CMakeFiles/sim.dir/src/ClearMindDetector.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/ClearMindDetector.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /biomaps/physique/apaillet/calculTOF/G4Cal/src/ClearMindDetector.cc -o CMakeFiles/sim.dir/src/ClearMindDetector.cc.s
+
 CMakeFiles/sim.dir/src/DebugDetector.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/DebugDetector.cc.o: ../src/DebugDetector.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sim.dir/src/DebugDetector.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sim.dir/src/DebugDetector.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/DebugDetector.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/DebugDetector.cc
 
 CMakeFiles/sim.dir/src/DebugDetector.cc.i: cmake_force
@@ -98,7 +111,7 @@ CMakeFiles/sim.dir/src/DebugDetector.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/ScanGE.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/ScanGE.cc.o: ../src/ScanGE.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sim.dir/src/ScanGE.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sim.dir/src/ScanGE.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/ScanGE.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/ScanGE.cc
 
 CMakeFiles/sim.dir/src/ScanGE.cc.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/sim.dir/src/ScanGE.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o: ../src/TOFDebugDetector.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/TOFDebugDetector.cc
 
 CMakeFiles/sim.dir/src/TOFDebugDetector.cc.i: cmake_force
@@ -124,7 +137,7 @@ CMakeFiles/sim.dir/src/TOFDebugDetector.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.o: ../src/TOFDebugDetector2.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/TOFDebugDetector2.cc
 
 CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/sim.dir/src/TOFDebugDetector2.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.o: ../src/TOFDebugDetector50.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/TOFDebugDetector50.cc
 
 CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.i: cmake_force
@@ -150,7 +163,7 @@ CMakeFiles/sim.dir/src/TOFDebugDetector50.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/action.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/action.cc.o: ../src/action.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/sim.dir/src/action.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/sim.dir/src/action.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/action.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/action.cc
 
 CMakeFiles/sim.dir/src/action.cc.i: cmake_force
@@ -163,7 +176,7 @@ CMakeFiles/sim.dir/src/action.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/construction.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/construction.cc.o: ../src/construction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/sim.dir/src/construction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/sim.dir/src/construction.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/construction.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/construction.cc
 
 CMakeFiles/sim.dir/src/construction.cc.i: cmake_force
@@ -176,7 +189,7 @@ CMakeFiles/sim.dir/src/construction.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/detector.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/detector.cc.o: ../src/detector.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/sim.dir/src/detector.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/sim.dir/src/detector.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/detector.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/detector.cc
 
 CMakeFiles/sim.dir/src/detector.cc.i: cmake_force
@@ -189,7 +202,7 @@ CMakeFiles/sim.dir/src/detector.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/event.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/event.cc.o: ../src/event.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/sim.dir/src/event.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sim.dir/src/event.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/event.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/event.cc
 
 CMakeFiles/sim.dir/src/event.cc.i: cmake_force
@@ -202,7 +215,7 @@ CMakeFiles/sim.dir/src/event.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/generator.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/generator.cc.o: ../src/generator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sim.dir/src/generator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sim.dir/src/generator.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/generator.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/generator.cc
 
 CMakeFiles/sim.dir/src/generator.cc.i: cmake_force
@@ -215,7 +228,7 @@ CMakeFiles/sim.dir/src/generator.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/myHit.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/myHit.cc.o: ../src/myHit.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sim.dir/src/myHit.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sim.dir/src/myHit.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/myHit.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/myHit.cc
 
 CMakeFiles/sim.dir/src/myHit.cc.i: cmake_force
@@ -228,7 +241,7 @@ CMakeFiles/sim.dir/src/myHit.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/physics.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/physics.cc.o: ../src/physics.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sim.dir/src/physics.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sim.dir/src/physics.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/physics.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/physics.cc
 
 CMakeFiles/sim.dir/src/physics.cc.i: cmake_force
@@ -241,7 +254,7 @@ CMakeFiles/sim.dir/src/physics.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/run.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/run.cc.o: ../src/run.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sim.dir/src/run.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sim.dir/src/run.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/run.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/run.cc
 
 CMakeFiles/sim.dir/src/run.cc.i: cmake_force
@@ -254,7 +267,7 @@ CMakeFiles/sim.dir/src/run.cc.s: cmake_force
 
 CMakeFiles/sim.dir/src/stepping.cc.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/stepping.cc.o: ../src/stepping.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sim.dir/src/stepping.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/sim.dir/src/stepping.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim.dir/src/stepping.cc.o -c /biomaps/physique/apaillet/calculTOF/G4Cal/src/stepping.cc
 
 CMakeFiles/sim.dir/src/stepping.cc.i: cmake_force
@@ -269,6 +282,7 @@ CMakeFiles/sim.dir/src/stepping.cc.s: cmake_force
 sim_OBJECTS = \
 "CMakeFiles/sim.dir/mysimu.cc.o" \
 "CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o" \
+"CMakeFiles/sim.dir/src/ClearMindDetector.cc.o" \
 "CMakeFiles/sim.dir/src/DebugDetector.cc.o" \
 "CMakeFiles/sim.dir/src/ScanGE.cc.o" \
 "CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o" \
@@ -289,6 +303,7 @@ sim_EXTERNAL_OBJECTS =
 
 sim: CMakeFiles/sim.dir/mysimu.cc.o
 sim: CMakeFiles/sim.dir/src/BackToBackGenerator.cc.o
+sim: CMakeFiles/sim.dir/src/ClearMindDetector.cc.o
 sim: CMakeFiles/sim.dir/src/DebugDetector.cc.o
 sim: CMakeFiles/sim.dir/src/ScanGE.cc.o
 sim: CMakeFiles/sim.dir/src/TOFDebugDetector.cc.o
@@ -352,7 +367,7 @@ sim: /volatile3/geant4.10.07.p02-GDML_MT_install/lib/libG4global.so
 sim: /volatile3/geant4.10.07.p02-GDML_MT_install/lib/libG4clhep.so
 sim: /volatile3/geant4.10.07.p02-GDML_MT_install/lib/libG4ptl.so.0.0.2
 sim: CMakeFiles/sim.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable sim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/biomaps/physique/apaillet/calculTOF/G4Cal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable sim"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sim.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

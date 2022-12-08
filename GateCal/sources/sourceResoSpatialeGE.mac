@@ -1,0 +1,130 @@
+# with some F18 activity
+/gate/source/addSource                        F18capillaire1
+/gate/source/F18capillaire1/gps/particle e+
+/gate/source/F18capillaire1/gps/energytype Fluor18
+/gate/source/F18capillaire1/setForcedUnstableFlag true
+/gate/source/F18capillaire1/setForcedHalfLife 6586 s
+/gate/source/F18capillaire1/setActivity                 1000000. becquerel
+/gate/source/F18capillaire1/gps/pos/type                    Volume
+/gate/source/F18capillaire1/gps/ang/type                 iso
+/gate/source/F18capillaire1/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire1/gps/pos/radius                  200. um
+/gate/source/F18capillaire1/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire1/gps/pos/centre              1. 0. 0. cm
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire2
+/gate/source/F18capillaire2/gps/particle e+
+/gate/source/F18capillaire2/gps/energytype Fluor18
+/gate/source/F18capillaire2/setForcedUnstableFlag true
+/gate/source/F18capillaire2/setForcedHalfLife 6586 s
+/gate/source/F18capillaire2/setActivity                 1000000. becquerel
+/gate/source/F18capillaire2/gps/pos/type                    Volume
+/gate/source/F18capillaire2/gps/ang/type                 iso
+/gate/source/F18capillaire2/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire2/gps/pos/radius                  200. um
+/gate/source/F18capillaire2/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire2/gps/pos/centre              5. 0. 0. cm
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire3
+/gate/source/F18capillaire3/gps/particle e+
+/gate/source/F18capillaire3/gps/energytype Fluor18
+/gate/source/F18capillaire3/setForcedUnstableFlag true
+/gate/source/F18capillaire3/setForcedHalfLife 6586 s
+/gate/source/F18capillaire3/setActivity                 1000000. becquerel
+/gate/source/F18capillaire3/gps/pos/type                    Volume
+/gate/source/F18capillaire3/gps/ang/type                 iso
+/gate/source/F18capillaire3/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire3/gps/pos/radius                  200. um
+/gate/source/F18capillaire3/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire3/gps/pos/centre              8. 0. 0. cm
+
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire4
+/gate/source/F18capillaire4/gps/particle e+
+/gate/source/F18capillaire4/gps/energytype Fluor18
+/gate/source/F18capillaire4/setForcedUnstableFlag true
+/gate/source/F18capillaire4/setForcedHalfLife 6586 s
+/gate/source/F18capillaire4/setActivity                 1000000. becquerel
+/gate/source/F18capillaire4/gps/pos/type                    Volume
+/gate/source/F18capillaire4/gps/ang/type                 iso
+/gate/source/F18capillaire4/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire4/gps/pos/radius                  200. um
+/gate/source/F18capillaire4/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire4/gps/pos/centre              11. 0. 0. cm
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire5
+/gate/source/F18capillaire5/gps/particle e+
+/gate/source/F18capillaire5/gps/energytype Fluor18
+/gate/source/F18capillaire5/setForcedUnstableFlag true
+/gate/source/F18capillaire5/setForcedHalfLife 6586 s
+/gate/source/F18capillaire5/setActivity                 1000000. becquerel
+/gate/source/F18capillaire5/gps/pos/type                    Volume
+/gate/source/F18capillaire5/gps/ang/type                 iso
+/gate/source/F18capillaire5/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire5/gps/pos/radius                  200. um
+/gate/source/F18capillaire5/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire5/gps/pos/centre              14. 0. 0. cm
+
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire_m1
+/gate/source/F18capillaire_m1/gps/particle e+
+/gate/source/F18capillaire_m1/gps/energytype Fluor18
+/gate/source/F18capillaire_m1/setForcedUnstableFlag true
+/gate/source/F18capillaire_m1/setForcedHalfLife 6586 s
+/gate/source/F18capillaire_m1/setActivity                 1000000. becquerel
+/gate/source/F18capillaire_m1/gps/pos/type                    Volume
+/gate/source/F18capillaire_m1/gps/ang/type                 iso
+/gate/source/F18capillaire_m1/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire_m1/gps/pos/radius                  200. um
+/gate/source/F18capillaire_m1/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire_m1/gps/pos/centre              -5. 0. 0. cm
+
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire_m2
+/gate/source/F18capillaire_m2/gps/particle e+
+/gate/source/F18capillaire_m2/gps/energytype Fluor18
+/gate/source/F18capillaire_m2/setForcedUnstableFlag true
+/gate/source/F18capillaire_m2/setForcedHalfLife 6586 s
+/gate/source/F18capillaire_m2/setActivity                 1000000. becquerel
+/gate/source/F18capillaire_m2/gps/pos/type                    Volume
+/gate/source/F18capillaire_m2/gps/ang/type                 iso
+/gate/source/F18capillaire_m2/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire_m2/gps/pos/radius                  200. um
+/gate/source/F18capillaire_m2/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire_m2/gps/pos/centre              -8. 0. 0. cm
+
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire_m3
+/gate/source/F18capillaire_m3/gps/particle e+
+/gate/source/F18capillaire_m3/gps/energytype Fluor18
+/gate/source/F18capillaire_m3/setForcedUnstableFlag true
+/gate/source/F18capillaire_m3/setForcedHalfLife 6586 s
+/gate/source/F18capillaire_m3/setActivity                 1000000. becquerel
+/gate/source/F18capillaire_m3/gps/pos/type                    Volume
+/gate/source/F18capillaire_m3/gps/ang/type                 iso
+/gate/source/F18capillaire_m3/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire_m3/gps/pos/radius                  200. um
+/gate/source/F18capillaire_m3/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire_m3/gps/pos/centre              -11. 0. 0. cm
+
+
+# with some F18 activity
+/gate/source/addSource                        F18capillaire_m4
+/gate/source/F18capillaire_m4/gps/particle e+
+/gate/source/F18capillaire_m4/gps/energytype Fluor18
+/gate/source/F18capillaire_m4/setForcedUnstableFlag true
+/gate/source/F18capillaire_m4/setForcedHalfLife 6586 s
+/gate/source/F18capillaire_m4/setActivity                 1000000. becquerel
+/gate/source/F18capillaire_m4/gps/pos/type                    Volume
+/gate/source/F18capillaire_m4/gps/ang/type                 iso
+/gate/source/F18capillaire_m4/gps/pos/shape                   Cylinder
+/gate/source/F18capillaire_m4/gps/pos/radius                  200. um
+/gate/source/F18capillaire_m4/gps/pos/halfz                   2. mm
+/gate/source/F18capillaire_m4/gps/pos/centre              -14. 0. 0. cm

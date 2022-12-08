@@ -1,0 +1,217 @@
+#  *********************************************************************
+#  * DISCLAIMER                                                        *
+#  *                                                                   *
+#  * Neither the authors of this software system, nor their employing  *
+#  * institutes, nor the agencies providing financial support for this *
+#  * work make any representation or warranty, express or implied,     *
+#  * regarding this software system or assume any liability for its    *
+#  * use.                                                              *
+#  *                                                                   *
+#  * This code implementation is the intellectual property of the      *
+#  * OpenGATE collaboration.                                           *
+#  * By copying, distributing or modifying the Program (or any work    *
+#  * based on the Program) you indicate your acceptance of this        *
+#  * statement, and all its terms.                                     *
+#  *********************************************************************
+#
+                                                          
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#
+#         D E F I N E   Y O U R   S C A N N E R   A N D       
+#                                                             
+#        Y O U R   C O M P L E T E   S I M U L A T I O N   
+#                                                             
+#        F O R   I M A G I N G    A P P L I CA T I O N S       
+#                                                     
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase  GateMaterials.db
+/gate/geometry/setMaterialDatabase  ClMind_GateMaterials.db
+
+
+#=====================================================
+#     W O R L D
+#=====================================================
+/gate/world/geometry/setXLength       100. cm
+/gate/world/geometry/setYLength       100. cm
+/gate/world/geometry/setZLength       100. cm
+
+
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+#                                                                 #
+#     D E F I N I T I O N   A N D   D E S C R I T I O N           #
+#        O F   Y O U R   P E T   D E V I C E                      #
+#                                                                 #
+#-------------------oooooOOOOO00000OOOOOooooo---------------------#
+
+
+#=====================================================
+#       DEFINITION du SYSTEM : "cylindricalPET"
+#       Permet de implementer des detecteurs avec multicouches actives
+#=====================================================
+/gate/world/daughters/name                    cylindricalPET
+/gate/world/daughters/insert                  cylinder
+/gate/cylindricalPET/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/cylindricalPET/geometry/setRmax         48. cm
+/gate/cylindricalPET/geometry/setRmin         2.  cm
+/gate/cylindricalPET/geometry/setHeight       20. cm
+/gate/cylindricalPET/setMaterial              Air
+/gate/cylindricalPET/vis/forceWireframe
+/gate/cylindricalPET/vis/setColor             red
+/gate/cylindricalPET/vis/setVisible            0
+
+#-----------------------------------------------------
+#	HEAD
+#       Bidon, Necessaire pour la couche system "rsector"
+#=====================================================
+/gate/cylindricalPET/daughters/name           head
+/gate/cylindricalPET/daughters/insert         box
+/gate/head/placement/setTranslation           30. 0.0 0.0 cm
+/gate/head/geometry/setXLength                22. mm
+/gate/head/geometry/setYLength                100. mm
+/gate/head/geometry/setZLength                100. mm
+/gate/head/setMaterial                        Air
+/gate/head/vis/setColor                       white
+/gate/head/vis/setVisible                     0
+
+#-----------------------------------------------------
+#       DETECTOR UNIT
+#       Bidon, Necessaire pour la couche system "crystal"
+#=====================================================
+/gate/head/daughters/name 			Detector
+/gate/head/daughters/insert 	        	box
+
+/gate/Detector/placement/setTranslation 	0. 0. 0. cm
+/gate/Detector/geometry/setXLength  		22. mm
+/gate/Detector/geometry/setYLength 		100. mm
+/gate/Detector/geometry/setZLength 		100. mm
+
+/gate/Detector/setMaterial			Air
+/gate/Detector/vis/setColor 			yellow
+/gate/Detector/vis/setVisible			0
+/gate/Detector/vis/forceWireframe
+
+#-----------------------------------------------------
+# Seulement maintenant que nous en sommes aux "layer"
+# Nous pouvons definir notre assemblage detecteur manuellement
+#=====================================================
+
+#-----------------------------------------------------
+#        Create the "Coating Layer", Noire ou photocathode2 peut-être un jour.
+#=====================================================
+/gate/Detector/daughters/name                  Coating_Layer
+/gate/Detector/daughters/insert                box
+
+/gate/Coating_Layer/placement/setTranslation      -10.0005 0.0 0.0 mm
+/gate/Coating_Layer/geometry/setXLength           1000. nm
+/gate/Coating_Layer/geometry/setYLength           100. mm
+/gate/Coating_Layer/geometry/setZLength           100. mm
+
+/gate/Coating_Layer/setMaterial                   PbW04_Black
+/gate/Coating_Layer/vis/setColor                  black
+/gate/Coating_Layer/vis/setVisible                1
+
+#-----------------------------------------------------
+#        Create the "PbWO4 crystal" 
+#=====================================================
+/gate/Detector/daughters/name 			PbWO4_crystal
+/gate/Detector/daughters/insert 		box
+
+/gate/PbWO4_crystal/placement/setTranslation 	0. 0. 0. cm
+/gate/PbWO4_crystal/geometry/setXLength         20. mm
+/gate/PbWO4_crystal/geometry/setYLength 	100. mm
+/gate/PbWO4_crystal/geometry/setZLength 	100. mm
+
+/gate/PbWO4_crystal/setMaterial		        PbW04_Y
+#/gate/PbWO4_crystal/setMaterial		LSO
+/gate/PbWO4_crystal/vis/setColor 		blue
+/gate/PbWO4_crystal/vis/setVisible		1
+/gate/PbWO4_crystal/vis/forceWireframe
+
+#-----------------------------------------------------
+#        Create the "PhotoElectric Layer"
+#=====================================================
+/gate/Detector/daughters/name                  PhotElec_Layer
+/gate/Detector/daughters/insert                box
+
+/gate/PhotElec_Layer/placement/setTranslation   10.0000125 0.0 0.0 mm
+/gate/PhotElec_Layer/geometry/setXLength        25. nm
+/gate/PhotElec_Layer/geometry/setYLength        100. mm
+/gate/PhotElec_Layer/geometry/setZLength        100. mm
+
+/gate/PhotElec_Layer/setMaterial                Bialkali_Bleu
+/gate/PhotElec_Layer/vis/setColor               red
+/gate/PhotElec_Layer/vis/setVisible             1
+
+#-----------------------------------------------------
+#	ATTACH SYSTEM
+#       "Finalise la construction formelle du cylindricalPET system"
+#=====================================================
+/gate/systems/cylindricalPET/rsector/attach   head
+/gate/systems/cylindricalPET/crystal/attach   Detector
+/gate/systems/cylindricalPET/layer0/attach    Coating_Layer
+/gate/systems/cylindricalPET/layer1/attach    PbWO4_crystal
+/gate/systems/cylindricalPET/layer2/attach    PhotElec_Layer
+
+#-----------------------------------------------------
+#	ATTACH CRYSTAL SD
+#       "Definit les volumes detecteurs a sauvegarder"
+#=====================================================
+/gate/PbWO4_crystal/attachCrystalSD
+#/gate/PhotElec_Layer/attachCrystalSD
+#/gate/Coating_Layer/attachCrystalSD
+
+/gate/systems/cylindricalPET/describe
+
+
+#-----------------------------------------------------
+#	PHYSICS
+#=====================================================
+/gate/physics/addProcess PhotoElectric
+/gate/physics/processes/PhotoElectric/setModel StandardModel
+/gate/physics/addProcess Compton
+/gate/physics/processes/Compton/setModel StandardModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess ElectronIonisation
+/gate/physics/processes/ElectronIonisation/setModel StandardModel e-
+/gate/physics/processes/ElectronIonisation/setModel StandardModel e+
+/gate/physics/addProcess Bremsstrahlung
+/gate/physics/processes/Bremsstrahlung/setModel StandardModel e-
+/gate/physics/processes/Bremsstrahlung/setModel StandardModel e+
+/gate/physics/addProcess PositronAnnihilation
+/gate/physics/addProcess eMultipleScattering e+
+/gate/physics/addProcess eMultipleScattering e-
+
+/gate/physics/addProcess    Cerenkov 
+/gate/physics/addProcess    Scintillation 
+/gate/physics/addProcess    OpticalAbsorption 
+/gate/physics/addProcess    OpticalRayleigh 
+/gate/physics/addProcess    OpticalBoundary 
+/gate/physics/addProcess    OpticalMie 
+/gate/physics/addProcess    OpticalWLS 
+/gate/physics/processList   Enabled 
+/gate/physics/processList Initialized
+
+
+
+
+#-----------------------------------------------------
+#	CUTS
+#=====================================================
+
+#/gate/physics/Electron/SetCutInRegion   PbWO4_crystal 0.1 nm
+
+#/gate/physics/Electron/SetCutInRegion   PhotElec_Layer 0.1 nm
+
+#/gate/physics/Electron/SetCutInRegion   Coating_Layer 0.1 nm
+
+
+
+#/gate/application/startDAQ
+

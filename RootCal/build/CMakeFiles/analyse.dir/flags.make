@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11 -pipe -fsigned-char -pthread
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/volatile3/root/root_v6.24.00.Linux-ubuntu20-x86_64-gcc9.3/root/include -I/biomaps/physique/apaillet/calculTOF/RootCal/include 
+CXX_INCLUDES = -I/volatile3/root_v6.22.00.Linux-ubuntu20-x86_64-gcc9.3/root/include -I/biomaps/physique/apaillet/calculTOF/RootCal/include 
 

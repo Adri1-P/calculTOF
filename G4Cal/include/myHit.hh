@@ -26,7 +26,7 @@ public:
 	G4ThreeVector myhitPos,G4ThreeVector myhitSourcePos,
 	G4double myhitEdep, G4double myhitTime,
 	G4int myhitLayerID,	G4int myhitCrystalID,	G4int myhitSubmoduleID,	G4int myhitModuleID,	G4int myhitRsectorID,
-	G4String myhitParticleName);
+	G4String myhitParticleName, G4String myhitProcessName, G4String myhitVolumeName);
 
 	G4int gethitID() {return hitID;}
 	G4int gethitNumberTrack1() {return hitNumberTrack1;}
@@ -48,6 +48,8 @@ public:
 	G4int gethitRsectorID() {return hitRsectorID;}
 
 	G4String gethitParticleName() {return hitParticleName;}
+	G4String gethitProcessName() {return hitProcessName;}
+	G4String gethitVolumeName() {return hitVolumeName;}
 
 	void Print();
 	void FillNTuple(char listOfTypes[]= "",int NTupleID= 2,...); //Valeur par défaut à modifier ici si on veut changer le numéro du NTuple des hits dans run.cc
@@ -71,7 +73,7 @@ private :
 	G4int hitModuleID;
 	G4int hitRsectorID;
 
-	G4String hitParticleName;
+	G4String hitParticleName, hitProcessName, hitVolumeName;
 };
 
 //récupéré de https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/Detector/hit.html?highlight=hit

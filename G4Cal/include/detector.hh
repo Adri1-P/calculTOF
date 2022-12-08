@@ -32,6 +32,7 @@ private :
 	G4int hitNumberTrack1 = 0;
 	G4int hitNumberTrack2 = 0;
 	G4int ID;
+	G4int CerenkovNumber = 0;
 
 
 };

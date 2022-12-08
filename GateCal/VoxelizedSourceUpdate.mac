@@ -1,0 +1,36 @@
+# DECLARATION OF THE FACT THAT A VOXELIZED SOURCE WILL BE USED
+# Always use the keyword voxel to declare the type
+/gate/source/addSource                                            hof voxel
+# DECLARATION THAT THE VOXELIZED SOURCE WILL BE ENTERED USING IMAGE DATA
+/gate/source/hof/reader/insert                              image
+
+# INSERT THE TRANSLATOR THAT WILL CONVERT THE IMAGE FROM DIGITAL VALUES TO ACTIVITY VALUES
+# Example for a linear translator: this scales all image values directly into activities
+#/gate/source/hof/imageReader/translator/insert              linear
+#/gate/source/hof/imageReader/linearTranslator/setScale      1. Bq
+# Example for a range translator (can not be used simultaneously)
+# Here the values of the image file are discretized in intervals and are then converted to predefined activities
+/gate/source/hof/imageReader/translator/insert              range
+/gate/source/hof/imageReader/rangeTranslator/readTable      act_range_vox_mod.dat #act_range_vox.dat
+/gate/source/hof/imageReader/rangeTranslator/describe       1
+
+# THE FOLLOWING LINE ALLOWS YOU TO INSERT THE IMAGE DATA USING THE APPROPRIATE EXTENSION FILE
+/gate/source/hof/imageReader/readFile                       hof3.h33
+/gate/source/hof/imageReader/verbose                        1
+
+# THE DEFAULT POSITION OF THE VOXELIZED SOURCE IS IN THE 1ST QUARTER
+# SO THE VOXELIZED SOURCE HAS TO BE SHIFTED OVER HALF ITS DIMENSION IN THE NEGATIVE DIRECTION ON EACH AXIS
+/gate/source/hof/setPosition                                -128. -128. -55. mm
+/gate/source/hof/dump                                       1
+
+# THE FOLLOWING LINES CHARACTERIZE THE SIZE (NO DIFFERENCE WITH AN ANALYTICAL SOURCE)
+/gate/source/hof/setType backtoback
+/gate/source/hof/gps/particle gamma
+/gate/source/hof/gps/energytype Mono
+/gate/source/hof/gps/monoenergy 511. keV
+/gate/source/hof/gps/angtype iso
+/gate/source/hof/gps/mintheta 0. deg
+/gate/source/hof/gps/maxtheta 90. deg
+/gate/source/hof/gps/minphi 0. deg
+/gate/source/hof/gps/maxphi 360. deg
+/gate/source/hof/gps/confine NULL

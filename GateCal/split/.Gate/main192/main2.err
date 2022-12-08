@@ -1,0 +1,13 @@
+[G4-cerr] 
+-------- EEEE ------- G4Exception-START -------- EEEE -------
+*** G4Exception : Cache001
+      issued by : G4CacheReference<V>::Destroy
+Internal fatal error. Invalid G4Cache size (requested id: 38 but cache has size: 36 Possibly client created G4Cache object in a thread and tried to delete it from another thread!
+*** Fatal Exception *** core dump ***
+[G4-cerr]  **** Track information is not available at this moment
+[G4-cerr]  **** Step information is not available at this moment
+[G4-cerr] 
+-------- EEEE -------- G4Exception-END --------- EEEE -------
+
+[G4-cerr] 
+[G4-cerr] *** G4Exception: Aborting execution ***

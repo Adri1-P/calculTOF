@@ -1,0 +1,1038 @@
+[G4] 
+[G4] **************************************************************
+[G4]  Geant4 version Name: geant4-10-07-patch-02    (11-June-2021)
+[G4]                        Copyright : Geant4 Collaboration
+[G4]                       References : NIM A 506 (2003), 250-303
+[G4]                                  : IEEE-TNS 53 (2006), 270-278
+[G4]                                  : NIM A 835 (2016), 186-225
+[G4]                              WWW : http://geant4.org/
+[G4] **************************************************************
+[G4] 
+[Core-0] Initialization of geometry
+[Core-0] Initialization of physics
+[Core-0] Initialization of actors
+[Core-0] 
+[Core-0] *************************************************
+[Core-0]  GATE version 9.1 (2021)
+[Core-0]  Copyright : OpenGATE Collaboration
+[Core-0]  Reference : Phys. Med. Biol. 49 (2004) 4543-4561
+[Core-0]  Reference : Phys. Med. Biol. 56 (2011) 881-901
+[Core-0]  Reference : Med. Phys. 41(6)    (2014)
+[Core-0]  http://www.opengatecollaboration.org        
+[Core-0] *************************************************
+[Core-0] 
+[Core-0] You are using Geant4 version 10.7.2
+[Core-0] Starting macro ./split/.Gate/main192/main2.mac
+0: RINDEX
+1.84e-06   1.00028
+4.08e-06   1.00028
+9: GROUPVEL
+1.84e-06   299.709
+4.08e-06   299.709
+16: ABSLENGTH
+1.84e-06   50000
+4.08e-06   50000
+ <!> *** WARNING *** <!>  GateMaterialDatabase: Multiple definition of element: Yttrium.
+The definition in ClMind_GateMaterials.db was used.
+
+
+GATE object:        'systems/cylindricalPET'
+Components:
+
+GATE object:        'systems/cylindricalPET/base'
+Attached to volume: cylindricalPET
+Nb of children:       1
+
+	GATE object:        'systems/cylindricalPET/rsector'
+	Attached to volume: module
+	Nb of children:       1
+
+		GATE object:        'systems/cylindricalPET/module'
+		Attached to volume: unit
+		Nb of children:       1
+
+			GATE object:        'systems/cylindricalPET/submodule'
+			Attached to volume: block
+			Nb of children:       1
+
+				GATE object:        'systems/cylindricalPET/crystal'
+				Attached to volume: optical
+				Nb of children:       4
+
+					GATE object:        'systems/cylindricalPET/layer0'
+					Attached to volume: crystal
+					Nb of children:       0
+
+					GATE object:        'systems/cylindricalPET/layer1'
+					Attached to volume: ---
+					Nb of children:       0
+
+					GATE object:        'systems/cylindricalPET/layer2'
+					Attached to volume: ---
+					Nb of children:       0
+
+					GATE object:        'systems/cylindricalPET/layer3'
+					Attached to volume: ---
+					Nb of children:       0
+geometrical design type: 1
+ring diameter: -3.95 mm 
+rsector axial pitch: 0 fm 
+rsector azimuthal pitch: 12.8571 degree
+rsector tangential size: 2.5 cm 
+rsector axial size: 25.04 cm 
+module axial size: 4.784 cm 
+module tangential size: 2.5 cm 
+module axial pitch: 0 fm 
+module tangential pitch: 0 fm 
+submodule axial size: 4.784 cm 
+submodule tangential size: 2.5 cm 
+submodule axial pitch: 0 fm 
+submodule tangential pitch: 0 fm 
+crystal radial size: 1.59 cm 
+crystal axial size: 1.59 cm 
+crystal tangential size: 2.5 cm 
+crystal axial pitch: 0 fm 
+crystal tangential pitch: 0 fm 
+layer0 radial size: 3.95 mm 
+in layer0 interaction length: 1.975 mm 
+Axial nb of rsectors: 1
+Azimuthal nb of rsectors: 28
+Axial nb of modules: 1
+Tangential nb of modules: 1
+Axial nb of submodules: 1
+Tangential nb of submodules: 1
+Axial nb of crystals: 1
+Tangential nb of crystals: 1
+Radial nb of layers: 1
+[Physic-0] The following Geant4's physic-list is enabled :emstandard_opt3
+
+
+List of Enabled processes:
+
+
+
+
+List of initialized processes:
+
+
+[Core-0] Initialization of geometry
+[Core-0] Initialization of physics
+[Core-0] Initialization of actors
+0
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+Confirming activity forbidden in volume 'NEMA_IQ_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'NEMA_IQ_phys'
+Confirming activity forbidden in volume 'NEMA_IQ_cold_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'NEMA_IQ_cold_phys'
+Confirming activity forbidden in volume 'centercyl_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'centercyl_phys'
+Confirming activity forbidden in volume 'centercylin_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'centercylin_phys'
+Confirming activity forbidden in volume 'sphere10_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere10_phys'
+Confirming activity forbidden in volume 'sphere10in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere10in_phys'
+Confirming activity forbidden in volume 'fill10_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill10_phys'
+Confirming activity forbidden in volume 'fill10in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill10in_phys'
+Confirming activity forbidden in volume 'sphere13_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere13_phys'
+Confirming activity forbidden in volume 'sphere13in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere13in_phys'
+Confirming activity forbidden in volume 'fill13_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill13_phys'
+Confirming activity forbidden in volume 'fill13in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill13in_phys'
+Confirming activity forbidden in volume 'sphere17_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere17_phys'
+Confirming activity forbidden in volume 'sphere17in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere17in_phys'
+Confirming activity forbidden in volume 'fill17_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill17_phys'
+Confirming activity forbidden in volume 'fill17in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill17in_phys'
+Confirming activity forbidden in volume 'sphere37_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere37_phys'
+Confirming activity forbidden in volume 'sphere37in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere37in_phys'
+Confirming activity forbidden in volume 'fill37_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill37_phys'
+Confirming activity forbidden in volume 'fill37in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill37in_phys'
+Confirming activity forbidden in volume 'sphere22_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere22_phys'
+Confirming activity forbidden in volume 'sphere22in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere22in_phys'
+Confirming activity forbidden in volume 'fill22_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill22_phys'
+Confirming activity forbidden in volume 'fill22in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill22in_phys'
+Confirming activity forbidden in volume 'sphere28_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere28_phys'
+Confirming activity forbidden in volume 'sphere28in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere28in_phys'
+Confirming activity forbidden in volume 'fill28_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill28_phys'
+Confirming activity forbidden in volume 'fill28in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill28in_phys'
+Confirming activity forbidden in volume 'boxinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'boxinterior_phys'
+Confirming activity forbidden in volume 'LLinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'LLinterior_phys'
+Confirming activity forbidden in volume 'LRinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'LRinterior_phys'
+Confirming activity forbidden in volume 'outershell1_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'outershell1_phys'
+Confirming activity forbidden in volume 'outershell2_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'outershell2_phys'
+Confirming activity forbidden in volume 'outershell3_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'outershell3_phys'
+Confirming activity forbidden in volume 'outershell4_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'outershell4_phys'
+Source --------------> upperinterior_hot
+  ID                 : 0
+  type               : backtoback
+  activity (Bq)      : 3.60282e+07
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+    GPS info ----------------> 
+    particle                 : gamma
+    SourcePosType            : Volume
+    Shape                    : Cylinder
+    halfx,halfy,halfz  (mm)  : 0 0 107
+    Radius             (mm)  : 147
+    CentreCoords       (mm)  : 0 -35 0
+    EnergyDisType            : Mono
+    AngleDisType            : iso
+    MinTheta, MaxTheta (deg) : 0 180
+    MinPhi, MaxPhi     (deg) : 0 360
+    -------------------------- 
+
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+Confirming activity forbidden in volume 'upperinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'upperinterior_phys'
+Confirming activity forbidden in volume 'boxinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'boxinterior_phys'
+Confirming activity forbidden in volume 'centercyl_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'centercyl_phys'
+Confirming activity forbidden in volume 'centercylin_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'centercylin_phys'
+Confirming activity forbidden in volume 'sphere17_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere17_phys'
+Confirming activity forbidden in volume 'sphere17in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere17in_phys'
+Confirming activity forbidden in volume 'fill17_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill17_phys'
+Confirming activity forbidden in volume 'fill17in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill17in_phys'
+Confirming activity forbidden in volume 'sphere22_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere22_phys'
+Confirming activity forbidden in volume 'sphere22in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere22in_phys'
+Confirming activity forbidden in volume 'fill22_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill22_phys'
+Confirming activity forbidden in volume 'fill22in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill22in_phys'
+Source --------------> LRinterior_hot
+  ID                 : 1
+  type               : backtoback
+  activity (Bq)      : 5.28154e+06
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+    GPS info ----------------> 
+    particle                 : gamma
+    SourcePosType            : Volume
+    Shape                    : Cylinder
+    halfx,halfy,halfz  (mm)  : 0 0 107
+    Radius             (mm)  : 77
+    CentreCoords       (mm)  : -70 -35 0
+    EnergyDisType            : Mono
+    AngleDisType            : iso
+    MinTheta, MaxTheta (deg) : 0 180
+    MinPhi, MaxPhi     (deg) : 0 360
+    -------------------------- 
+
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+Confirming activity forbidden in volume 'upperinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'upperinterior_phys'
+Confirming activity forbidden in volume 'boxinterior_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'boxinterior_phys'
+Confirming activity forbidden in volume 'centercyl_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'centercyl_phys'
+Confirming activity forbidden in volume 'centercylin_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'centercylin_phys'
+Confirming activity forbidden in volume 'sphere28_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere28_phys'
+Confirming activity forbidden in volume 'sphere28in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere28in_phys'
+Confirming activity forbidden in volume 'fill28_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill28_phys'
+Confirming activity forbidden in volume 'fill28in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill28in_phys'
+Confirming activity forbidden in volume 'sphere37_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere37_phys'
+Confirming activity forbidden in volume 'sphere37in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere37in_phys'
+Confirming activity forbidden in volume 'fill37_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill37_phys'
+Confirming activity forbidden in volume 'fill37in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill37in_phys'
+Source --------------> LLinterior_hot
+  ID                 : 2
+  type               : backtoback
+  activity (Bq)      : 5.28154e+06
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+    GPS info ----------------> 
+    particle                 : gamma
+    SourcePosType            : Volume
+    Shape                    : Cylinder
+    halfx,halfy,halfz  (mm)  : 0 0 107
+    Radius             (mm)  : 77
+    CentreCoords       (mm)  : 70 -35 0
+    EnergyDisType            : Mono
+    AngleDisType            : iso
+    MinTheta, MaxTheta (deg) : 0 180
+    MinPhi, MaxPhi     (deg) : 0 360
+    -------------------------- 
+
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'halfx' option is DEPRECATED, use 'pos/halfx' instead!
+ <!> *** WARNING *** <!>  The 'halfy' option is DEPRECATED, use 'pos/halfy' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+Confirming activity forbidden in volume 'sphere22_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere22_phys'
+Confirming activity forbidden in volume 'sphere22in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere22in_phys'
+Confirming activity forbidden in volume 'fill22_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill22_phys'
+Confirming activity forbidden in volume 'fill22in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill22in_phys'
+Confirming activity forbidden in volume 'sphere28_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere28_phys'
+Confirming activity forbidden in volume 'sphere28in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'sphere28in_phys'
+Confirming activity forbidden in volume 'fill28_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill28_phys'
+Confirming activity forbidden in volume 'fill28in_phys'...
+ **** Error: Volume does not exist **** 
+ Ignoring forbid condition for volume 'fill28in_phys'
+Source --------------> interiorbox_hot
+  ID                 : 3
+  type               : backtoback
+  activity (Bq)      : 1.20903e+07
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+    GPS info ----------------> 
+    particle                 : gamma
+    SourcePosType            : Volume
+    Shape                    : Para
+    halfx,halfy,halfz  (mm)  : 70 38.5 107
+    Radius             (mm)  : 0
+    CentreCoords       (mm)  : 0 -73.5 0
+    EnergyDisType            : Mono
+    AngleDisType            : iso
+    MinTheta, MaxTheta (deg) : 0 180
+    MinPhi, MaxPhi     (deg) : 0 360
+    -------------------------- 
+
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+ <!> *** WARNING *** <!>  The 'centre' option is DEPRECATED, use 'pos/centre' instead!
+ <!> *** WARNING *** <!>  The 'type' option is DEPRECATED, use 'pos/type' instead!
+ <!> *** WARNING *** <!>  The 'shape' option is DEPRECATED, use 'pos/shape' instead!
+ <!> *** WARNING *** <!>  The 'radius' option is DEPRECATED, use 'pos/radius' instead!
+ <!> *** WARNING *** <!>  The 'halfz' option is DEPRECATED, use 'pos/halfz' instead!
+ <!> *** WARNING *** <!>  The 'angtype' option is DEPRECATED, use 'ang/type' instead!
+GateSourceMgr::ListSources: List of the sources in the source manager
+Source --------------> upperinterior_hot
+  ID                 : 0
+  type               : backtoback
+  activity (Bq)      : 3.60282e+07
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> LRinterior_hot
+  ID                 : 1
+  type               : backtoback
+  activity (Bq)      : 5.28154e+06
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> LLinterior_hot
+  ID                 : 2
+  type               : backtoback
+  activity (Bq)      : 5.28154e+06
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> interiorbox_hot
+  ID                 : 3
+  type               : backtoback
+  activity (Bq)      : 1.20903e+07
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> sphere10mm
+  ID                 : 4
+  type               : backtoback
+  activity (Bq)      : 11100
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> capillary10mm
+  ID                 : 5
+  type               : backtoback
+  activity (Bq)      : 26641
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> sphere13mm
+  ID                 : 6
+  type               : backtoback
+  activity (Bq)      : 24387
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> capillary13mm
+  ID                 : 7
+  type               : backtoback
+  activity (Bq)      : 25912
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> sphere17mm
+  ID                 : 8
+  type               : backtoback
+  activity (Bq)      : 54536
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> capillary17mm
+  ID                 : 9
+  type               : backtoback
+  activity (Bq)      : 25184
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> sphere22mm
+  ID                 : 10
+  type               : backtoback
+  activity (Bq)      : 118196
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+Source --------------> capillary22mm
+  ID                 : 11
+  type               : backtoback
+  activity (Bq)      : 24143
+  startTime (s)      : 0
+  time (s)           : 0
+  forcedUnstable     : 0
+  forcedHalfLife (s) : -0.693147
+  verboseLevel       : 0
+  relative to vol    : world
+---------------------- 
+
+[Acquisition-0]   
+[Acquisition-0] ============= Source initialization =============
+[Acquisition-0]   
+[Acquisition-0] ============= Acquisition starts! =============
+[Acquisition-0] Simulation start time = 0 sec
+[Acquisition-0] Simulation end time   = 1e-05 sec
+[Acquisition-0] Simulation will have  = 1 run(s)
+[Acquisition-0] Slice 0 from 0 to 1e-05 s [slice=1e-05 s]
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 7 regions:
+          DefaultRegionForTheWorld  1  1  1
+          cylindricalPET  1  1  1
+          module  1  1  1
+          unit  1  1  1
+          block  1  1  1
+          optical  1  1  1
+          crystal  1  1  1
+### ===  Ignore cuts flag:   0
+
+phot:  for gamma applyCuts:1  SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 174 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma applyCuts:1  SubType=13 BuildTable=1
+      Lambda table from 10 eV  to 1 MeV, 20 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 160 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        KleinNishina : Emin=    0 eV  Emax=  100 TeV Fluo
+
+conv:  for gamma applyCuts:1  SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma applyCuts:1  SubType=11 BuildTable=1
+      Lambda table from 10 eV  to 100 keV, 20 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 180 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+eBrem:  for e-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+annihil:  for e+, integral:1  applyCuts:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for proton  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for proton  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for proton  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+nuclearStopping:  for proton applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+ionIoni:  for GenericIon  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+         ParamICRU73 : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for GenericIon applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+ionIoni:  for alpha  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV  deltaVI
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for alpha applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for anti_proton  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for anti_proton  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for anti_proton  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for kaon+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for kaon+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for kaon-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for kaon-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+muIoni:  for mu+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+muPairProd:  for mu+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+muIoni:  for mu-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+muPairProd:  for mu-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for pi+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for pi+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for pi-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for pi-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+G4VisManager: Using G4TrajectoryDrawByCharge as fallback trajectory model.
+See commands in /vis/modeling/trajectories/ for other options.
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 7 regions:
+          DefaultRegionForTheWorld  1  1  1
+          cylindricalPET  1  1  1
+          module  1  1  1
+          unit  1  1  1
+          block  1  1  1
+          optical  1  1  1
+          crystal  1  1  1
+### ===  Ignore cuts flag:   0
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse relocated 
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+pulse blurred
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+[Core-0] End of macro ./split/.Gate/main192/main2.mac
+Graphics systems deleted.
+Visualization Manager deleting...

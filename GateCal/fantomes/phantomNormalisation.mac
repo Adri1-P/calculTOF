@@ -1,0 +1,8 @@
+#remerciements à Audrey Pépin (2011)
+/gate/world/daughters/name                      phantom
+/gate/world/daughters/insert                    cylinder
+/gate/phantom/setMaterial Air
+/gate/phantom/geometry/setRmax                  215. mm
+/gate/phantom/geometry/setRmin                  0. mm
+/gate/phantom/geometry/setHeight                270. mm
+/gate/phantom/placement/setTranslation          0. 0. 0. mm

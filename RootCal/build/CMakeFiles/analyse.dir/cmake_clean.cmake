@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/analyse.dir/src/coincidences.cc.o"
   "CMakeFiles/analyse.dir/src/compareFunction.cc.o"
   "CMakeFiles/analyse.dir/src/drawFunction.cc.o"
+  "CMakeFiles/analyse.dir/src/normalisation.cc.o"
   "CMakeFiles/analyse.dir/src/single.cc.o"
   "analyse"
   "analyse.pdb"

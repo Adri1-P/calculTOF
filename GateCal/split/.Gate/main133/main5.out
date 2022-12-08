@@ -1,0 +1,1510 @@
+[G4] 
+[G4] **************************************************************
+[G4]  Geant4 version Name: geant4-10-07-patch-02    (11-June-2021)
+[G4]                        Copyright : Geant4 Collaboration
+[G4]                       References : NIM A 506 (2003), 250-303
+[G4]                                  : IEEE-TNS 53 (2006), 270-278
+[G4]                                  : NIM A 835 (2016), 186-225
+[G4]                              WWW : http://geant4.org/
+[G4] **************************************************************
+[G4] 
+[Core-0] Initialization of geometry
+[Core-0] Initialization of physics
+[Core-0] Initialization of actors
+[Core-0] 
+[Core-0] *************************************************
+[Core-0]  GATE version 9.1 (2021)
+[Core-0]  Copyright : OpenGATE Collaboration
+[Core-0]  Reference : Phys. Med. Biol. 49 (2004) 4543-4561
+[Core-0]  Reference : Phys. Med. Biol. 56 (2011) 881-901
+[Core-0]  Reference : Med. Phys. 41(6)    (2014)
+[Core-0]  http://www.opengatecollaboration.org        
+[Core-0] *************************************************
+[Core-0] 
+[Core-0] You are using Geant4 version 10.7.2
+[Core-0] Starting macro ./split/.Gate/main133/main5.mac
+0: RINDEX
+1.84e-06   1.00028
+4.08e-06   1.00028
+9: GROUPVEL
+1.84e-06   299.709
+4.08e-06   299.709
+16: ABSLENGTH
+1.84e-06   50000
+4.08e-06   50000
+ <!> *** WARNING *** <!>  GateMaterialDatabase: Multiple definition of element: Yttrium.
+The definition in ClMind_GateMaterials.db was used.
+
+
+GATE object:        'systems/cylindricalPET'
+Components:
+
+GATE object:        'systems/cylindricalPET/base'
+Attached to volume: cylindricalPET
+Nb of children:       1
+
+	GATE object:        'systems/cylindricalPET/rsector'
+	Attached to volume: module
+	Nb of children:       1
+
+		GATE object:        'systems/cylindricalPET/module'
+		Attached to volume: unit
+		Nb of children:       1
+
+			GATE object:        'systems/cylindricalPET/submodule'
+			Attached to volume: block
+			Nb of children:       1
+
+				GATE object:        'systems/cylindricalPET/crystal'
+				Attached to volume: optical
+				Nb of children:       4
+
+					GATE object:        'systems/cylindricalPET/layer0'
+					Attached to volume: crystal
+					Nb of children:       0
+
+					GATE object:        'systems/cylindricalPET/layer1'
+					Attached to volume: ---
+					Nb of children:       0
+
+					GATE object:        'systems/cylindricalPET/layer2'
+					Attached to volume: ---
+					Nb of children:       0
+
+					GATE object:        'systems/cylindricalPET/layer3'
+					Attached to volume: ---
+					Nb of children:       0
+geometrical design type: 1
+ring diameter: -3.95 mm 
+rsector axial pitch: 0 fm 
+rsector azimuthal pitch: 12.8571 degree
+rsector tangential size: 2.5 cm 
+rsector axial size: 25.04 cm 
+module axial size: 4.784 cm 
+module tangential size: 2.5 cm 
+module axial pitch: 0 fm 
+module tangential pitch: 0 fm 
+submodule axial size: 4.784 cm 
+submodule tangential size: 2.5 cm 
+submodule axial pitch: 0 fm 
+submodule tangential pitch: 0 fm 
+crystal radial size: 1.59 cm 
+crystal axial size: 1.59 cm 
+crystal tangential size: 2.5 cm 
+crystal axial pitch: 0 fm 
+crystal tangential pitch: 0 fm 
+layer0 radial size: 3.95 mm 
+in layer0 interaction length: 1.975 mm 
+Axial nb of rsectors: 1
+Azimuthal nb of rsectors: 28
+Axial nb of modules: 1
+Tangential nb of modules: 1
+Axial nb of submodules: 1
+Tangential nb of submodules: 1
+Axial nb of crystals: 1
+Tangential nb of crystals: 1
+Radial nb of layers: 1
+[Physic-0] The following Geant4's physic-list is enabled :emstandard_opt3
+
+
+List of Enabled processes:
+
+
+
+
+List of initialized processes:
+
+
+[Core-0] Initialization of geometry
+[Core-0] Initialization of physics
+[Core-0] Initialization of actors
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+ <!> *** WARNING *** <!>  The 'energytype' option is DEPRECATED, use 'ene/type' instead!
+[Acquisition-0]   
+[Acquisition-0] ============= Source initialization =============
+[Acquisition-0]   
+[Acquisition-0] ============= Acquisition starts! =============
+[Acquisition-0] Simulation start time = 0 sec
+[Acquisition-0] Simulation end time   = 1 sec
+[Acquisition-0] Simulation will have  = 1 run(s)
+[Acquisition-0] Slice 0 from 0 to 1 s [slice=1 s]
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 25 regions:
+          DefaultRegionForTheWorld  1  1  1
+          cylindricalPET  1  1  1
+          module  1  1  1
+          unit  1  1  1
+          block  1  1  1
+          optical  1  1  1
+          crystal  1  1  1
+          capillaire1  1  1  1
+          capillaire1_water  1  1  1
+          capillaire2  1  1  1
+          capillaire2_water  1  1  1
+          capillaire3  1  1  1
+          capillaire3_water  1  1  1
+          capillaire4  1  1  1
+          capillaire4_water  1  1  1
+          capillaire5  1  1  1
+          capillaire5_water  1  1  1
+          capillaire_m1  1  1  1
+          capillaire_m1_water  1  1  1
+          capillaire_m2  1  1  1
+          capillaire_m2_water  1  1  1
+          capillaire_m3  1  1  1
+          capillaire_m3_water  1  1  1
+          capillaire_m4  1  1  1
+          capillaire_m4_water  1  1  1
+### ===  Ignore cuts flag:   0
+
+phot:  for gamma applyCuts:1  SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 174 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma applyCuts:1  SubType=13 BuildTable=1
+      Lambda table from 10 eV  to 1 MeV, 20 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 160 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        KleinNishina : Emin=    0 eV  Emax=  100 TeV Fluo
+
+conv:  for gamma applyCuts:1  SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma applyCuts:1  SubType=11 BuildTable=1
+      Lambda table from 10 eV  to 100 keV, 20 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 180 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+eBrem:  for e-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  AngularGen2BS
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  AngularGen2BS
+
+ePairProd:  for e+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 25x1001; from 0.1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           ePairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+annihil:  for e+, integral:1  applyCuts:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for proton  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for proton  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for proton  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+nuclearStopping:  for proton applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+ionIoni:  for GenericIon  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+         ParamICRU73 : Emin=    0 eV  Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for GenericIon applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+ionIoni:  for alpha  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.1, 0.02 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV  deltaVI
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV  deltaVI
+
+nuclearStopping:  for alpha applyCuts:1  SubType=8 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   ICRU49NucStopping : Emin=    0 eV  Emax=    1 MeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for anti_proton  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV  deltaVI
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for anti_proton  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for anti_proton  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for kaon+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for kaon+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for kaon-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV  deltaVI
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV  deltaVI
+
+hBrems:  for kaon-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for kaon-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+muIoni:  for mu+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+muPairProd:  for mu+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+muIoni:  for mu-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV  deltaVI
+          BetheBloch : Emin=  200 keV Emax=    1 GeV  deltaVI
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+muPairProd:  for mu-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for pi+  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi+  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for pi+  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV Nbins=240 100 eV  - 100 TeV
+              StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+hIoni:  for pi-  SubType=2
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      StepFunction=(0.2, 0.05 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV  deltaVI
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV  deltaVI
+
+hBrems:  for pi-  SubType=3
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+      ===== Limit on energy threshold has been applied 
+
+hPairProd:  for pi-  SubType=4
+      dE/dx and range tables from 10 eV  to 100 TeV in 260 bins
+      Lambda tables from threshold to 100 TeV, 20 bins/decade, spline: 1
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+G4VisManager: Using G4TrajectoryDrawByCharge as fallback trajectory model.
+See commands in /vis/modeling/trajectories/ for other options.
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 25 regions:
+          DefaultRegionForTheWorld  1  1  1
+          cylindricalPET  1  1  1
+          module  1  1  1
+          unit  1  1  1
+          block  1  1  1
+          optical  1  1  1
+          crystal  1  1  1
+          capillaire1  1  1  1
+          capillaire1_water  1  1  1
+          capillaire2  1  1  1
+          capillaire2_water  1  1  1
+          capillaire3  1  1  1
+          capillaire3_water  1  1  1
+          capillaire4  1  1  1
+          capillaire4_water  1  1  1
+          capillaire5  1  1  1
+          capillaire5_water  1  1  1
+          capillaire_m1  1  1  1
+          capillaire_m1_water  1  1  1
+          capillaire_m2  1  1  1
+          capillaire_m2_water  1  1  1
+          capillaire_m3  1  1  1
+          capillaire_m3_water  1  1  1
+          capillaire_m4  1  1  1
+          capillaire_m4_water  1  1  1
+### ===  Ignore cuts flag:   0
+(247.765,190.367,28.8712)
+(249.922,226.054,-14.7633)
+(-41.2257,-323.112,-52.348)
+(-108.221,-329.21,-26.6912)
+(-41.8764,-322.333,-53.79)
+(-10.0404,-211.282,-15.8735)
+(-284.82,-148.174,-100.116)
+(-282.588,-179.069,-48.3802)
+(-287.422,-142.044,-101.652)
+(-234.452,-92.8454,39.4355)
+(-251.456,190.788,-62.9943)
+(-249.726,238.879,-83.1129)
+(-289.212,-120.59,-10.8402)
+(-330.892,-142.335,2.60214)
+(-154.076,-284.819,56.0429)
+(-158.381,-314.548,90.1473)
+(-311.803,20.2458,49.955)
+(-327.755,30.6103,-88.9707)
+(-291.77,112.762,-8.76348)
+(-231.666,247.711,15.125)
+(210.988,-233.058,-5.43028)
+(236.932,-249.034,-25.0956)
+(-313.525,-5.36297,4.51635)
+(-246.704,-17.1466,-13.6156)
+(-258.968,186.988,6.70969)
+(-264.456,147.585,-39.8003)
+(-214.728,-242.662,-1.19589)
+(-167.208,-209.447,-6.56215)
+(-214.413,-244.241,-2.29903)
+(-184.317,-223.389,-18.7992)
+(-204.226,-240.722,-3.28348)
+(-153.564,-306.12,11.0736)
+(139.649,280.547,-0.151312)
+(30.9193,346.834,70.28)
+(143.208,288.414,-3.83505)
+(158.427,383.408,-2.00219)
+(149.677,296.343,0.77693)
+(221.493,351.018,32.1282)
+(-294.175,-121.161,93.8153)
+(-262.738,-170.443,165.057)
+(-293.69,-127.324,98.0652)
+(-240.685,-221.717,171.29)
+(-289.975,-126.596,104.17)
+(-348.507,-172.184,89.9686)
+(-203.613,-249.275,9.16125)
+(-153.399,-236.199,-11.5142)
+(-210.066,-245.44,4.86491)
+(-159.443,-260.585,-10.2778)
+(138.192,305.098,-8.18056)
+(126.681,343.548,62.9671)
+(124.858,-295.423,120.69)
+(98.2688,-254.355,-49.5137)
+(121.842,-297.557,113.576)
+(63.2195,-322.703,149.611)
+(-201.278,257.672,-99.2987)
+(-282.04,144.934,-28.5163)
+(-258.107,177.813,-15.561)
+(-283.052,207.465,26.3889)
+(218.71,-230.155,16.9752)
+(158.178,-368.804,-5.03818)
+(225.702,-235.314,13.4774)
+(144.494,-287.728,-82.9987)
+(192.84,-248.332,51.8587)
+(119.796,-152.836,-4.59967)
+(-65.1574,319.042,-62.5115)
+(-101.107,290.997,-9.77455)
+(300.871,-83.8519,-23.1463)
+(454.138,-132.625,-101.773)
+(151.25,278.002,-71.5716)
+(132.46,277.84,-153.63)
+(224.741,230.123,-10.4823)
+(214.033,221.001,73.91)
+(239.288,227.411,-6.21026)
+(277.482,196.938,100.011)
+(23.579,-316.083,15.8402)
+(-57.3928,-244.983,44.5161)
+(284.989,-144.591,67.0528)
+(224.634,-229.257,61.8142)
+(289.93,-159.199,74.3854)
+(239.611,-115.508,105.363)
+(-260.146,-203.687,122.814)
+(-276.867,-134.969,-20.5977)
+(-244.109,218.411,-38.3111)
+(-228.172,272.87,63.9679)
+(301.898,-119.099,18.5696)
+(231.338,-163.337,18.0378)
+(-332.79,24.2209,-78.859)
+(-263.261,95.6847,-37.3201)
+(320.618,-21.663,73.2301)
+(340.622,-58.8923,43.9238)
+(-312.125,0.412632,78.9308)
+(-402.227,-55.2661,100.133)
+(-313.424,19.7779,81.2924)
+(-367.056,25.2436,-9.33271)
+(-311.922,23.2657,85.7115)
+(-274.803,149.394,76.1978)
+(-286.076,124.634,-91.2302)
+(-305.648,121.07,-83.5657)
+(306.909,-57.7765,-23.7662)
+(302.335,-38.7434,5.28176)
+(281.839,-138.887,-87.1665)
+(267.957,-107.605,-3.10615)
+(282.467,-138.68,-88.2049)
+(235.935,-120.042,-96.6695)
+(289.818,-119.565,-112.254)
+(218.119,-127.333,-107.319)
+(60.2514,-327.132,-1.81194)
+(179.41,-381.015,-84.2675)
+(158.967,272.089,-53.4504)
+(198.83,248.581,15.6966)
+(155.786,276.983,-50.6104)
+(197.359,278.687,-4.77523)
+(155.859,276.772,-50.6242)
+(140.694,322.073,68.3628)
+(-85.0683,324.154,85.5276)
+(61.2776,350.624,-16.9617)
+(-88.5415,324.231,91.0799)
+(-170.412,329.061,132.25)
+(235.215,-208.657,-57.9662)
+(235.207,-213.587,-124.965)
+(-323.12,-26.4264,12.6632)
+(-331.909,-74.2914,-50.5448)
+(216.174,-239.762,110.664)
+(207.075,-258.832,125.785)
+(-313.784,-48.3975,53.1734)
+(-292.867,-86.6657,53.7004)
+(-97.0942,314.121,123.826)
+(15.9574,307.87,108.823)
+(-287.451,-144.119,-20.8445)
+(-260.618,-114.971,-25.7171)
+(308.851,57.018,6.78811)
+(325.679,169.696,-24.4696)
+(-247.189,197.663,74.191)
+(-323.048,204.183,151.791)
+(-258.203,199.894,80.2306)
+(-196.536,224.439,129.603)
+(-256,200.039,87.6683)
+(-194.55,131.888,165.848)
+(-312.459,-26.4715,-99.4461)
+(-304.076,-96.6513,-42.0933)
+(-252.711,192.311,117.572)
+(-230.857,96.6605,68.6995)
+(-255.257,191.963,117.241)
+(-107.14,218.121,166.16)
+(-16.4841,333.016,20.5198)
+(30.8507,272.441,-43.3828)
+(268.932,-164.292,0.337106)
+(297.212,-56.9539,28.7053)
+(-248.857,222.311,-1.39266)
+(-171.497,201.004,-104.985)
+(-151.796,276.225,-21.7814)
+(-15.6704,330.502,68.4471)
+(-163.446,279.722,-19.5209)
+(-193.705,245.66,49.671)
+(-246.553,201.987,100.25)
+(-217.206,289.881,100.529)
+(247.612,-191.499,69.6572)
+(254.356,-197.758,39.318)
+(-148.583,-286.35,-51.6954)
+(-126.194,-208.942,-24.9172)
+(322.53,-15.2534,50.9494)
+(230.304,42.8201,-48.3214)
+(324.666,-17.83,52.1791)
+(472.695,43.7837,155.964)
+(-320.204,16.7916,-50.946)
+(-280.739,-87.078,-58.4636)
+(127.852,-291.231,-102.309)
+(210.371,-300.527,-83.0303)
+(295.633,112.047,6.22169)
+(338.455,63.1981,-18.4707)
+(196.398,244.85,71.7309)
+(199.785,328.614,72.769)
+(70.2804,-304.549,-92.4295)
+(34.1537,-203.858,-183.781)
+(73.0094,-316.939,-97.2992)
+(65.4424,-226.413,-45.3904)
+(73.8235,-315.563,-98.6786)
+(-2.81047,-400.649,-77.9057)
+(297.033,109.376,-90.9605)
+(294.657,161.232,-94.9768)
+(-301.403,-87.6753,92.9303)
+(-358.334,-80.2084,143.419)
+(-303.203,-88.5777,94.5653)
+(-290.537,-123.219,119.541)
+(-308.108,-95.7414,102.745)
+(-285.771,-187.519,7.37522)
+(311.009,64.9804,-68.6333)
+(327.767,99.4119,-105.359)
+(163.949,-291.143,42.4996)
+(202.412,-254.903,107.767)
+(163.506,-292.401,43.1434)
+(166.409,-319.288,76.0265)
+(-78.0141,325.678,-46.8616)
+(-146.786,382.655,-2.37486)
+(-31.5084,319.773,-70.7069)
+(-90.4929,323.447,98.7487)
+(-26.894,325.105,-68.2642)
+(83.8309,296.103,-16.9014)
+(216.457,-239.842,54.781)
+(193.208,-168.344,38.7325)
+(220.437,-237.049,55.4538)
+(234.51,-280.003,66.5364)
+(329.925,0.863641,-92.7455)
+(324.815,-119.972,-125.555)
+(331.992,10.3261,-104.227)
+(376.648,67.7483,-55.8319)
+(328.659,14.1749,-114.639)
+(309.935,1.01117,-149.171)
+(328.997,12.2595,-124.771)
+(244.762,-145.294,-49.9629)
+(-149.604,-294.091,18.989)
+(-95.3074,-294.392,68.1779)
+(-67.9005,313.957,-21.9742)
+(-23.706,378.326,-65.4922)
+(-195.22,-247.168,-15.5387)
+(-258.895,-321.926,30.3123)
+(230.676,212.929,21.8538)
+(318.44,144.139,-40.4473)
+(231.158,215.852,23.0139)
+(172.299,236.743,-20.2597)
+(217.176,228.835,15.0035)
+(194.281,224.226,-54.2644)
+(-124.401,-290.283,-34.4565)
+(-151.574,-297.893,-2.17458)
+(255.546,-180.437,83.5639)
+(252.057,-267.138,128.263)
+(256.363,-186.849,91.0848)
+(329.357,-139.168,117.915)
+(252.521,-191.75,81.9985)
+(257.786,-204.786,236.985)
+(-47.562,314.244,69.405)
+(-26.5574,289.906,205.449)
+(-31.9322,322.867,73.7604)
+(-43.1435,251.237,126.17)
+(-26.2059,323.214,72.3542)
+(-76.7093,214.974,94.0734)
+(67.7815,-313.542,-72.5239)
+(83.0233,-268.904,18.128)
+(-292.751,-140.529,-6.10509)
+(-245.126,-94.355,-8.5702)
+(285.145,128.627,3.64614)
+(359.747,92.5593,11.9262)
+(-293.078,119.069,-60.4613)
+(-344.702,84.8187,23.2901)
+(-296.135,119.242,-61.1175)
+(-284.044,23.5455,-190.66)
+(-244.444,-210.678,112.813)
+(-160.517,-195.291,135.784)
+(-94.0981,-322.084,-67.1196)
+(-72.6461,-251.686,-86.0824)
+(-124.701,286.107,57.7801)
+(-157.701,308.66,48.339)
+(-123.329,289.749,62.9449)
+(-3.05792,348.526,9.42202)
+(263.882,-182.664,-54.4049)
+(261.307,-218.009,-64.0643)
+(-220.446,229.803,69.6523)
+(-187.762,102.776,60.9836)
+(-324.575,-82.7228,42.3207)
+(-267.07,-134.487,71.9092)
+(-319.408,-30.1955,70.3011)
+(-421.145,-51.2487,69.6985)
+(-333.101,-20.6917,56.9964)
+(-467.234,-54.8796,-5.53566)
+(327.94,76.1923,-92.8438)
+(427.655,-10.1829,-151.196)
+(316.998,53.4107,-38.7853)
+(277.851,3.9754,39.7619)
+(323.331,64.5688,-47.8575)
+(271.557,16.5301,-61.6286)
+(-136.643,296.252,-13.4607)
+(-132.724,286.231,51.76)
+(142.762,-291.762,87.7846)
+(175.915,-452.091,103.419)
+(11.6367,314.266,-98.6333)
+(-13.9999,296.072,-114.552)
+(-267.513,178.358,31.2702)
+(-351.179,138.347,-35.6944)
+(-268.962,174.719,32.8361)
+(-287.074,153.682,90.5426)
+(17.1551,314.304,-53.197)
+(-14.2354,308.08,-129.154)
+(12.305,319.628,-57.7902)
+(-73.3944,261.35,27.9684)
+(3.92543,-314.16,54.4737)
+(16.5743,-310.249,171.459)
+(1.98503,-319.891,60.3656)
+(-7.90226,-287.232,170.525)
+(-313.266,40.8643,-105.222)
+(-378.443,61.9571,-149.967)
+(-310.441,41.9437,-108.435)
+(-211.624,80.3685,-73.1704)
+(315.973,-46.1202,-77.6544)
+(307.48,-106.189,-75.6348)
+(311.618,-49.5823,-70.5948)
+(235.831,9.77417,-98.0266)
+(-173.761,268.765,-95.0638)
+(-91.8361,288.245,-108.869)
+(-266.631,175.531,-63.5645)
+(-264.526,104.307,-98.1246)
+(-312.693,-23.0739,90.048)
+(-251.585,-115.145,37.5531)
+(-311.716,-56.6286,97.4445)
+(-316.738,-13.7049,144.515)
+(-313.62,-43.3806,113.77)
+(-328.623,61.4704,148.096)
+(41.9301,328.254,-40.9474)
+(12.5313,213.614,22.3477)
+(42.96,323.732,-36.9066)
+(-78.2269,429.519,-9.2514)
+(-130.135,-289.033,35.5244)
+(-236.729,-167.87,-14.2832)
+(-134.804,-288.977,32.7058)
+(-162.557,-339.629,53.7486)
+(-97.7726,298.358,82.5787)
+(-92.854,268.21,197.136)
+(-100.617,297.225,90.0232)
+(-158.763,326.424,103.871)
+(-326.814,-72.5431,-65.9195)
+(-299.312,-191.164,-87.0455)
+(-312.636,-4.20051,-106.155)
+(-311.616,172.958,-127.829)
+(302.25,77.1882,-85.118)
+(300.011,40.7706,21.479)
+(-307.335,-78.079,40.6229)
+(-289.94,-49.055,-8.83743)
+(287.134,126.313,-65.6242)
+(279.8,131.148,79.2982)
+(305.731,134.61,-78.2557)
+(371.101,128.722,-106.161)
+(305.821,133.825,-82.2631)
+(322.102,165.695,-178.953)
+(45.8656,311.832,122.47)
+(12.957,314.222,22.9701)
+(311.404,-97.7589,-118.34)
+(232.182,-110.501,-147.142)
+(317.406,-95.3517,-117.917)
+(239.356,-145.545,-144.784)
+(331.395,1.43375,121.055)
+(338.398,23.1552,37.9228)
+(88.9739,310.921,17.3643)
+(32.6219,383.44,-33.2204)
+(-208.978,236.922,-31.158)
+(-129.782,221.359,-66.7402)
+(-208.272,243.514,-29.86)
+(-189.219,203.071,16.3177)
+(75.8449,319.978,-65.9907)
+(20.4629,349.919,-82.9829)
+(139.647,-285.782,58.1021)
+(167.305,-270.728,226.183)
+(143.038,-299.647,67.0286)
+(137.583,-251.967,64.2237)
+(311.87,21.873,100.378)
+(271.838,34.6713,110.261)
+(75.6449,311.587,-61.0044)
+(10.442,326.457,-48.7957)
+(65.4592,319.27,-60.1166)
+(110.899,361.375,-99.1299)
+(-54.5033,-309.215,61.2531)
+(-105.184,-313.648,88.5453)
+(199.787,252.404,-97.5117)
+(50.9227,319.832,-86.378)
+(-56.2014,316.454,7.51662)
+(124.735,278.867,-37.705)
+(-155.308,-274.568,-4.78528)
+(-163.126,-249.289,39.9672)
+(234.994,-210.56,-104.363)
+(268.45,-249.795,-41.4582)
+(-298.388,-119.703,-98.2978)
+(-264.504,-137.09,-102.037)
+(-4.53262,313.814,59.5918)
+(28.3499,387.409,-24.8094)
+(153.95,-275.496,-50.5086)
+(177.539,-304.935,-63.0348)
+(154.7,-273.975,-53.084)
+(34.2144,-266.434,-87.1237)
+(308.88,-115.242,8.89128)
+(334.78,-142.472,-92.5859)
+(-312.733,43.7732,-1.64941)
+(-394.529,59.9337,-62.5433)
+(-312.738,10.8415,12.3128)
+(-217.761,-155.84,37.3981)
+(334.931,-22.4693,-31.6)
+(325.816,120.806,76.9743)
+(335.011,-28.4127,-33.9947)
+(333.528,-2.13935,-15.0833)
+(-187.254,-277.711,71.4185)
+(-282.847,-274.579,64.7579)
+(-189.952,-276.248,73.59)
+(-283.272,-268.458,37.8051)
+(229.239,219.843,-52.484)
+(231.752,281.624,-146.777)
+(229.031,220.055,-53.3086)
+(218.72,212.787,-84.2073)
+(-324.892,-43.432,-124.493)
+(-331.003,-49.5035,-151.386)
+(-49.3061,314.672,-30.5426)
+(-54.4415,353.72,17.4227)
+(-50.783,-314.936,27.0593)
+(-57.5319,-254.999,36.2389)
+(-75.7192,-309.393,21.6223)
+(-80.1534,-345.269,21.0278)
+(-62.5776,313.39,-54.3354)
+(-24.5341,234.357,-90.3897)
+(82.1249,-312.148,55.3486)
+(56.872,-253.313,17.4254)
+(85.4003,-316.988,56.6662)
+(153.149,-288.61,41.7778)
+(-322.153,43.1474,-108.975)
+(-296.773,19.1247,-168.018)
+(190.813,-262.127,46.7855)
+(224.125,-233.012,115.386)
+(78.7856,316.143,-57.849)
+(133.925,306.933,-14.4067)
+(330.851,56.9159,31.1309)
+(413.348,-41.6692,92.1716)
+(-47.555,-311.919,85.8598)
+(-78.0471,-296.109,218.767)
+(254.324,190.513,-49.812)
+(192.069,230.678,4.024)
+(-160.386,269.987,-115.315)
+(-211.161,264.855,-108.133)
+(-322.139,-30.5873,-5.85933)
+(-313.039,-31.0594,-30.8325)
+(-319.757,-43.2814,-34.0011)
+(-308.414,-6.40304,-24.9235)
+(184.61,-258.742,101.497)
+(80.3493,-281.164,184.735)
+(-85.9492,308.177,-97.0161)
+(-120.338,330.725,-62.3072)
+(315.323,13.2397,120.313)
+(275.693,77.3538,121.632)
+(276.482,162.469,-1.93662)
+(274.364,202.536,66.3045)
+(271.626,166.435,-0.0932917)
+(362.371,132.757,-55.7071)
+(-268.12,174.406,-29.0839)
+(-268.394,186.654,13.9264)
+(-8.29333,-320.358,15.5229)
+(-8.94179,-297.06,81.3307)
+(156.017,276.453,-11.3581)
+(200.341,219.041,-72.1427)
+(-305.758,-63.3045,-42.5892)
+(-226.663,-81.28,-6.63343)
+(284.847,138.51,104.269)
+(334.684,61.0805,168.888)
+(296.445,150.09,108.831)
+(335.302,135.664,103.901)
+(308.513,75.1467,2.88394)
+(323.499,86.993,-109.446)
+(-288.471,-151.129,-10.019)
+(-246.995,-115.778,-10.4841)
+(-105.088,319.535,-59.3961)
+(-174.107,421.531,24.8058)
+(-114.328,-309.394,60.4042)
+(-187.16,-371.018,152.44)
+(-117.187,-308.832,64.6693)
+(-24.9513,-307.536,4.36272)
+(-126.759,-311.201,67.4163)
+(-130.082,-418.547,12.5468)
+(-224.905,249.874,-95.8604)
+(-201.505,283.719,-121.717)
+(-31.2059,-321.635,123.455)
+(-33.196,-349.533,53.5122)
+(-311.104,66.0555,-81.7214)
+(-298.075,-22.4752,-171.508)
+(64.7953,-314.954,53.7974)
+(61.5935,-312.405,72.1445)
+(-3.78198,-312.118,3.61279)
+(-47.7369,-367.522,-4.72636)
+(-7.3748,-326.754,2.75924)
+(-24.2787,-354.44,-102.474)
+(-10.8778,-335.442,-2.12502)
+(-73.0689,-340.021,-17.7875)
+(-150.028,286.588,-3.73564)
+(-78.1697,273.6,48.8268)
+(91.6732,-301.315,10.6238)
+(133.731,-229.381,31.2683)
+(84.0127,-322.981,7.37726)
+(194.663,-327.844,7.85469)
+(78.1153,-319.713,2.02474)
+(-37.4787,-182.491,-59.9073)
+(68.1924,309.181,-7.4771)
+(208.45,270.85,22.6401)
+(-302.325,110.314,-32.9475)
+(-201.974,204.077,-20.4449)
+(270.772,-164.23,-23.447)
+(293.083,-133.516,-30.7085)
+(264.606,-170.766,-8.8802)
+(405.727,-233.932,-10.7841)
+(-173.599,289.592,46.8141)
+(-112.65,370.365,-16.9283)
+(161.744,-269.192,37.6562)
+(139.177,-267.52,7.79539)
+(-271.014,159.561,-19.8205)
+(-330.618,218.771,-26.6947)
+(308.813,-100.826,63.309)
+(364.078,-184.86,26.7299)
+(-284.803,130.109,-80.0246)
+(-316.731,100.573,-159.432)
+(-289.996,129.024,-83.5353)
+(-292.332,62.277,-55.8434)
+(-289.332,117.947,-90.725)
+(-257.853,119.994,-141.099)
+(-290.279,116.832,-90.549)
+(-335.456,86.9566,-71.181)
+(245.696,-193.014,-83.5817)
+(157.093,-176.068,-37.9261)
+(178.309,-263.873,55.3849)
+(280.841,-282.397,53.7907)
+(179.861,-264.396,54.5893)
+(167.654,-160.82,16.8457)
+(-302.093,135.001,-27.5094)
+(-307.334,44.1338,-77.8697)
+(-317.25,51.9788,35.0305)
+(-370.868,20.2815,-6.13108)
+(-177.672,269.683,-114.992)
+(-223.574,233.892,16.516)
+(240.422,-224.672,93.5346)
+(135.974,-171.245,146.319)
+(-68.3385,-304.363,-60.9263)
+(-181.51,-302.522,1.82734)
+(278.163,-146.457,1.83788)
+(278.097,-90.6233,53.7349)
+(-304.417,91.5061,1.34436)
+(-421.246,55.8176,11.8045)
+(-304.734,88.7888,0.649413)
+(-179.062,133.329,-42.4507)
+(14.1091,-333.929,22.426)
+(100.247,-348.222,-142.957)
+(-283.114,147.614,116.344)
+(-281.343,197.045,64.6684)
+(-319.497,-99.4273,123.395)
+(-393.877,-203.76,93.742)
+(-268.684,-179.432,-96.9514)
+(-297.169,-175.938,-80.7742)
+(-270.885,-179.33,-96.7215)
+(-355.827,-195.838,-202.761)
+(317.232,-50.14,-23.1691)
+(276.816,-5.72144,-52.0079)
+(-297.994,98.876,40.9056)
+(-291.4,252.914,40.0298)
+(-286.845,-127.808,72.3477)
+(-287.966,-87.3851,21.0766)
+(-311.298,-128.794,86.6564)
+(-443.924,-119.655,110.477)
+(-304.296,70.351,65.2491)
+(-328.596,94.2856,11.1021)
+(-191.859,252.679,-124.316)
+(-150.865,135.344,-156.832)
+(-198.563,249.999,-121.371)
+(-181.081,204.196,-88.8002)
+(-199.96,247.382,-121.34)
+(-271.591,147.892,-133.741)
+(-126.974,286.353,-62.6448)
+(-182.398,324.28,-130.384)
+(261.71,-182.982,38.67)
+(264.056,-75.2043,-35.3145)
+(259.709,-183.166,35.9013)
+(233.854,-230.93,155.461)
+(-298.863,-99.3136,-102.363)
+(-369.709,-146.374,-128.408)
+(86.8447,-309.177,-21.5416)
+(85.1253,-425.688,-10.2874)
+(286.615,159.505,118.592)
+(316.272,151.683,35.9233)
+(-0.824671,313.572,-70.0801)
+(-63.0856,369.947,9.7061)
+(3.48893,319.749,-66.6708)
+(-159.139,296.491,84.2412)
+(-115.843,295.231,-44.119)
+(-54.5751,383.707,-11.7232)
+(-53.8067,-324.158,-120.867)
+(-39.8189,-293.815,-162.636)
+(312.943,88.757,7.05572)
+(340.203,84.7501,-124.737)
+(-273.887,157.077,-41.2837)
+(-381.069,207.39,-14.9523)
+(-270.626,157.762,-41.0857)
+(-344.975,246.303,-26.7477)
+(117.773,-305.533,83.963)
+(101.563,-209.502,101.425)
+(-71.9514,-316.798,-61.0153)
+(-109.144,-336.327,-128.862)
+(-72.2106,-320.766,-52.7336)
+(-5.11613,-326.2,-131.251)
+(263.588,183.862,35.9942)
+(265.446,127.113,205.056)
+(265.705,187.581,31.2351)
+(237.228,188.475,74.2916)
+(-312.733,13.0065,8.41237)
+(-290.128,30.0531,-130.293)
+(-316.276,22.5899,10.581)
+(-316.8,51.2251,-68.0404)
+(243.542,-209.42,-10.3743)
+(323.637,-93.6993,40.2994)
+(305.06,76.6968,-121.118)
+(351.193,76.3525,-18.2199)
+(315.977,88.001,-115.658)
+(319.063,165.218,-177.176)
+(316.464,89.5193,-116.122)
+(215.795,107.988,-118.396)
+(-137.341,285.566,-62.9826)
+(-79.6185,248.913,-102.945)
+(-138.986,287.533,-61.6074)
+(-99.308,186.247,-82.0387)
+(156.692,-284.313,64.5913)
+(79.2091,-334.655,129.995)
+(-247.411,196.355,89.2629)
+(-227.213,140.866,65.8827)
+(-258.67,192.425,95.0339)
+(-297.204,251.271,129.005)
+(-274.002,149.656,116.57)
+(-339.849,65.9929,53.2896)
+(-229.481,213.457,-40.1276)
+(-260.762,216.992,-16.4148)
+(-231.628,212.793,-35.3049)
+(-233.396,151.948,-111.901)
+(-4.35862,-323.87,62.8841)
+(-80.4757,-404.688,33.6643)
+(-3.04038,-324.857,63.3192)
+(-78.6845,-325.756,-52.488)
+(-172.972,262.807,67.8974)
+(-123.918,249.868,186.595)
+(47.1455,310.674,56.6879)
+(95.7912,336.22,111.613)
+(110.696,-298.562,-57.244)
+(57.9931,-452.962,50.0044)
+(285.987,-153.594,-81.4052)
+(295.499,-156.999,-51.2572)
+(-323.088,-10.8517,-96.053)
+(-287.127,15.4429,-32.0312)
+(-327.41,-15.1734,-92.964)
+(-201.907,96.6856,-131.615)
+(65.1447,-321.227,-123.708)
+(212.098,-376.185,-196.112)
+(-156.861,-287.103,-80.6202)
+(-159.807,-271.425,-90.8101)
+(65.2083,308.798,82.4046)
+(14.6622,348.556,103.748)
+(278.428,-143.258,51.1627)
+(262.633,-146.335,39.6636)
+(-251.421,187.259,-66.5542)
+(-138.181,162.289,-12.5654)
+(278.543,-140.375,103.457)
+(258.141,-40.8195,2.93161)
+(-136.619,-285.279,19.7372)
+(-129.991,-390.269,13.2645)
+(308.401,57.3812,123.151)
+(349.65,122.831,1.2014)
+(308.965,60.3357,124.658)
+(302.482,93.3237,70.0707)
+(-302.835,111.76,101.596)
+(-257.999,102.449,92.8491)
+(-180.653,255.769,-6.89093)
+(-260.172,321.74,-34.7826)
+(-304.013,97.2598,-86.9119)
+(-415.216,-10.7053,-62.6591)
+(-129.528,304.688,122.912)
+(-151.515,185.744,71.5286)
+(44.4459,-310.169,99.1024)
+(36.6825,-368.749,94.9509)
+(-25.1777,316.02,-103.357)
+(8.47986,404.052,-102.741)
+(238.504,204.492,-121.95)
+(172.093,226.896,-13.834)
+(205.475,242.134,-104.723)
+(265.308,247.551,26.8005)
+(-277.096,-165.497,71.9198)
+(-225.7,-220.891,27.7711)
+(313.065,-21.345,-86.3151)
+(293.372,16.1891,-162.885)
+(230.279,-219.568,-106.287)
+(214.14,-212.843,-31.4619)
+(227.742,-240.041,-117.778)
+(265.06,-141.186,-97.4532)
+(-307.289,-90.6698,9.9735)
+(-281.381,-105.626,29.0398)
+(90.691,-310.924,-11.1998)
+(178.673,-284.286,-93.5089)
+(180.68,257.967,11.6822)
+(39.4837,287.883,75.9335)
+(181.659,260.87,12.8303)
+(178.643,319.586,50.6933)
+(-305.711,78.1935,-34.1945)
+(-358.868,136.016,-96.2912)
+(306.91,69.4723,116.969)
+(258.225,59.6433,121.348)
+(-291.428,-118.233,4.69634)
+(-287.945,-129.502,-13.6499)
+(254.869,187.912,-11.6093)
+(212.045,178.399,-81.6667)
+(260.896,195.441,-14.6533)
+(295.425,149.273,-72.1786)
+(263.279,200.933,-14.6862)
+(229.54,235.18,109.503)
+(-61.6741,-322.49,-68.4064)
+(-131.95,-309.372,-48.2459)
+(-154.051,295.956,59.9386)
+(-65.154,268.336,29.433)
+(-304.426,-123.292,68.53)
+(-370.325,-137.333,129.515)
+(206.332,249.933,7.53045)
+(200.696,275.303,22.9402)
+(202.871,251.467,9.97478)
+(162.306,171.496,16.3461)
+(-132.55,-293.8,-11.7417)
+(-138.336,-269.949,-60.7017)
+(-138.621,-286.089,-4.07998)
+(-150.745,-201.466,1.01668)
+(-26.9412,-321.391,67.0472)
+(-47.0306,-285.574,-25.9633)
+(-24.5862,-332.612,63.4149)
+(31.1822,-334.333,-1.28937)
+(-22.8484,-332.851,62.9942)
+(87.9561,-330.807,-0.666401)
+(119.617,291.851,-61.116)
+(170.622,334.125,-14.602)
+(-301.068,94.6608,-107.848)
+(-295.911,100.101,-71.4099)
+(263.156,200.593,-89.2994)
+(222.565,142.59,-96.8941)
+(262.924,198.059,-87.9566)
+(276.62,153.176,-146.987)
+(-181.191,267.082,-11.8677)
+(-123.115,196.769,8.64131)
+(223.781,238.921,60.7972)
+(178.806,182.749,83.6387)
+(232.469,242.783,60.2937)
+(254.266,290.844,34.5749)
+(-101.38,-302.208,-81.3638)
+(-105.469,-296.121,-99.4287)
+(-115.309,-311.705,-73.307)
+(-141.967,-215.105,-103.473)
+(55.2074,-311.388,28.5024)
+(46.7151,-386.992,88.8574)
+(52.8112,-313.388,27.7785)
+(70.7326,-362.414,-39.8678)
+(207.498,248.758,-21.1546)
+(87.6574,210.284,-8.48471)
+(212.478,256.553,-11.9656)
+(214.266,244.354,133.167)
+(-288.433,129.435,-48.0443)
+(-161.628,155.451,40.5428)
+(-182.547,-258.655,-64.7382)
+(-206.855,-347.458,34.7262)
+(-182.502,-259.891,-63.4794)
+(-157.691,-211.182,14.772)
+(314.686,-20.5894,95.459)
+(379.944,18.3107,129.352)
+(304.901,-76.9762,-93.6327)
+(238.559,0.182858,-29.474)
+(303.729,-76.7242,-91.2309)
+(241.107,-37.6379,-216.02)
+(231.36,-216.242,114.289)
+(181.163,-142.356,97.2357)
+(233.066,-215.724,107.55)
+(305.985,-200.708,49.0635)
+(232.295,-216.679,106.22)
+(213.795,-138.561,154.426)
+(-295.266,112.594,70.8803)
+(-356.76,42.8985,111.468)
+(-313.648,-14.0608,-92.6264)
+(-336.256,-10.3279,-196.445)
+(82.1026,-323.863,-124.506)
+(103.11,-300.404,-209.58)
+(-207.821,256.732,100.79)
+(-231.687,117.211,16.9064)
+(320.22,-102.585,114.706)
+(385.129,-173.544,112.476)
+(285.437,-125.94,-31.9895)
+(251.049,-127.613,-64.6939)
+(296.39,-128.12,-23.5998)
+(251.554,-142.788,-13.9848)
+(258.698,-192.434,-107.147)
+(295.841,-217.219,-142.103)
+(272.439,-157.203,14.5455)
+(201.936,-131.833,45.1177)
+(277.24,-161.187,6.65955)
+(246.451,-154.111,120.339)
+(-82.3101,-305.291,33.0921)
+(-94.1764,-317.842,-66.0921)
+(-187.586,251.102,-28.4009)
+(-217.581,181.867,8.65194)
+(-174.387,267.136,-23.2485)
+(-211.87,309.92,-60.9912)
+(-318.468,-12.8744,-36.9261)
+(-313.277,41.0689,69.2207)
+(-316.984,-7.99239,-36.8721)
+(-251.779,-34.6557,-78.3685)
+(318.14,31.8843,91.3792)
+(285.216,120.216,187.552)
+(304.622,-137.414,21.2103)
+(215.049,-216.477,50.0677)
+(76.3323,326.3,-118.356)
+(115.033,372.784,-267.705)
+(-52.0429,-308.347,109.469)
+(2.66268,-261.609,162.386)
+(326.353,-11.3591,92.6803)
+(280.595,67.5527,112.714)
+(-317.703,11.7825,-101.213)
+(-306.43,24.1776,-122.389)
+(-305.285,-72.1904,-95.6705)
+(-284.407,-68.9767,-16.2527)
+(-316.868,-70.3902,-95.1611)
+(-382.404,-64.7815,-135.668)
+(314.509,-31.2256,-62.4882)
+(261.527,-89.6301,-111.224)
+(-295.715,110.313,-66.173)
+(-410.151,128.921,-55.8998)
+(-295.251,114.989,-66.385)
+(-366.867,218.931,-3.6011)
+(-296.07,119.15,-62.8065)
+(-307.682,120.631,-112.194)
+(-316.617,13.8742,81.4508)
+(-321.386,24.2373,53.281)
+(-322.368,14.6738,87.0536)
+(-318.341,35.1565,45.4925)
+(-320.701,16.4435,88.3272)
+(-309.747,13.2263,145.456)
+(215.32,230.384,-45.5514)
+(132.958,189.652,-39.3889)
+(215.726,229.114,-39.4308)
+(195.561,155.265,-87.267)
+(215.861,227.623,-36.7574)
+(230.98,230.957,-11.5504)
+(-13.2246,-326.495,-1.01795)
+(71.3988,-363.429,92.8956)
+(-11.4177,-321.923,-2.69035)
+(-25.1894,-211.534,5.39486)
+(-276.559,162.851,49.974)
+(-264.545,249.787,-71.3039)
+(-284.288,170.591,51.2672)
+(-391.254,229.352,35.2278)
+(-11.4966,317.315,113.467)
+(-5.78194,304.767,188.256)
+(-12.4352,318.912,114.089)
+(-16.5399,337.346,67.5124)
+(-16.7487,321.905,113.672)
+(33.9599,252.745,91.042)
+(317.392,-29.7783,-124.647)
+(249.55,-43.1518,-43.6778)
+(-311.591,-40.5714,-68.7159)
+(-365.479,-33.9994,-55.4057)
+(311.001,68.5714,117.401)
+(316.541,109.325,-70.9447)
+(-209.945,-239.231,37.0589)
+(-206.377,-220.279,17.3882)
+(267.346,200.452,-27.4113)
+(288.016,210.406,-152.388)
+(-185.377,-251.768,-107.461)
+(-214.133,-157.827,-39.7969)
+(-271.96,177.037,82.7032)
+(-172.585,171.754,64.2672)
+(-40.8236,-318.518,71.3996)
+(-32.3591,-308.46,27.5729)
+(-31.6968,-333.834,68.9329)
+(38.7616,-213.031,27.6175)
+(-212.652,234.1,-52.9008)
+(-216.029,178.098,-136.735)
+(-218.86,244.423,-69.773)
+(-247.522,157.932,-4.08441)
+(-329.142,-1.92147,82.4774)
+(-279.459,-7.46586,166.165)
+(314.227,0.783203,-104.521)
+(281.106,-11.2878,-87.4168)
+(329.95,15.0181,-102.585)
+(285.194,-21.273,-155.868)
+(328.458,11.5576,-22.0597)
+(293.625,21.0639,-16.1437)
+(-313.138,-18.3458,39.3839)
+(-231.35,98.4021,-62.4526)
+(63.2418,311.437,-65.3398)
+(62.7897,382.434,-142.033)
+(310.942,-80.187,34.9019)
+(243.719,-44.7197,-0.427552)
+(313.087,-78.5415,35.1558)
+(336.134,-34.4429,-8.97081)
+(-315.029,28.6009,-89.3786)
+(-306.496,39.2521,-0.330866)
+(319.176,-27.5281,83.3873)
+(305.936,31.9573,206.045)
+(307.67,-73.08,94.2186)
+(403.771,21.9511,163.753)
+(316.446,-76.1162,90.0916)
+(256.909,-67.4201,141.703)
+(-334.686,-20.4598,68.6186)
+(-351.283,-82.4343,190.787)
+(-331.61,-21.7165,72.6495)
+(-322.794,-40.8997,31.0259)
+(314.013,-32.2476,-117.666)
+(275.763,-139.887,-70.029)
+(319.154,-49.0719,-120.235)
+(329.459,-92.9743,-35.605)
+(320.369,-48.6178,-116.944)
+(241.78,31.2337,-241.907)
+(312.581,-27.5619,-116.95)
+(251.603,7.64085,-138.761)
+(304.258,101.305,-114.058)
+(328.585,103.7,-71.7112)
+(130.553,-284.581,38.2111)
+(201.966,-190.642,10.5081)
+(-282.58,149.895,-22.6159)
+(-359.686,246.942,-150.475)
+(-294.693,155.681,-29.8772)
+(-265.412,112.439,-110.721)
+(-314.808,1.20495,-107.903)
+(-328.386,68.0755,-87.2116)
+(335.564,-0.945389,104.491)
+(250.025,-16.7238,78.2548)
+(256.667,-179.531,-71.8229)
+(380.978,-223.8,-165.61)
+(-225.57,239.497,96.8538)
+(-222.893,180.109,129.193)
+(-227.937,240.36,100.92)
+(-279.759,178.138,231.86)
+(57.4848,308.893,107.399)
+(118.993,336.706,26.7367)
+(-147.036,-279.798,-101.55)
+(-158.592,-162.563,-69.3567)
+(-299.762,-89.1237,67.5381)
+(-254.969,-12.3317,101.174)
+(-280.106,-137.017,90.566)
+(-238.744,-182.384,111.954)
+(283.581,146.921,-107.094)
+(198.955,178.142,-132.07)
+(288.174,139.072,-102.853)
+(267.776,125.494,-129.768)
+(-279.436,-138.882,-67.6828)
+(-325.754,-118.242,-158.222)
+(-278.348,-145.135,-67.8854)
+(-317.436,-127.122,-118.184)
+(310.665,-44.6074,3.87007)
+(275.34,-87.9718,27.2674)
+(-299.103,114.528,-8.56256)
+(-397.674,138.719,-29.8083)
+(-313.073,115.264,6.19742)
+(-268.381,54.9986,-53.8015)
+(-55.1422,307.335,67.7235)
+(-84.2035,387.774,27.5595)
+(-59.0093,307.38,69.3514)
+(-36.4871,327.971,101.182)
+(-145.501,-284.943,-43.5472)
+(-158.673,-244.225,-68.2288)
+(-81.823,-302.903,99.6076)
+(-114.339,-423.935,118.866)
+(-192.494,272.341,-92.6183)
+(-177.071,200.679,-68.6941)
+(-110.707,-297.92,-124.501)
+(-168.246,-261.713,-116.804)
+(-214.54,227.753,-43.4178)
+(-253.948,196.937,-54.5514)
+(40.6885,-319.649,111.668)
+(41.8548,-261.897,71.9672)
+(32.1568,-326.563,119.341)
+(-9.08352,-262.031,139.157)
+(-313.312,-69.2706,49.019)
+(-311.927,-1.3132,100.576)
+(-316.732,61.0032,118.402)
+(-385.108,128.345,106.538)
+(-316.528,58.2767,34.3417)
+(-345.7,15.8477,92.3954)
+(314.479,-28.0425,-19.5768)
+(327.287,22.4971,17.9983)
+(-96.2308,300.597,-83.6661)
+(-20.8531,211.368,-196.959)
+(318.221,-64.5742,-118.931)
+(317.995,41.7638,-158.46)
+(320.372,-65.2872,-121.143)
+(275.833,-101.239,-97.4111)
+(-332.835,14.8247,26.8446)
+(-299.736,39.8736,33.0125)
+(315.128,-18.4429,-35.8792)
+(259.386,-143.888,23.0807)
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+[Core-0] End of macro ./split/.Gate/main133/main5.mac
+Graphics systems deleted.
+Visualization Manager deleting...

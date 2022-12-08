@@ -6,11 +6,18 @@
 #define drawFunction_hh
 void drawgraphs();
 void DrawDirectory();
-void showGate_dt(TString filename);
+TCanvas * showGate_dt(TString filename);
 void GateScanHits(TString  filename);
+void afficheCastorID(TString filenameRootGate);
 TCanvas * drawCoincidences(TString filename);
 
 TCanvas* fillDtGate_rand(TString filename);
+TCanvas* DrawArray(Int_t n, Double_t x[], Double_t y[]);
+TCanvas* Draw2Arrays(Int_t n, Double_t x1[], Double_t y1[],Double_t x2[], Double_t y2[]);
+
+
+// TCanvas* showProperty_CutOnAString(TString filename, TString property, TString  cut,TString booleanOperator, TString aString);
+
 
 template <class typeOfField> TCanvas *  drawFieldFromTree(TTree * tree, char field[],typeOfField variableForStorage) //nécessite de connaître le type à l'avance...
 {

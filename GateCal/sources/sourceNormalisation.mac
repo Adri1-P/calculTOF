@@ -1,0 +1,31 @@
+# /gate/source/addSource                        anneau
+#
+# /gate/source/anneau/gps/particle gamma
+# /gate/source/anneau/setType backtoback
+# /gate/source/anneau/gps/ene/type Mono
+# /gate/source/anneau/gps/ene/mono 511. keV
+# /gate/source/anneau/setActivity                 10000. becquerel
+# /gate/source/anneau/gps/pos/type                    Surface
+# /gate/source/anneau/gps/ang/type                 iso
+# /gate/source/anneau/gps/pos/shape                   Annulus
+# /gate/source/anneau/gps/pos/inner_radius                 225. mm # le fov XY est de 300*300mm. pour un cercle il faut au moins un rayon de 150*racine(2), on prend 150*1.5
+# /gate/source/anneau/gps/pos/radius                   225. mm
+# /gate/source/anneau/gps/pos/centre              0. 0. 0. mm
+
+
+
+/gate/source/addSource                        mySource
+
+/gate/source/mySource/gps/particle gamma
+/gate/source/mySource/setType backtoback
+/gate/source/mySource/gps/ene/type  Mono
+/gate/source/mySource/gps/ene/mono 511. keV
+/gate/source/mySource/setActivity                 100000. becquerel
+/gate/source/mySource/gps/type Volume
+/gate/source/mySource/gps/angtype iso
+/gate/source/mySource/gps/shape Cylinder
+/gate/source/mySource/gps/radius 225. mm
+/gate/source/mySource/gps/halfz 135. mm
+/gate/source/mySource/gps/pos/centre                  0. 0. 0. mm
+/gate/source/mySource/gps/Forbid                phantom
+/gate/source/list

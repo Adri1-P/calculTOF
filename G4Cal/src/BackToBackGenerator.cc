@@ -28,7 +28,9 @@ void BackToBackGenerator::Prepare()
 	G4int n_particle = 1;
 	fSource = new G4ParticleGun(n_particle);
 	G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
-	G4ParticleDefinition *particle = particleTable->FindParticle("gamma");
+	// G4ParticleDefinition *particle = particleTable->FindParticle("proton");
+  // fSource->SetParticleMomentum(100.*GeV); //default is meV
+  G4ParticleDefinition *particle = particleTable->FindParticle("gamma");
   fSource->SetParticleMomentum(511.*keV); //default is meV
 	fSource->SetParticleDefinition(particle);
 }
@@ -67,7 +69,8 @@ void BackToBackGenerator::ShootOne(G4Event *anEvent,G4ThreeVector *posXYZ,G4Thre
 
   G4ParticleMomentum mom; //G4ParticleMomentum est un typedef de G4ThreeVector
   if (momXYZ != NULL)  {mom = (*momXYZ);}
-	else                 {mom = G4RandomDirection();}
+	else                 //{mom = G4RandomDirection();}
+	{G4double rdmMom_y = (2*G4UniformRand() - 1) * 0.18; G4double rdmMom_z = (2*G4UniformRand() - 1) * 0.18;mom.set(1,rdmMom_y,rdmMom_z);}
 
   fSource->SetParticleMomentumDirection(mom);
 	fSource->GeneratePrimaryVertex(anEvent);

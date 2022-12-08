@@ -1,0 +1,14 @@
+000 (231.005.000) 11/28 15:44:41 Job submitted from host: <127.0.0.1:9618?addrs=127.0.0.1-9618+[--1]-9618&noUDP&sock=1740_12e1_4>
+...
+005 (231.005.000) 11/28 15:44:51 Job terminated.
+	(0) Abnormal termination (signal 6)
+	(1) Corefile in: /biomaps/physique/apaillet/calculTOF/GateCal/core.231.5
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+...

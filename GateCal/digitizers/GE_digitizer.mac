@@ -7,6 +7,10 @@
 # Readout at the block level
 /gate/digitizer/Singles/insert                          adder
 /gate/digitizer/Singles/adder/positionPolicy           energyWeightedCentroid
+
+/gate/digitizer/Singles/insert spblurring
+/gate/digitizer/Singles/spblurring/setSpresolution 1.0 mm #3.464 approx 2.5->4 simu->exp
+
 /gate/digitizer/Singles/insert                          readout
 /gate/digitizer/Singles/readout/setPolicy               TakeEnergyWinner #TakeEnergyCentroid #
 /gate/digitizer/Singles/readout/setDepth 1

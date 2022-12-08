@@ -236,6 +236,33 @@ src/BackToBackGenerator.cc.s:
 	$(MAKE) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/BackToBackGenerator.cc.s
 .PHONY : src/BackToBackGenerator.cc.s
 
+src/ClearMindDetector.o: src/ClearMindDetector.cc.o
+
+.PHONY : src/ClearMindDetector.o
+
+# target to build an object file
+src/ClearMindDetector.cc.o:
+	$(MAKE) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/ClearMindDetector.cc.o
+.PHONY : src/ClearMindDetector.cc.o
+
+src/ClearMindDetector.i: src/ClearMindDetector.cc.i
+
+.PHONY : src/ClearMindDetector.i
+
+# target to preprocess a source file
+src/ClearMindDetector.cc.i:
+	$(MAKE) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/ClearMindDetector.cc.i
+.PHONY : src/ClearMindDetector.cc.i
+
+src/ClearMindDetector.s: src/ClearMindDetector.cc.s
+
+.PHONY : src/ClearMindDetector.s
+
+# target to generate assembly for a file
+src/ClearMindDetector.cc.s:
+	$(MAKE) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/ClearMindDetector.cc.s
+.PHONY : src/ClearMindDetector.cc.s
+
 src/DebugDetector.o: src/DebugDetector.cc.o
 
 .PHONY : src/DebugDetector.o
@@ -634,6 +661,9 @@ help:
 	@echo "... src/BackToBackGenerator.o"
 	@echo "... src/BackToBackGenerator.i"
 	@echo "... src/BackToBackGenerator.s"
+	@echo "... src/ClearMindDetector.o"
+	@echo "... src/ClearMindDetector.i"
+	@echo "... src/ClearMindDetector.s"
 	@echo "... src/DebugDetector.o"
 	@echo "... src/DebugDetector.i"
 	@echo "... src/DebugDetector.s"

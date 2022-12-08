@@ -12,6 +12,8 @@
 #include "G4RunManager.hh"
 #include "G4GDMLParser.hh"
 #include "G4GeneralParticleSourceData.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4Electron.hh"
 
 #include <math.h>
 
@@ -94,18 +96,47 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 
 	G4VPhysicalVolume* physVol = touchable->GetVolume();
 	G4String volName = physVol->GetName();
+	// if (volName == "pCoating") {G4cout << "dans le coating ! " << G4endl;}
 	//attention, si la structure défini dans construction.cc n'a pas autant d'étage,
 	//il va y avoir une seg fault.
 	// Pour y remédier, il suffit de mettre à 0 les étages qui n'existent pas.
 	G4int layerID = touchable->GetReplicaNumber(0);
-	G4int crystalID = touchable->GetReplicaNumber(1);
-	G4int submoduleID = touchable->GetReplicaNumber(2);
-	G4int moduleID = touchable->GetReplicaNumber(3);
-	G4int rsectorID = touchable->GetReplicaNumber(4);
+	G4int crystalID = touchable->GetReplicaNumber(0);
+	G4int submoduleID = touchable->GetReplicaNumber(0);
+	G4int moduleID = touchable->GetReplicaNumber(0);
+	G4int rsectorID = touchable->GetReplicaNumber(0);
+
+	// if(track->GetDefinition() == G4OpticalPhoton::OpticalPhotonDefinition())
+	//   {
+	//     // particle is optical photon
+	// 		G4cout << "on a un optical" << G4endl;
+	//     if(track->GetParentID() > 0)
+	//     {
+	// 			G4cout << "on a un optical" << G4endl;
+	// 			if(track->GetCreatorProcess()->GetProcessName() == "Cerenkov")
+	// 			{
+	// 				G4cout << "on a un Cerenkov" << G4endl;
+	// 			}
+	// 		}
+	// 	}
+	//
+	// 	if (track->GetDefinition() == G4Electron::ElectronDefinition())
+	// 		{G4cout << "on a un electron" << G4endl;}
 
 
+	//if (edep <= 0) {return{true};}
 
-	if (edep <= 0) {return{true};}
+	// if (prepname == "Cerenkov")
+	// {
+	// 	if (track->GetDefinition() == G4OpticalPhoton::OpticalPhotonDefinition()) //Le hit concerne alors l'optical généré après l'effet Cerenkov
+	// 	{
+	//
+	// 	}
+	// }
+	G4String trackProcessName;
+
+	 if(track->GetParentID() > 0)  trackProcessName = track->GetCreatorProcess()->GetProcessName();
+	 if (postpname == "Cerenkov") CerenkovNumber++;
 
 
 	//On a détecté un hit, on lui assigne ses propriétés.
@@ -117,6 +148,10 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 	  if (trackID==1) {hitNumberTrack1++;}
 	  else if (trackID==2) {hitNumberTrack2++;}
 
+		// G4cout << "hitNumber : " << hitNumber << G4endl;
+		// G4cout << "hitNumberTrack1 : " << hitNumberTrack1 << G4endl;
+		// G4cout << "hitNumberTrack2 : " << hitNumberTrack2 << G4endl;
+
 		hit->fillHitInfo(hitNumber,hitNumberTrack1, hitNumberTrack2, trackID, evt,parentID,
 		posPhoton,posSource,
 		edep,globalTime,
@@ -125,11 +160,16 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *R0his
 		submoduleID,
 		moduleID,
 		rsectorID,
-	  particleName);
+	  particleName, postpname, volName);
 
-		//cette fonction s'occupe de remplir le NTuple pour le hits. S'il y a un champ à rajouter, c'est ici.
+		//Attributs temporaires pour tester
+		char* listOfTypes = "ssidd"; //d pour double, s pour string, i pour int. Rien d'autre. Mettre les args dans l'ordre.
+		hit->FillNTuple(listOfTypes,2,prepname,trackProcessName,CerenkovNumber,totalEnergy,kEnergy);
+
+
+		//cette fonction s'occupe de remplir le NTuple pour le hit. S'il y a un champ à rajouter, c'est ici.
 		//Mais il faut aussi modifier le hit.
-		hit->FillNTuple();
+		// hit->FillNTuple();
 
 		HitsCollection->insert(hit);
 	}
@@ -152,6 +192,7 @@ void MySensitiveDetector::EndOfEvent(G4HCofThisEvent* hce)
 	hitNumber = 0;
 	hitNumberTrack1 = 0;
 	hitNumberTrack2 = 0;
+	CerenkovNumber = 0;
 }
 
 //******************************************************************************
